@@ -1,0 +1,100 @@
+SCREENS
+-----------------
+Intro
+New/Load game
+Race/class select (+name & other opts)
+Dungeon/Map (main game)
+Fight (FF or Heroes of M&M style)
+
+
+
+CLASSES
+-----------------
+xml or similar
+This may determine increasing stats when leveling
+Hunter
+Wizard
+Ranger
+Mechanic
+
+
+RACES
+-----------------
+This may determine initial stats
+Robot
+Human
+Elf
+Beast
+
+
+STATS
+-----------------
+HP
+MP
+Attack
+Defense
+Weapon
+Gold
+Level
+
+
+GRID
+-----------------
+Resting places
+Enums for tile types
+
+
+COMBAT
+-----------------
+Attack or Run
+It gives pseudorandom coins and fixed xp points
+Different enemies
+
+
+=======================================================
+
+SPELLS
+-----------------
+Name
+MP
+Damage (range eg. 8-14)
+
+
+SHOPS
+-----------------
+They are on specific tiles
+Buy/Sell
+
+
+CHESTS
+-----------------
+They contain gold or other objects
+
+
+COMPLEX ARMOR
+-----------------
+Name
+Stats (defense)
+Price
+
+
+INVENTORY
+-----------------
+For both potions and equipment
+Potions usable in combat
+Health potions
+Mana potions
+
+
+MULTIPLE ENEMIES
+-----------------
+Player must select who attacks who
+Some spells or weapons might target several enemies at once
+
+
+MOAR
+-----------------
+Save/Load
+Map small OR big (with scroll)
+Soft: tiled, inih, SoLoud, xml/json parsing
+Several in-game screens (village, fields, cavern ... etc)
