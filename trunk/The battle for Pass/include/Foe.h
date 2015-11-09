@@ -7,7 +7,9 @@
 #ifndef FOE_H
 #define FOE_H
 
-class Foe {
+#include "Character.h"
+
+class Foe: public Character {
 public:
     Foe();
     Foe(const Foe& orig);

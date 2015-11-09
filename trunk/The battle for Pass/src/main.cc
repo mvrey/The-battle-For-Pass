@@ -31,9 +31,39 @@ const int kWindowWidth = 800;
 const int kWindowHeight = 600;
 
 
+void input() {
+
+}
+
+void updateIntro() {
+
+}
+
+void drawIntro() {
+
+}
+
+
 int main(int argc, char** argv) {
 
   Manager* manager = Manager::getInstance();  
+  
+  input();
+  
+  switch(manager->screen_) {
+    case 0:
+      input();
+      updateIntro();
+      drawIntro();
+      break;
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5: 
+    default:
+      break;
+  }
   
   return 0;
 }
