@@ -12,6 +12,8 @@
 #ifndef MANAGER_H
 #define MANAGER_H 1
 
+#include "Map.h"
+
 class Manager {
 public:
     //Screens in the game
@@ -24,16 +26,12 @@ public:
       kScreen_Fight,
       kScreen_GameOver
     };
-
-    //Maps inside the game
-    enum Map {
-      kMap_Village
-    };
     
     static Manager* getInstance();
     
     Screen screen_;
     Map map_;
+    Ally player_;
 
 
 private:

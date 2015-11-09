@@ -12,25 +12,25 @@
 #define CHARACTER_H
 
 class Character {
-    public:
-        Character() = default;
-        Character(const Character& orig);
-        virtual ~Character();
-        
-        float HP_;
-        float MP_;
-        float attack_;
-        float defense_;
-        
-        int level_;
-        
-        //These go to inventory
-        //Weapon, Gold
-        
+  public:
+    Character() = default;
+    Character(const Character& orig);
+    virtual ~Character();
     
-    private:
+    float HP_;
+    float MP_;
+    float attack_;
+    float defense_;
+    
+    int level_;
+    
+    //position on the current map
+    int x,y;
+    
+    Inventory inventory_;
+        
+  private:
 
 };
 
 #endif /* CHARACTER_H */
-

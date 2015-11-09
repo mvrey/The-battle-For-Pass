@@ -12,6 +12,11 @@ public:
     Item();
     Item(const Item& orig);
     virtual ~Item();
+    
+    std::string name_;
+    int price_;
+    float attack_;
+    float defense_;
 private:
 
 };

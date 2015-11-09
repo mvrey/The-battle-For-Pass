@@ -32,8 +32,10 @@ const int kWindowHeight = 600;
 
 
 void input() {
-
+  
 }
+
+/*** INTRO ***/
 
 void updateIntro() {
 
@@ -42,6 +44,69 @@ void updateIntro() {
 void drawIntro() {
 
 }
+
+/*** MAIN MENU ***/
+
+void updateMainMenu() {
+
+}
+
+void drawMainMenu() {
+
+}
+
+/*** LOAD GAME ***/
+
+void updateLoadGame() {
+
+}
+
+void drawLoadGame() {
+
+}
+
+/*** NEW GAME ***/
+
+void updateNewGame() {
+
+}
+
+void drawNewGame() {
+
+}
+
+/*** MAP ***/
+
+void updateMap() {
+
+}
+
+void drawMap() {
+
+}
+
+/*** FIGHT ***/
+
+void updateFight() {
+
+}
+
+void drawFight() {
+
+}
+
+/*** GAME OVER ***/
+
+void updateGameOver() {
+
+}
+
+void drawGameOver() {
+
+}
+
+
+/*** MAIN ***/
 
 
 int main(int argc, char** argv) {
@@ -52,15 +117,33 @@ int main(int argc, char** argv) {
   
   switch(manager->screen_) {
     case 0:
-      input();
       updateIntro();
       drawIntro();
       break;
     case 1:
+      updateMainMenu();
+      drawMainMenu();
+      break;
     case 2:
+      updateLoadGame();
+      drawLoadGame();
+      break;
     case 3:
+      updateNewGame();
+      drawNewGame();
+      break;
     case 4:
+      updateMap();
+      drawMap();
+      break;
     case 5: 
+      updateFight();
+      drawFight();
+      break;
+    case 6: 
+      updateGameOver();
+      drawGameOver();
+      break;
     default:
       break;
   }
