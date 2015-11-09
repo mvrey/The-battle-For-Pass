@@ -14,21 +14,26 @@
 #include <string>
 
 class Animation {
-public:
+  public:
     Animation();
     Animation(const Animation& orig);
     virtual ~Animation();
     
-    void loadFromFile(std::string path, int rows, int columns, float width, 
+    void LoadFromFile(std::string path, int rows, int columns, float width, 
                         float height, float offsetX, float offsetY);
+    
+    //Returns a ESAT::SpriteHandle
+    void GetCurrentFrame();
+    void NextFrame();
     
     
     //ESAT::SpriteHandle(s), not int(s)
     int frames_[100];
     int num_frames_;
+    int current_frame_;
     
     
-private:
+  private:
 
 };
 

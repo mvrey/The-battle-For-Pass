@@ -8,11 +8,19 @@
 #define INVENTORY_H
 
 class Inventory {
-public:
+  public:
     Inventory();
     Inventory(const Inventory& orig);
     virtual ~Inventory();
-private:
+    
+    int gold_;
+    Weapon left_hand_;
+    Weapon right_hand_;
+    Armor armor_;
+    
+    Item slots_[10];
+    
+  private:
 
 };
 
