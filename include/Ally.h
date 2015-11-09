@@ -7,7 +7,9 @@
 #ifndef ALLY_H
 #define ALLY_H
 
-class Ally {
+#include "Character.h"
+
+class Ally: public Character {
 public:
     Ally();
     Ally(const Ally& orig);

@@ -7,7 +7,9 @@
 #ifndef FRIEND_H
 #define FRIEND_H
 
-class Friend {
+#include "Character.h"
+
+class Friend: public Character {
 public:
     Friend();
     Friend(const Friend& orig);
