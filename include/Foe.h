@@ -7,7 +7,7 @@
 #ifndef FOE_H
 #define FOE_H
 
-class Friend {
+class Foe {
 public:
     Foe();
     Foe(const Foe& orig);
