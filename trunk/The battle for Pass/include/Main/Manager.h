@@ -34,7 +34,7 @@ public:
     ScreenId screen_id_;
     Screen* screen_;
     Map map_;
-    Ally player_;
+    Ally* player_;
     int quit_game_;
 
 private:

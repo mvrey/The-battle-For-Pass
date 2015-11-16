@@ -12,6 +12,8 @@
 #define CHARACTER_H
 
 #include "../../include/Item/Inventory.h"
+#include "../../include/Character/Race.h"
+#include "../../include/Character/Job.h"
 
 class Character {
   public:
@@ -29,8 +31,10 @@ class Character {
     //position on the current map
     int x,y;
     
-    Inventory inventory_;
-        
+    Inventory* inventory_;
+    Race* race_;
+    Job* job_;
+    
   private:
 
 };
