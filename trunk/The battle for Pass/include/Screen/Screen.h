@@ -6,7 +6,7 @@
  */
 
 #ifndef SCREEN_H
-#define SCREEN_H
+#define SCREEN_H 1
 
 #include <ESAT/window.h>
 #include <ESAT/draw.h>
@@ -38,10 +38,10 @@ public:
 
   void Init();
   void Input();
-  void Update();
+  void virtual Update();
   void virtual Draw();
   void DrawCursor();
-  void CreateButtons();
+  void virtual CreateButtons();
   void CreateButton(float x, float y, float height, float width,
   int option, ESAT::SpriteHandle img, std::string txt, bool has_border);
   void DrawButtons();
@@ -51,12 +51,13 @@ public:
   ESAT::SpriteHandle cursor_sprite_;
   ESAT::SpriteHandle button_background_;
   
-  bool g_click = false;
+  bool click_ = false;
     
 protected:
   void DrawBegin();
   void DrawEnd();
   void InitText();
+  int CheckButtonsClick();
   
   Button option_buttons_[10];
   short int num_buttons_ = 0;

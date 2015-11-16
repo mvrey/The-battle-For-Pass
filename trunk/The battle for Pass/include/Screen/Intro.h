@@ -9,6 +9,8 @@
 #define INTRO_H
 
 #include "Screen.h"
+#include "MainMenu.h"
+#include "../Main/Manager.h"
 
 class Intro: public Screen {
 public:
@@ -16,6 +18,7 @@ public:
     Intro(const Intro& orig);
     virtual ~Intro();
     
+    void Update();
     void Draw();
     
 private:

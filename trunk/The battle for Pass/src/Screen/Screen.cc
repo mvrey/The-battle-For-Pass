@@ -51,7 +51,7 @@ void Screen::DrawEnd() {
 }
 
 void Screen::Input() {
-  g_click = ESAT::MouseButtonUp(0);
+  click_ = ESAT::MouseButtonUp(0);
 }
 
 void Screen::Update() {
@@ -61,7 +61,7 @@ void Screen::Update() {
 void Screen::Draw() {
   DrawBegin();
   
-  ESAT::DrawText(300.0f, 50.0f, "The Battle for Pass - SUperGeneric Screen");
+  ESAT::DrawText(300.0f, 50.0f, "The Battle for Pass - SuperGeneric Screen");
   
   DrawEnd();
 }
@@ -71,10 +71,12 @@ void Screen::DrawCursor() {
 }
 
 void Screen::CreateButtons() {
-  CreateButton(300.0f, 20.0f, 110.0f, 250.0f, 0, button_background_, "New Game", false);
-  CreateButton(300.0f, 160.0f, 110.0f, 250.0f, 0, button_background_, "Load Game", false);
-  CreateButton(300.0f, 300.0f, 110.0f, 250.0f, 0, button_background_, "Options", false);
-  CreateButton(300.0f, 440.0f, 110.0f, 250.0f, 0, button_background_, "Exit Game", false);
+  num_buttons_ = 0;
+  
+  CreateButton(500.0f, 120.0f, 110.0f, 250.0f, 0, button_background_, "New Game", false);
+  CreateButton(500.0f, 260.0f, 110.0f, 250.0f, 0, button_background_, "Load Game", false);
+  CreateButton(500.0f, 400.0f, 110.0f, 250.0f, 0, button_background_, "Options", false);
+  CreateButton(500.0f, 540.0f, 110.0f, 250.0f, 0, button_background_, "Exit Game", false);
 }
 
 /** @brief Creates a interactive t_Button and saves it to g_option_buttons
@@ -172,4 +174,29 @@ void Screen::InitText() {
   ESAT::DrawSetTextSize(35);
   ESAT::DrawSetFillColor(0, 0, 0);
   ESAT::DrawSetStrokeColor(0, 0, 0);
+}
+
+/// @brief  Checks and returns the index of the button clicked inside g_option_buttons. Returns -1 if no button is clicked.
+int Screen::CheckButtonsClick() {
+  int i, click = 0;
+  float x = 0.0f;
+  float y = 0.0f;
+  float height = 0.0f;
+  float width = 0.0f;
+
+  for (i = 0; i < num_buttons_ && !click; i++) {
+    x = option_buttons_[i].pos.x;
+    y = option_buttons_[i].pos.y;
+    height = option_buttons_[i].height;
+    width = option_buttons_[i].width;
+
+    //Check if clicked inside the button
+    if (ESAT::MousePositionX() > x
+      && ESAT::MousePositionX() < x + width
+      && ESAT::MousePositionY() > y
+      && ESAT::MousePositionY() < y + height) {
+      click = 1;
+    }
+  }
+  return (click) ? i - 1 : -1;
 }

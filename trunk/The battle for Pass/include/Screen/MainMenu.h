@@ -6,9 +6,11 @@
  */
 
 #ifndef MAINMENU_H
-#define MAINMENU_H
+#define MAINMENU_H 1
 
 #include "Screen.h"
+#include "NewGame.h"
+#include "../../include/Main/Manager.h"
 
 class MainMenu: public Screen {
 public:
@@ -16,7 +18,9 @@ public:
     MainMenu(const MainMenu& orig);
     virtual ~MainMenu();
     
+    void Update();
     void Draw();
+    
 private:
 
 };

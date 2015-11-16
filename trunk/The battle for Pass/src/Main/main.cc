@@ -33,8 +33,6 @@
  /*
  * Global vars
  */
- 
-int g_quit_game = false;
 
 //window size
 const int kWindowWidth = 1366;
@@ -52,7 +50,7 @@ int ESAT::main(int argc, char **argv) {
 
   Manager* manager = Manager::getInstance();
   
-  while (ESAT::WindowIsOpened() && !g_quit_game) {
+  while (ESAT::WindowIsOpened() && !manager->quit_game_) {
     manager->screen_->Input();
     manager->screen_->Update();
     manager->screen_->Draw();

@@ -9,12 +9,19 @@
 #define NEWGAME_H
 
 #include "Screen.h"
+#include "MainMenu.h"
+#include "../../include/Main/Manager.h"
 
 class NewGame: public Screen {
 public:
     NewGame();
     NewGame(const NewGame& orig);
     virtual ~NewGame();
+    
+    void Init();
+    void Update();
+    void Draw();
+    void CreateButtons();
 private:
 
 };

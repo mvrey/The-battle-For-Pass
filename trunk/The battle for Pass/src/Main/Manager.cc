@@ -21,6 +21,7 @@ Manager::Manager() {
   screen_id_ = kScreen_Intro;
   screen_ = new Intro();
   //map_ = kMap_Village;
+  quit_game_ = false;
 }
 
 Manager::Manager(const Manager& orig) {
