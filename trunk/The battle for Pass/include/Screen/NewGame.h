@@ -8,6 +8,8 @@
 #ifndef NEWGAME_H
 #define NEWGAME_H
 
+#include "ESAT/sprite.h"
+
 #include "Screen.h"
 #include "MainMenu.h"
 #include "../../include/Main/Manager.h"
@@ -22,6 +24,11 @@ public:
     void Update();
     void Draw();
     void CreateButtons();
+    
+    ESAT::SpriteHandle dwarf_sprite;
+    ESAT::SpriteHandle elf_sprite;
+    ESAT::SpriteHandle human_sprite;
+    ESAT::SpriteHandle orc_sprite;
 private:
 
 };
