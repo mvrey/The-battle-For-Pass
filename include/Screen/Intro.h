@@ -15,6 +15,9 @@ public:
     Intro();
     Intro(const Intro& orig);
     virtual ~Intro();
+    
+    void Draw();
+    
 private:
 
 };

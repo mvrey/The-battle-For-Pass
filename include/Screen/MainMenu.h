@@ -15,6 +15,8 @@ public:
     MainMenu();
     MainMenu(const MainMenu& orig);
     virtual ~MainMenu();
+    
+    void Draw();
 private:
 
 };

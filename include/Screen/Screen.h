@@ -39,7 +39,7 @@ public:
   void Init();
   void Input();
   void Update();
-  void Draw();
+  void virtual Draw();
   void DrawCursor();
   void CreateButtons();
   void CreateButton(float x, float y, float height, float width,
@@ -53,7 +53,7 @@ public:
   
   bool g_click = false;
     
-private:
+protected:
   void DrawBegin();
   void DrawEnd();
   void InitText();

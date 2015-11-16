@@ -16,3 +16,9 @@ MainMenu::MainMenu(const MainMenu& orig) {
 MainMenu::~MainMenu() {
 }
 
+void MainMenu::Draw() {
+  DrawBegin();
+  
+  ESAT::DrawText(200.0f, 200.0f, "The Battle for Pass - Main Menu");
+  DrawEnd();
+}
