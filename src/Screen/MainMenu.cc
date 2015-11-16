@@ -18,7 +18,27 @@ MainMenu::~MainMenu() {
 
 void MainMenu::Draw() {
   DrawBegin();
-  
-  ESAT::DrawText(200.0f, 200.0f, "The Battle for Pass - Main Menu");
+  ESAT::DrawText(450.0f, 50.0f, "The Battle for Pass - Main Menu");
   DrawEnd();
+}
+
+
+/// @brief  Updates main menu status
+void MainMenu::Update() {
+  if (click_) {
+    int clicked_button = CheckButtonsClick();
+    switch (clicked_button) {
+      case 0:
+        Manager::getInstance()->screen_ = new NewGame();
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        Manager::getInstance()->quit_game_ = true;
+      default:
+        break;
+    }
+  }
 }
