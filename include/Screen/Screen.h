@@ -13,24 +13,53 @@
 #include <ESAT/sprite.h>
 #include <ESAT/input.h>
 
+#include <string>
+
 class Screen {
 public:
-    Screen();
-    Screen(const Screen& orig);
-    virtual ~Screen();
-    
-    void Input();
-    void Update();
-    void Draw();
-    void DrawCursor();
-    
-    ESAT::SpriteHandle background_;
-    ESAT::SpriteHandle cursor_sprite_;
-    bool g_click = false;
+  typedef struct {
+    float x;
+    float y;
+  } Point2;
+
+  typedef struct {
+    Point2 pos;
+    ESAT::SpriteHandle img;
+    std::string text;
+    float height;
+    float width;
+    unsigned short int option;
+    bool border;
+  } Button;
+
+  Screen();
+  Screen(const Screen& orig);
+  virtual ~Screen();
+
+  void Init();
+  void Input();
+  void Update();
+  void Draw();
+  void DrawCursor();
+  void CreateButtons();
+  void CreateButton(float x, float y, float height, float width,
+  int option, ESAT::SpriteHandle img, std::string txt, bool has_border);
+  void DrawButtons();
+  void InitPoint2(Point2 *p, float x, float y);
+  
+  ESAT::SpriteHandle background_;
+  ESAT::SpriteHandle cursor_sprite_;
+  ESAT::SpriteHandle button_background_;
+  
+  bool g_click = false;
     
 private:
-    void DrawBegin();
-    void DrawEnd();
+  void DrawBegin();
+  void DrawEnd();
+  void InitText();
+  
+  Button option_buttons_[10];
+  short int num_buttons_ = 0;
 
 };
 

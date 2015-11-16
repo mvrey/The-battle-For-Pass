@@ -7,9 +7,14 @@
 
 #include "../../include/Screen/Screen.h"
 
+const int kWindowWidth = 1366;
+const int kWindowHeight = 768;
+
 Screen::Screen() {
     cursor_sprite_ = ESAT::SpriteFromFile("assets/UI/Crosshair_02.png");
     background_ = ESAT::SpriteFromFile("assets/background/intro.png");
+    button_background_ = ESAT::SpriteFromFile("assets/UI/button_bg.png");
+    Init();
 }
 
 Screen::Screen(const Screen& orig) {
@@ -18,12 +23,24 @@ Screen::Screen(const Screen& orig) {
 Screen::~Screen() {
 }
 
+void Screen::Init() {
+  InitText();
+  CreateButtons();
+}
+
 /// @brief  Common drawn elements and functions called in every screen
 void Screen::DrawBegin() {
   ESAT::DrawBegin();
   ESAT::DrawClear(255, 255, 255);
-  ESAT::DrawSprite(background_, 0, 0);
-  //DrawOptionButtons();
+  
+  //Draw background image
+  float sprite_width = ESAT::SpriteWidth(background_);
+  float sprite_height = ESAT::SpriteHeight(background_);
+  ESAT::Mat3 escale;
+  ESAT::Mat3InitAsScale((float)kWindowWidth/sprite_width, (float)kWindowHeight/sprite_height, &escale);
+  ESAT::DrawSpriteWithMatrix(background_, escale);
+  
+  DrawButtons();
 }
 
 /// @brief  Common finishing drawing functions called in every screen
@@ -48,4 +65,108 @@ void Screen::Draw() {
 
 void Screen::DrawCursor() {
   ESAT::DrawSprite(cursor_sprite_, (float)ESAT::MousePositionX(), (float)ESAT::MousePositionY());
+}
+
+void Screen::CreateButtons() {
+  CreateButton(300.0f, 20.0f, 110.0f, 250.0f, 0, button_background_, "New Game", false);
+  CreateButton(300.0f, 160.0f, 110.0f, 250.0f, 0, button_background_, "Load Game", false);
+  CreateButton(300.0f, 300.0f, 110.0f, 250.0f, 0, button_background_, "Options", false);
+  CreateButton(300.0f, 440.0f, 110.0f, 250.0f, 0, button_background_, "Exit Game", false);
+}
+
+/** @brief Creates a interactive t_Button and saves it to g_option_buttons
+*  @param x X coordinate of the top-left corner
+*  @param y Y coordinate of the top-left corner
+*  @param height Number of pixels height
+*  @param width Number of pixels width
+*  @param option If this is an ingame button, this is used as selection of movement (Rock/Paper/scissors)
+*  @param img   An image that will be placed inside the button. It'll be ignored if NULL
+*  @param txt   A text that will be displayed inside the button. It'll be ignored if NULL
+*  @param height Whether a blue border will be drawn or not
+*/
+void Screen::CreateButton(float x, float y, float height, float width,
+  int option, ESAT::SpriteHandle img, std::string txt, bool has_border) {
+  Button b;
+
+  InitPoint2(&b.pos, x, y);
+  b.img = img;
+
+  b.text = txt;
+
+  b.height = height;
+  b.width = width;
+  b.option = option;
+  b.border = has_border;
+  option_buttons_[num_buttons_] = b;
+  num_buttons_++;
+}
+
+
+/// @brief  Draws all t_Buttons contained within option_buttons_
+void Screen::DrawButtons() {
+  float x = 0.0f;
+  float y = 0.0f;
+  float height = 0.0f;
+  float width = 0.0f;
+  float margin = 30.0f;
+
+  for (int i = 0; i < num_buttons_; i++) {
+    x = option_buttons_[i].pos.x;
+    y = option_buttons_[i].pos.y;
+    height = option_buttons_[i].height;
+    width = option_buttons_[i].width;
+
+    if (option_buttons_[i].border) {
+      float path_points[] = { x, y,
+        x + width, y,
+        x + width, y + height,
+        x, y + height,
+        x, y
+      };
+
+      /*rgb colors inside the polygon*/
+      ESAT::DrawSetFillColor(0, 0, 0, 0);
+
+      ESAT::DrawSetStrokeColor(255, 255, 255, 255);
+
+      ESAT::DrawSolidPath(path_points, 5, true);
+    }
+
+    if (option_buttons_[i].img) {
+      
+      //Adjust background image to button
+      float sprite_width = ESAT::SpriteWidth(option_buttons_[i].img);
+      float sprite_height = ESAT::SpriteHeight(option_buttons_[i].img);
+      ESAT::Mat3 translate, escale, transform;
+      ESAT::Mat3InitAsScale((float)width/sprite_width, (float)height/sprite_height, &escale);
+      ESAT::Mat3InitAsTranslate(option_buttons_[i].pos.x, option_buttons_[i].pos.y, &translate);
+      ESAT::Mat3Multiply(translate, escale, &transform);
+      
+      ESAT::DrawSpriteWithMatrix(option_buttons_[i].img, transform);
+    }
+
+    ESAT::DrawSetTextSize(20);
+
+    if (option_buttons_[i].text.c_str()) {
+      ESAT::DrawText(x+margin, y+2*margin, option_buttons_[i].text.c_str());
+    }
+  }
+}
+
+/** @brief Initializes a Point2 with given coordinates
+*  @param p The Point2 to initialize
+*  @param x X coordinate of the point
+*  @param y Y coordinate of the point
+*/
+void Screen::InitPoint2(Point2 *p, float x, float y) {
+  (*p).x = x;
+  (*p).y = y;
+}
+
+/// @brief  Stablishes initial font settings
+void Screen::InitText() {
+  ESAT::DrawSetTextFont("assets/UI/ca.ttf");
+  ESAT::DrawSetTextSize(35);
+  ESAT::DrawSetFillColor(0, 0, 0);
+  ESAT::DrawSetStrokeColor(0, 0, 0);
 }
