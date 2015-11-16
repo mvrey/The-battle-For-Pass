@@ -8,7 +8,9 @@
 #ifndef INTRO_H
 #define INTRO_H
 
-class Intro {
+#include "Screen.h"
+
+class Intro: public Screen {
 public:
     Intro();
     Intro(const Intro& orig);
