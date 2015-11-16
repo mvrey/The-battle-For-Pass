@@ -8,7 +8,9 @@
 #ifndef OPTIONSMENU_H
 #define OPTIONSMENU_H
 
-class OptionsMenu {
+#include "Screen.h"
+
+class OptionsMenu: public Screen {
 public:
     OptionsMenu();
     OptionsMenu(const OptionsMenu& orig);

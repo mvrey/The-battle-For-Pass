@@ -10,13 +10,16 @@
  */
 
 #include "../../include/Main/Manager.h"
+#include "../../include/Screen/Intro.h"
+
 
 
 Manager* Manager::instance_ = nullptr;
 
 
 Manager::Manager() {
-  screen_ = kScreen_Intro;
+  screen_id_ = kScreen_Intro;
+  screen_ = new Intro();
   //map_ = kMap_Village;
 }
 

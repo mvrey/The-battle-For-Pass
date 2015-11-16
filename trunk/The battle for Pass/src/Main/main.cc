@@ -6,6 +6,11 @@
  * The alpha code of main
  */
 
+#include <ESAT/window.h>
+#include <ESAT/draw.h>
+#include <ESAT/sprite.h>
+#include <ESAT/input.h>
+
 #include <cstdlib>
 #include <stdio.h>
 
@@ -29,128 +34,31 @@
  * Global vars
  */
  
+int g_quit_game = false;
+
 //window size
 const int kWindowWidth = 1366;
 const int kWindowHeight = 768;
 
 
-void input() {
-  
-}
-
-/*** INTRO ***/
-
-void updateIntro() {
-
-}
-
-void drawIntro() {
-
-}
-
-/*** MAIN MENU ***/
-
-void updateMainMenu() {
-
-}
-
-void drawMainMenu() {
-
-}
-
-/*** LOAD GAME ***/
-
-void updateLoadGame() {
-
-}
-
-void drawLoadGame() {
-
-}
-
-/*** NEW GAME ***/
-
-void updateNewGame() {
-
-}
-
-void drawNewGame() {
-
-}
-
-/*** MAP ***/
-
-void updateMap() {
-
-}
-
-void drawMap() {
-
-}
-
-/*** FIGHT ***/
-
-void updateFight() {
-
-}
-
-void drawFight() {
-
-}
-
-/*** GAME OVER ***/
-
-void updateGameOver() {
-
-}
-
-void drawGameOver() {
-
-}
-
-
 /*** MAIN ***/
 
 
-int main(int argc, char** argv) {
+int ESAT::main(int argc, char **argv) {
 
-  Manager* manager = Manager::getInstance();  
+  srand(time(NULL));
+
+  ESAT::WindowInit(kWindowWidth, kWindowHeight);
+
+  Manager* manager = Manager::getInstance();
   
-  input();
-  
-  switch(manager->screen_) {
-    case 0:
-      updateIntro();
-      drawIntro();
-      break;
-    case 1:
-      updateMainMenu();
-      drawMainMenu();
-      break;
-    case 2:
-      updateLoadGame();
-      drawLoadGame();
-      break;
-    case 3:
-      updateNewGame();
-      drawNewGame();
-      break;
-    case 4:
-      updateMap();
-      drawMap();
-      break;
-    case 5: 
-      updateFight();
-      drawFight();
-      break;
-    case 6: 
-      updateGameOver();
-      drawGameOver();
-      break;
-    default:
-      break;
+  while (ESAT::WindowIsOpened() && !g_quit_game) {
+    manager->screen_->Input();
+    manager->screen_->Update();
+    manager->screen_->Draw();
   }
   
+  ESAT::WindowDestroy();
   return 0;
 }
 

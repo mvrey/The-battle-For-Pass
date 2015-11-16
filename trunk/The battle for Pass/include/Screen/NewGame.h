@@ -8,7 +8,9 @@
 #ifndef NEWGAME_H
 #define NEWGAME_H
 
-class NewGame {
+#include "Screen.h"
+
+class NewGame: public Screen {
 public:
     NewGame();
     NewGame(const NewGame& orig);

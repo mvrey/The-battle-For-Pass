@@ -8,7 +8,9 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
-class MainMenu {
+#include "Screen.h"
+
+class MainMenu: public Screen {
 public:
     MainMenu();
     MainMenu(const MainMenu& orig);

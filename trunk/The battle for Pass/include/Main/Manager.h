@@ -14,11 +14,12 @@
 
 #include "../../include/Main/Map.h"
 #include "../../include/Character/Ally.h"
+#include "../../include/Screen/Screen.h"
 
 class Manager {
 public:
     //Screens in the game
-    enum Screen {
+    enum ScreenId {
       kScreen_Intro,
       kScreen_MainMenu,
       kScreen_LoadGame,
@@ -30,7 +31,8 @@ public:
     
     static Manager* getInstance();
     
-    Screen screen_;
+    ScreenId screen_id_;
+    Screen* screen_;
     Map map_;
     Ally player_;
 
