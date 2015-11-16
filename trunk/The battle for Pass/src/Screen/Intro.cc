@@ -16,3 +16,9 @@ Intro::Intro(const Intro& orig) {
 Intro::~Intro() {
 }
 
+void Intro::Draw() {
+  DrawBegin();
+  
+  ESAT::DrawText(200.0f, 200.0f, "The Battle for Pass - Intro");
+  DrawEnd();
+}

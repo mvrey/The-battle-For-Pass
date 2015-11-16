@@ -60,6 +60,9 @@ void Screen::Update() {
 
 void Screen::Draw() {
   DrawBegin();
+  
+  ESAT::DrawText(300.0f, 50.0f, "The Battle for Pass - SUperGeneric Screen");
+  
   DrawEnd();
 }
 
