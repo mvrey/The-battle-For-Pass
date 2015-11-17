@@ -9,7 +9,7 @@
 
 #include <ESAT/sprite.h>
 #include <string>
-#include "Job.h"
+
 
 class Race {
 public:
@@ -17,10 +17,11 @@ public:
     Race(std::string name);
     Race(const Race& orig);
     virtual ~Race();
-    void LoadFaces();
+    void LoadImages();
     
     std::string name_;
     ESAT::SpriteHandle face_imgs_[4];
+    ESAT::SpriteHandle bust_imgs_[4];
 private:
 
 };

@@ -18,7 +18,10 @@ public:
   Job(const Job& orig);
   virtual ~Job();
   void Init();
-  static void LoadFaces(std::string race_name, ESAT::SpriteHandle face_imgs_[]);
+  static void LoadImages(Race* race);
+  
+  int id;
+  std::string name_;
   
   static std::string job_names_[4];
   static const int num_jobs_ = 4;
