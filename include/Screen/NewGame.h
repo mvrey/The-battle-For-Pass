@@ -17,6 +17,11 @@
 #include "../../include/Character/Elf.h"
 #include "../../include/Character/Human.h"
 #include "../../include/Character/Orc.h"
+#include "../../include/Character/Boss.h"
+#include "../../include/Character/Hunter.h"
+#include "../../include/Character/Warrior.h"
+#include "../../include/Character/Wizard.h"
+
 
 class NewGame: public Screen {
 public:

@@ -20,8 +20,10 @@ public:
   void Init();
   static void LoadImages(Race* race);
   
-  int id;
+  int id_;
   std::string name_;
+  std::string description_;
+  ESAT::SpriteHandle description_image_;
   
   static std::string job_names_[4];
   static const int num_jobs_ = 4;
