@@ -7,6 +7,7 @@
  */
 
 #include "../../include/Character/Race.h"
+#include "../../include/Character/Job.h"
 
 Race::Race() {
   
@@ -22,6 +23,6 @@ Race::Race(const Race& orig) {
 Race::~Race() {
 }
 
-void Race::LoadFaces() {
-  Job::LoadFaces(this->name_, face_imgs_);
+void Race::LoadImages() {
+  Job::LoadImages(this);
 }

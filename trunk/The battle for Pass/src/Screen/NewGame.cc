@@ -32,29 +32,31 @@ void NewGame::Update() {
   if (click_) {
     int clicked_button = CheckButtonsClick();
     switch (clicked_button) {
+      //UI Buttons
       case 0:
         break;
       case 1:
         Manager::getInstance()->screen_ = new MainMenu();
         break;
+      //Race Buttons
       case 2:
-        Manager::getInstance()->player_ = new Ally();
-        Manager::getInstance()->player_->race_ = new Race("dwarf");
-        Manager::getInstance()->player_->race_->LoadFaces();
-        
-        for (int i=0; i<Job::num_jobs_; i++) {
-          this->option_buttons_[6].img = Manager::getInstance()->player_->race_->face_imgs_[0];
-        }
-        
-        Manager::getInstance()->player_->job_ = new Job();
-        
-        //LoadJobImages('dwarf');
+        createPlayer("dwarf");
         break;
       case 3:
+        createPlayer("elf");
         break;
       case 4:
+        createPlayer("human");
         break;
       case 5:
+        createPlayer("orc");
+        break;
+      //Job/Class Buttons
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+        selectJob(clicked_button - 6);
         break;
       default:
         break;
@@ -65,9 +67,46 @@ void NewGame::Update() {
 void NewGame::Draw() {
   DrawBegin();
   ESAT::DrawText(450.0f, 50.0f, "The Battle for Pass - New Game");
+
+  if (job_set) {
+    int id = Manager::getInstance()->player_->job_->id;
+
+    if (id > -1) {
+      ESAT::DrawSprite(Manager::getInstance()->player_->race_->bust_imgs_[id], 600.0f, 350.0f);
+    }
+  }
+  
   DrawEnd();
 }
 
+void NewGame::createPlayer(std::string race_name) {
+  
+  Manager::getInstance()->player_ = new Ally();
+  
+  if (race_name == "dwarf") {
+      Manager::getInstance()->player_->race_ = new Dwarf();
+  } else if (race_name == "elf") {
+      Manager::getInstance()->player_->race_ = new Elf();
+  } else if (race_name == "human") {
+      Manager::getInstance()->player_->race_ = new Human();
+  } else if (race_name == "orc") {
+      Manager::getInstance()->player_->race_ = new Orc();
+  }
+  
+  Manager::getInstance()->player_->race_->LoadImages();
+
+  for (int i=0; i<Job::num_jobs_; i++) {
+    this->option_buttons_[i+6].img = Manager::getInstance()->player_->race_->face_imgs_[i];
+  }
+
+  Manager::getInstance()->player_->job_ = new Job();
+  job_set = false;
+}
+
+void NewGame::selectJob(int job_id) {
+  Manager::getInstance()->player_->job_->id = job_id;
+  job_set = true;
+}
 
 void NewGame::CreateButtons() {
   num_buttons_ = 0;

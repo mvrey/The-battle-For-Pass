@@ -8,7 +8,7 @@
 
 #include "../../include/Character/Job.h"
 
-std::string Job::job_names_[4];
+std::string Job::job_names_[4] = {"boss", "hunter", "warrior", "wizard"};
 
 Job::Job() {
 }
@@ -21,18 +21,18 @@ Job::~Job() {
 }
 
 void Job::Init() {
-  job_names_[0] = "boss";
-  job_names_[1] = "hunter";
-  job_names_[2] = "warrior";
-  job_names_[3] = "wizad";
 }
 
 
-void Job::LoadFaces(std::string race_name, ESAT::SpriteHandle imgs[]) {
-  std::string path;
+void Job::LoadImages(Race* race) {
+  std::string face_path, bust_path;
   
   for (int i=0; i<num_jobs_; i++) {
-    path = "assets/character" + race_name + "/" + Job::job_names_[i] + "/face.png";
-    imgs[i] = ESAT::SpriteFromFile(path.c_str());
+    face_path = "assets/character/" + race->name_ + "/" + Job::job_names_[i] + "/face.png";
+    printf("%s\n", face_path.c_str());
+    race->face_imgs_[i] = ESAT::SpriteFromFile(face_path.c_str());
+    bust_path = "assets/character/" + race->name_ + "/" + Job::job_names_[i] + "/bust.png";
+    printf("%s\n", bust_path.c_str());
+    race->bust_imgs_[i] = ESAT::SpriteFromFile(bust_path.c_str());
   }
 }
