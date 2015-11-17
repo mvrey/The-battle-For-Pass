@@ -68,6 +68,10 @@ void NewGame::Draw() {
   DrawBegin();
   ESAT::DrawText(450.0f, 50.0f, "The Battle for Pass - New Game");
 
+  if (race_set) {
+    DrawRaceStats();
+  }
+  
   if (job_set) {
     int id = Manager::getInstance()->player_->job_->id_;
 
@@ -122,6 +126,7 @@ void NewGame::createPlayer(std::string race_name) {
   }
 
   //Manager::getInstance()->player_->job_ = new Job();
+  race_set = true;
   job_set = false;
 }
 
@@ -171,4 +176,18 @@ void NewGame::CreateButtons() {
   CreateButton(start_right+(box_side*2), 150.0f, box_side, box_side, 0, nullptr, "", true);
   CreateButton(start_right+(box_side*3), 150.0f, box_side, box_side, 0, nullptr, "", true);
   
+}
+
+void NewGame::DrawRaceStats() {
+  int multiplier = 4;
+  
+  int hp = Manager::getInstance()->player_->race_->HP_;
+  int mp = Manager::getInstance()->player_->race_->MP_;
+  int attack = Manager::getInstance()->player_->race_->attack_;
+  int defense = Manager::getInstance()->player_->race_->defense_;
+  
+  DrawRectangle(500.0f,280.0f,hp*multiplier,30,0x00CC00FF, false);
+  DrawRectangle(500.0f,330.0f,mp*multiplier,30,0x0000CCFF, false);
+  DrawRectangle(500.0f,380.0f,attack*multiplier,30,0xCC0000FF, false);
+  DrawRectangle(500.0f,430.0f,defense*multiplier,30,0x999999FF, false);
 }

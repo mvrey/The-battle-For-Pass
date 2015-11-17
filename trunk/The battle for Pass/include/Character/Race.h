@@ -19,6 +19,11 @@ public:
     virtual ~Race();
     void LoadImages();
     
+    float HP_;
+    float MP_;
+    float attack_;
+    float defense_;
+    
     std::string name_;
     ESAT::SpriteHandle face_imgs_[4];
     ESAT::SpriteHandle bust_imgs_[4];

@@ -8,6 +8,10 @@
 
 Orc::Orc() {
   name_ = "Orc";
+  HP_ = 30;
+  MP_ = 10;
+  attack_ = 40;
+  defense_ = 20;
 }
 
 Orc::Orc(const Orc& orig) {

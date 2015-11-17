@@ -35,12 +35,14 @@ public:
     void createPlayer(std::string race_name);
     void selectJob(int job_id);
     void CreateButtons();
+    void DrawRaceStats();
     
     ESAT::SpriteHandle dwarf_sprite;
     ESAT::SpriteHandle elf_sprite;
     ESAT::SpriteHandle human_sprite;
     ESAT::SpriteHandle orc_sprite;
     
+    bool race_set = false;
     bool job_set = false;
 private:
 

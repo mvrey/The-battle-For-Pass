@@ -8,6 +8,10 @@
 
 Elf::Elf() {
   name_ = "Elf";
+  HP_ = 20;
+  MP_ = 30;
+  attack_ = 20;
+  defense_ = 30;
 }
 
 Elf::Elf(const Elf& orig) {
