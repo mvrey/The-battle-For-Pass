@@ -48,7 +48,8 @@ public:
   void DrawButtons();
   void InitPoint2(Point2 *p, float x, float y);
   void DrawTextWithLineBreaks(float x, float y, int width, int font_size, std::string txt);
-  
+  void DrawRectangle(float x, float y, int width, int height, int color, bool faces_right);
+    
   ESAT::SpriteHandle background_;
   ESAT::SpriteHandle cursor_sprite_;
   ESAT::SpriteHandle button_background_;

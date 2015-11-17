@@ -8,6 +8,10 @@
 
 Dwarf::Dwarf() {
   name_ = "Dwarf";
+  HP_ = 40;
+  MP_ = 15;
+  attack_ = 30;
+  defense_ = 15;
 }
 
 Dwarf::Dwarf(const Dwarf& orig) {

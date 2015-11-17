@@ -8,6 +8,10 @@
 
 Human::Human() {
   name_ = "Human";
+  HP_ = 25;
+  MP_ = 25;
+  attack_ = 25;
+  defense_ = 25;
 }
 
 Human::Human(const Human& orig) {

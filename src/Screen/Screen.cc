@@ -211,3 +211,28 @@ void Screen::DrawTextWithLineBreaks(float x, float y, int width, int font_size, 
     ESAT::DrawText(x, y+(i*font_size), txt.substr (i*chars_per_line, chars_per_line).c_str());
   }
 }
+
+void Screen::DrawRectangle(float x, float y, int width, int height, int color, bool faces_right) {
+    
+  if (!faces_right) {
+    x -= width;
+  }
+
+  float path_points[] = { x, y,
+    x + width, y,
+    x + width, y + height,
+    x, y + height,
+    x, y
+  };
+
+  int red = (color & 0xFF000000) >> 24;
+  int green = (color & 0x00FF0000) >> 16;
+  int blue = (color & 0x0000FF00) >> 8;
+  int alpha = (color & 0x000000FF);
+  
+  ESAT::DrawSetFillColor(red, green, blue, alpha);
+
+  ESAT::DrawSetStrokeColor(255, 255, 255, 255);
+
+  ESAT::DrawSolidPath(path_points, 5, true);
+}
