@@ -69,15 +69,37 @@ void NewGame::Draw() {
   ESAT::DrawText(450.0f, 50.0f, "The Battle for Pass - New Game");
 
   if (job_set) {
-    int id = Manager::getInstance()->player_->job_->id;
+    int id = Manager::getInstance()->player_->job_->id_;
 
     if (id > -1) {
-      ESAT::DrawSprite(Manager::getInstance()->player_->race_->bust_imgs_[id], 600.0f, 350.0f);
+      //Draw transformed bust image
+      ESAT::SpriteHandle bust = Manager::getInstance()->player_->race_->bust_imgs_[id];
+      
+      float sprite_width = ESAT::SpriteWidth(bust);
+      float sprite_height = ESAT::SpriteHeight(bust);
+      ESAT::Mat3 translate, escale, transform;
+      ESAT::Mat3InitAsScale((float)180/sprite_width, (float)360/sprite_height, &escale);
+      ESAT::Mat3InitAsTranslate(550.0f, 210.0f, &translate);
+      ESAT::Mat3Multiply(translate, escale, &transform);
+      ESAT::DrawSpriteWithMatrix(bust, transform);
+      
+      //Draw race and job
+      std::string profile = Manager::getInstance()->player_->race_->name_ + " - " + Manager::getInstance()->player_->job_->name_;
+      ESAT::DrawText(520.0f, 600.0f, profile.c_str());
+      
+      //Draw job image
+      ESAT::SpriteHandle desc_img = Manager::getInstance()->player_->job_->description_image_;
+      ESAT::DrawSprite(desc_img, 955.0f, 250.0f);
+      
+      //Draw job description
+      
+      DrawTextWithLineBreaks(800.0f, 470.0f, 500, 15.0f, Manager::getInstance()->player_->job_->description_.c_str());
     }
   }
   
   DrawEnd();
 }
+
 
 void NewGame::createPlayer(std::string race_name) {
   
@@ -99,13 +121,32 @@ void NewGame::createPlayer(std::string race_name) {
     this->option_buttons_[i+6].img = Manager::getInstance()->player_->race_->face_imgs_[i];
   }
 
-  Manager::getInstance()->player_->job_ = new Job();
+  //Manager::getInstance()->player_->job_ = new Job();
   job_set = false;
 }
 
 void NewGame::selectJob(int job_id) {
-  Manager::getInstance()->player_->job_->id = job_id;
   job_set = true;
+  
+  switch(job_id) {
+    case 0:
+      Manager::getInstance()->player_->job_ = new Boss();
+      break;
+    case 1:
+      Manager::getInstance()->player_->job_ = new Hunter();
+      break;
+    case 2:
+      Manager::getInstance()->player_->job_ = new Warrior();
+      break;
+    case 3:
+      Manager::getInstance()->player_->job_ = new Wizard();
+      break;
+    default:
+      job_set = false;
+      break;
+  }
+
+  
 }
 
 void NewGame::CreateButtons() {

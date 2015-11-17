@@ -14,6 +14,7 @@
 #include <ESAT/input.h>
 
 #include <string>
+#include <math.h> 
 
 class Screen {
 public:
@@ -46,6 +47,7 @@ public:
   int option, ESAT::SpriteHandle img, std::string txt, bool has_border);
   void DrawButtons();
   void InitPoint2(Point2 *p, float x, float y);
+  void DrawTextWithLineBreaks(float x, float y, int width, int font_size, std::string txt);
   
   ESAT::SpriteHandle background_;
   ESAT::SpriteHandle cursor_sprite_;

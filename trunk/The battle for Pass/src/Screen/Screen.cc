@@ -200,3 +200,14 @@ int Screen::CheckButtonsClick() {
   }
   return (click) ? i - 1 : -1;
 }
+
+void Screen::DrawTextWithLineBreaks(float x, float y, int width, int font_size, std::string txt) {
+  ESAT::DrawSetTextSize(font_size);
+  
+  int chars_per_line = width / font_size;
+  int num_lines = ceil(txt.length()/(chars_per_line));
+  
+  for (int i=0; i <= num_lines; i++) {
+    ESAT::DrawText(x, y+(i*font_size), txt.substr (i*chars_per_line, chars_per_line).c_str());
+  }
+}
