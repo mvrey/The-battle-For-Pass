@@ -14,5 +14,7 @@ Character::Character(const Character& orig) {
 }
 
 Character::~Character() {
+  race_ = nullptr;
+  job_ = nullptr;
 }
 
