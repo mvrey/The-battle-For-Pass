@@ -12,6 +12,7 @@
 
 #include "Screen.h"
 #include "MainMenu.h"
+#include "Game.h"
 #include "../../include/Main/Manager.h"
 #include "../../include/Character/Dwarf.h"
 #include "../../include/Character/Elf.h"
