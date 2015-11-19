@@ -42,7 +42,7 @@ void NewGame::Update() {
   //Detect name entry
   key = ESAT::GetNextPressedKey();
   if (key > 0) {
-    if (ESAT::IsKeyDown(8) && name_box.txt.length() > 0) {
+    if (ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Delete) && name_box.txt.length() > 0) {
       name_box.txt.pop_back();
     } else {
       printf("%d", key);
@@ -56,6 +56,7 @@ void NewGame::Update() {
     switch (clicked_button) {
       //UI Buttons
       case 0:
+        Manager::getInstance()->screen_ = new Game();
         break;
       case 1:
         Manager::getInstance()->screen_ = new MainMenu();
