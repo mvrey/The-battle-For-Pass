@@ -33,6 +33,12 @@ public:
     bool border;
   } Button;
 
+  typedef struct {
+    Point2 pos;
+    int size;
+    std::string txt;
+  } TextBox;
+
   Screen();
   Screen(const Screen& orig);
   virtual ~Screen();
@@ -49,7 +55,8 @@ public:
   void InitPoint2(Point2 *p, float x, float y);
   void DrawTextWithLineBreaks(float x, float y, int width, int font_size, std::string txt);
   void DrawRectangle(float x, float y, int width, int height, int color, bool faces_right);
-    
+  void DrawTextBox(TextBox box);
+  
   ESAT::SpriteHandle background_;
   ESAT::SpriteHandle cursor_sprite_;
   ESAT::SpriteHandle button_background_;

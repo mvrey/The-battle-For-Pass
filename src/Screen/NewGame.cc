@@ -25,10 +25,32 @@ void NewGame::Init() {
   human_sprite = ESAT::SpriteFromFile("assets/character/human/human.png");
   orc_sprite = ESAT::SpriteFromFile("assets/character/orc/orc.png");
   
+  //Initialize textbox
+  Point2 pos;
+  pos.x = 540;
+  pos.y = 160;
+  name_box.pos = pos;
+  name_box.size = 30;
+  name_box.txt = std::string("");
+  
   CreateButtons();
 }
 
 void NewGame::Update() {
+  char key;
+  
+  //Detect name entry
+  key = ESAT::GetNextPressedKey();
+  if (key > 0) {
+    if (ESAT::IsKeyDown(8) && name_box.txt.length() > 0) {
+      name_box.txt.pop_back();
+    } else {
+      printf("%d", key);
+      name_box.txt += key;
+    }
+  }
+  
+  
   if (click_) {
     int clicked_button = CheckButtonsClick();
     switch (clicked_button) {
@@ -66,8 +88,14 @@ void NewGame::Update() {
 
 void NewGame::Draw() {
   DrawBegin();
+  
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
   ESAT::DrawText(450.0f, 50.0f, "The Battle for Pass - New Game");
 
+  ESAT::DrawSetFillColor(200, 200, 200, 255);
+  ESAT::DrawText(570.0f, 150.0f, "Enter Name");
+  DrawTextBox(name_box);
+    
   if (race_set) {
     DrawRaceStats();
   }
@@ -107,8 +135,15 @@ void NewGame::Draw() {
 
 void NewGame::createPlayer(std::string race_name) {
   
-  Manager::getInstance()->player_ = new Ally();
   
+  if (Manager::getInstance()->player_ == nullptr) {
+    printf("\n\nCreating new player\n\n");
+    Manager::getInstance()->player_ = new Ally();
+  } else if (race_set) {
+    printf("\n\nDeleting previous race\n\n");
+    delete Manager::getInstance()->player_->race_;
+  }
+          
   if (race_name == "dwarf") {
       Manager::getInstance()->player_->race_ = new Dwarf();
   } else if (race_name == "elf") {
@@ -125,13 +160,16 @@ void NewGame::createPlayer(std::string race_name) {
     this->option_buttons_[i+6].img = Manager::getInstance()->player_->race_->face_imgs_[i];
   }
 
-  //Manager::getInstance()->player_->job_ = new Job();
   race_set = true;
-  job_set = false;
 }
 
 void NewGame::selectJob(int job_id) {
-  job_set = true;
+  
+  
+  if (job_set) {
+    printf("\n\nDeleting previous job\n\n");
+    delete Manager::getInstance()->player_->job_;
+  }
   
   switch(job_id) {
     case 0:
@@ -151,7 +189,7 @@ void NewGame::selectJob(int job_id) {
       break;
   }
 
-  
+  job_set = true;
 }
 
 void NewGame::CreateButtons() {

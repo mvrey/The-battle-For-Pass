@@ -44,6 +44,8 @@ public:
     
     bool race_set = false;
     bool job_set = false;
+    
+    TextBox name_box;
 private:
 
 };

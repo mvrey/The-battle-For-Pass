@@ -22,6 +22,7 @@ Manager::Manager() {
   screen_ = new Intro();
   //map_ = kMap_Village;
   quit_game_ = false;
+  player_ = nullptr;
 }
 
 Manager::Manager(const Manager& orig) {

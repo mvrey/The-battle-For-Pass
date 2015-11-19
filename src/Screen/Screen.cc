@@ -236,3 +236,24 @@ void Screen::DrawRectangle(float x, float y, int width, int height, int color, b
 
   ESAT::DrawSolidPath(path_points, 5, true);
 }
+
+/// @brief  Prints a TextBox
+void Screen::DrawTextBox(TextBox box) {
+  int padding = 20;
+
+  float pathPoints[] = { box.pos.x, box.pos.y,
+    box.pos.x + box.size*8.0f, box.pos.y,
+    box.pos.x + box.size*8.0f, box.pos.y + box.size,
+    box.pos.x, box.pos.y + box.size,
+    box.pos.x, box.pos.y
+  };
+
+  ESAT::DrawSetFillColor(30, 30, 0);
+
+  ESAT::DrawSetStrokeColor(255, 255, 255);
+
+  ESAT::DrawSolidPath(pathPoints, 5, true);
+
+  ESAT::DrawSetFillColor(150, 150, 150);
+  ESAT::DrawText(box.pos.x, box.pos.y + padding, box.txt.c_str());
+}
