@@ -32,7 +32,7 @@ class Map {
     MapId id_;
     Grid terrain_;
     Grid characters_;
-    
+    Grid collisions_;
 
 
   private:
