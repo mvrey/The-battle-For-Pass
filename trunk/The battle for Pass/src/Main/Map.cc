@@ -110,6 +110,12 @@ int Map::LoadFromFile() {
           float escale_x = (float)kWindowWidth/(map->GetWidth()*tile_width);
           float escale_y = (float)kWindowHeight/(map->GetHeight()*tile_height);
 
+          //Assign dimensions to class variables, precalculating stretching
+          if (!this->tile_width_) {
+            this->tile_width_ = tile_width * escale_x;
+            this->tile_height_ = tile_height * escale_y;
+          }
+          
           ESAT::Mat3 escale, translate, transform;
           ESAT::Mat3InitAsScale(escale_x, escale_y, &escale);
           ESAT::Mat3InitAsTranslate((tile_width * x)*escale_x, (tile_height * y)*escale_y, &translate);

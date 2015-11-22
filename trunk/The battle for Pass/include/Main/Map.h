@@ -50,6 +50,9 @@ class Map {
 
     TileImage tiles[5000];
     int num_tiles = 0;
+    
+    int tile_width_;
+    int tile_height_;
 
   private:
     

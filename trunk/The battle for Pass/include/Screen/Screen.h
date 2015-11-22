@@ -44,7 +44,7 @@ public:
   virtual ~Screen();
 
   void Init();
-  void Input();
+  void virtual Input();
   void virtual Update();
   void virtual Draw();
   void DrawCursor();

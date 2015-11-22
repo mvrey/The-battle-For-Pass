@@ -23,6 +23,7 @@ class Game: public Screen {
     ~Game();
 
     void Init();
+    void Input();
     void Update();
     void Draw();
     void CreateButtons();

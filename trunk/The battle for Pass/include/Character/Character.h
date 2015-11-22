@@ -22,6 +22,8 @@ class Character {
     Character(const Character& orig);
     virtual ~Character();
     void LoadAnimations();
+    void Move(int direction);
+    void Update(int tile_width, int tile_height);
     
     float HP_;
     float MP_;
@@ -31,7 +33,7 @@ class Character {
     int level_;
     
     //position on the current map
-    int x,y;
+    float x,y;
     
     Inventory* inventory_;
     Race* race_;
@@ -42,8 +44,13 @@ class Character {
     Animation* animation_east_;
     Animation* animation_west_;
     
+    ESAT::SpriteHandle current_sprite_;
+    
   private:
-
+    bool moving_right_ = false;
+    bool moving_left_ = false;
+    bool moving_up_ = false;
+    bool moving_down_ = false;
 };
 
 #endif /* CHARACTER_H */
