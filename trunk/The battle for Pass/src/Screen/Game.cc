@@ -24,7 +24,13 @@ void Game::Init() {
 
 void Game::Draw() {
   DrawBegin();
-  ESAT::DrawText(450.0f, 50.0f, "The Battle for Pass - Overview Game");
+  
+  Map* map = Manager::getInstance()->map_;
+  
+  for (int i=0; i<map->num_tiles; i++) {
+    ESAT::DrawSpriteWithMatrix(map->tiles[i].sprite, map->tiles[i].transform);
+  }
+  
   DrawEnd();
 }
 

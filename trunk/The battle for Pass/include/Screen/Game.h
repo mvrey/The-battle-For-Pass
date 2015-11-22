@@ -12,7 +12,7 @@
 #define GAME_H 1
 
 #include "../../include/Screen/Screen.h"
-#include "../../include/Main/Map.h"
+#include "../../include/Main/Manager.h"
 
 class Game: public Screen {
   

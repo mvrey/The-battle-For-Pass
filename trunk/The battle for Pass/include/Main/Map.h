@@ -11,16 +11,18 @@
 #ifndef MAP_H
 #define MAP_H 1
 
+#include <ESAT/sprite.h>
+#include <stdio.h>
+#include <math.h>
 #include "../../include/Main/Grid.h"
+#include "../../lib/TMXparser/Tmx.h.in"
+//#include "../../lib/TMXparser/tinyxml2.cpp"
+#include "../../include/config.h"
 
 class Map {
   
   public:
 
-    Map();
-    Map(const Map& orig);
-    ~Map();
-    
     //Maps inside the game
     enum MapId {
       kMap_Village,
@@ -29,11 +31,24 @@ class Map {
       kMap_Fortress
     };
 
+    struct TileImage {
+      ESAT::SpriteHandle sprite;
+      ESAT::Mat3 transform;
+    };
+    typedef struct TileImage TileImage;
+    
+    Map();
+    Map(const Map& orig);
+    ~Map();
+    int LoadFromFile();
+    
     MapId id_;
     Grid terrain_;
     Grid characters_;
     Grid collisions_;
 
+    TileImage tiles[5000];
+    int num_tiles = 0;
 
   private:
     

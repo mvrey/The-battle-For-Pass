@@ -57,6 +57,8 @@ void NewGame::Update() {
       //UI Buttons
       case 0:
         Manager::getInstance()->screen_ = new Game();
+        Manager::getInstance()->map_ = new Map();
+        Manager::getInstance()->map_->LoadFromFile();
         break;
       case 1:
         Manager::getInstance()->screen_ = new MainMenu();
