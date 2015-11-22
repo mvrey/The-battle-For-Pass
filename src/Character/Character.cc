@@ -18,3 +18,20 @@ Character::~Character() {
   job_ = nullptr;
 }
 
+void Character::LoadAnimations() {
+  
+  std::string path = "assets/character/"+race_->name_+"/"+Job::job_names_[job_->id_]+"/animation.png";
+  printf("Loading animations from %s\n", path.c_str());
+  
+  animation_south_ = new Animation();
+  animation_south_->LoadFromFile(path, 1, 8, 70, 70, 0, 0);
+  
+  animation_west_ = new Animation();
+  animation_west_->LoadFromFile(path, 1, 8, 70, 70, 0, 70);
+  
+  animation_east_ = new Animation();
+  animation_east_->LoadFromFile(path, 1, 8, 70, 70, 0, 140);
+  
+  animation_north_ = new Animation();
+  animation_north_->LoadFromFile(path, 1, 8, 70, 70, 0, 210);
+}

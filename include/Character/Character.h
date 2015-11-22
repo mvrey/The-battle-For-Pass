@@ -14,12 +14,14 @@
 #include "../../include/Item/Inventory.h"
 #include "../../include/Character/Race.h"
 #include "../../include/Character/Job.h"
+#include "../../include/Main/Animation.h"
 
 class Character {
   public:
     Character() = default;
     Character(const Character& orig);
     virtual ~Character();
+    void LoadAnimations();
     
     float HP_;
     float MP_;
@@ -34,6 +36,11 @@ class Character {
     Inventory* inventory_;
     Race* race_;
     Job* job_;
+    
+    Animation* animation_north_;
+    Animation* animation_south_;
+    Animation* animation_east_;
+    Animation* animation_west_;
     
   private:
 

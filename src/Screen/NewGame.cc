@@ -82,6 +82,7 @@ void NewGame::Update() {
       case 8:
       case 9:
         selectJob(clicked_button - 6);
+        Manager::getInstance()->player_->LoadAnimations();
         break;
       default:
         break;
@@ -163,6 +164,10 @@ void NewGame::createPlayer(std::string race_name) {
     this->option_buttons_[i+6].img = Manager::getInstance()->player_->race_->face_imgs_[i];
   }
 
+  if(job_set) {
+    Manager::getInstance()->player_->LoadAnimations();
+  }
+    
   race_set = true;
 }
 
