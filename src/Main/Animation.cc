@@ -34,3 +34,14 @@ void Animation::LoadFromFile(std::string path, int rows, int columns, float widt
   
   current_frame_ = 0;
 }
+
+
+int Animation::NextFrame() {
+  current_frame_++;
+  
+  if (current_frame_ >= num_frames_) {
+    current_frame_ = 0;
+  }
+  
+  return current_frame_;
+}

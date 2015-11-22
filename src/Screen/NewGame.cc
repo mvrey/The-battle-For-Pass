@@ -143,6 +143,8 @@ void NewGame::createPlayer(std::string race_name) {
   if (Manager::getInstance()->player_ == nullptr) {
     printf("\n\nCreating new player\n\n");
     Manager::getInstance()->player_ = new Ally();
+    Manager::getInstance()->player_->x = 92;
+    Manager::getInstance()->player_->y = 330;
   } else if (race_set) {
     printf("\n\nDeleting previous race\n\n");
     delete Manager::getInstance()->player_->race_;

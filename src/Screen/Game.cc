@@ -22,33 +22,30 @@ void Game::Init() {
   CreateButtons();
 }
 
+void Game::Input() {
+  
+    if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
+      Manager::getInstance()->player_->Move(0);
+    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Right)) {
+      Manager::getInstance()->player_->Move(1);
+    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Down)) {
+      Manager::getInstance()->player_->Move(2);
+    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Left)) {
+      Manager::getInstance()->player_->Move(3);
+    }
+}
+
 void Game::Draw() {
   DrawBegin();
   
   Map* map = Manager::getInstance()->map_;
+  Ally* player = Manager::getInstance()->player_;
   
   for (int i=0; i<map->num_tiles; i++) {
     ESAT::DrawSpriteWithMatrix(map->tiles[i].sprite, map->tiles[i].transform);
   }
-  
-  
-  //ANIMATION DRAW TEST
-  Animation* anim = Manager::getInstance()->player_->animation_south_;
-  for (int i=0; i<8; i++) {
-    ESAT::DrawSprite(anim->frames_[i], 100*i, 330);
-  }
-  anim = Manager::getInstance()->player_->animation_west_;
-  for (int i=0; i<8; i++) {
-    ESAT::DrawSprite(anim->frames_[i], 100*i, 430);
-  }
-  anim = Manager::getInstance()->player_->animation_east_;
-  for (int i=0; i<8; i++) {
-    ESAT::DrawSprite(anim->frames_[i], 100*i, 530);
-  }
-  anim = Manager::getInstance()->player_->animation_north_;
-  for (int i=0; i<8; i++) {
-    ESAT::DrawSprite(anim->frames_[i], 100*i, 630);
-  }
+
+  ESAT::DrawSprite(Manager::getInstance()->player_->current_sprite_, player->x, player->y);
   
   DrawEnd();
 }
@@ -56,20 +53,8 @@ void Game::Draw() {
 
 /// @brief  Updates main menu status
 void Game::Update() {
-  if (click_) {
-    int clicked_button = CheckButtonsClick();
-    switch (clicked_button) {
-      case 0:
-        break;
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-      default:
-        break;
-    }
-  }
+  Manager::getInstance()->player_->Update(Manager::getInstance()->map_->tile_width_,
+                                          Manager::getInstance()->map_->tile_height_);
 }
 
 
