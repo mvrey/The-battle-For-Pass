@@ -41,6 +41,9 @@
 //Empty
 
 
+//Global functions
+//Empty
+
 /*** MAIN ***/
 
 

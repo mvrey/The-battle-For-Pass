@@ -16,7 +16,6 @@
 #include <math.h>
 #include "../../include/Main/Grid.h"
 #include "../../lib/TMXparser/Tmx.h.in"
-//#include "../../lib/TMXparser/tinyxml2.cpp"
 #include "../../include/config.h"
 
 class Map {
@@ -41,6 +40,8 @@ class Map {
     Map(const Map& orig);
     ~Map();
     int LoadFromFile();
+    static ESAT::SpriteHandle GetSubImage(ESAT::SpriteHandle img, int x, int y, 
+                                      int width, int height);
     
     MapId id_;
     Grid terrain_;
