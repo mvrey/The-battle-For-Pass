@@ -19,7 +19,8 @@ Misc::~Misc() {
 
 ESAT::SpriteHandle Misc::GetSubImage(ESAT::SpriteHandle img, int x, int y, int width, int height) {
   //Iterate through every single pixel and add it to a pixel buffer
-  unsigned char pixel_buffer[height*width*4];
+  //unsigned char pixel_buffer[height*width*4];
+  std::vector<unsigned char> pixel_buffer(height*width*4);;
   int buffer_index=0;
 
   for (int h=y; h<y+height; h++) {
@@ -34,5 +35,7 @@ ESAT::SpriteHandle Misc::GetSubImage(ESAT::SpriteHandle img, int x, int y, int w
     }
   }
   
-  return ESAT::SpriteFromMemory(width, height, pixel_buffer);
+  unsigned char* pixels_array = &pixel_buffer[0];
+  
+  return ESAT::SpriteFromMemory(width, height, pixels_array);
 }
