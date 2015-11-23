@@ -32,8 +32,6 @@ bool Grid::init() {
   Node* previous_column = root_;
   Node* node = root_;
   
-  this->zeros();
-  
   for (int i=0; i<rows_; i++) {
     
     for (int j=0; j<columns_; j++) {
@@ -48,6 +46,8 @@ bool Grid::init() {
     previous_row = node;
     previous_column = node;
   }
+  
+  this->zeros();
   
   return true;
 }

@@ -45,7 +45,7 @@ void Game::Draw() {
     ESAT::DrawSpriteWithMatrix(map->tiles[i].sprite, map->tiles[i].transform);
   }
 
-  ESAT::DrawSprite(Manager::getInstance()->player_->current_sprite_, player->x, player->y);
+  ESAT::DrawSprite(player->current_sprite_, player->x, player->y - ESAT::SpriteHeight(player->current_sprite_));
   
   DrawEnd();
 }
@@ -63,6 +63,10 @@ void Game::Update() {
   //If there's an enemy at player's position, a battle begins
   if (enemies->getElement(player->tile_x, player->tile_y)) {
     Manager::getInstance()->screen_ = new Battle();
+    Manager::getInstance()->screen_->Init();
+    
+    //The enemy is removed from the enemies Grid beforehand
+    Manager::getInstance()->map_->enemies_->setElement(player->tile_x, player->tile_y, 0);
   }
 }
 

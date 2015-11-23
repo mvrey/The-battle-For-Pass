@@ -144,7 +144,11 @@ void NewGame::createPlayer(std::string race_name) {
     printf("\n\nCreating new player\n\n");
     Manager::getInstance()->player_ = new Ally();
     Manager::getInstance()->player_->x = 92;
-    Manager::getInstance()->player_->y = 330;
+    Manager::getInstance()->player_->y = 400;
+    //Set a default map position
+    Manager::getInstance()->player_->tile_x = 0;
+    Manager::getInstance()->player_->tile_y = 0;
+    
   } else if (race_set) {
     printf("\n\nDeleting previous race\n\n");
     delete Manager::getInstance()->player_->race_;
