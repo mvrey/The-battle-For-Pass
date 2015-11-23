@@ -15,8 +15,8 @@ class Grid {
     Grid(const Grid& g);
     bool init();
     void zeros();
-    int getElement(int row, int column);
-    void setElement(int row, int column, int info);
+    void* getElement(int row, int column);
+    void setElement(int row, int column, void* info);
     void print();
     
     int getNumRows();
@@ -29,10 +29,10 @@ class Grid {
   private:
     
     struct Node {
-        int info;
+        void* info;
         Node *next_row;
         Node *next_column;
-        Node(const int info, Node* next_row, Node* next_column)
+        Node(void* info, Node* next_row, Node* next_column)
             : info(info)
             , next_row(next_row)
             , next_column(next_column) {

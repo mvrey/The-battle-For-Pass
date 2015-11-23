@@ -27,7 +27,7 @@ void Animation::LoadFromFile(std::string path, int rows, int columns, float widt
   
   for (int j=0; j<columns; j++) {
     for (int i=0; i<rows; i++) {
-      frames_[num_frames_] = Map::GetSubImage(spritesheet, offsetX+(width*j), offsetY+(height*i), width, height);
+      frames_[num_frames_] = Misc::GetSubImage(spritesheet, offsetX+(width*j), offsetY+(height*i), width, height);
       num_frames_++;
     }
   }

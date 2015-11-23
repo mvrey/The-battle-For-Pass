@@ -9,8 +9,9 @@
  */
 
 #ifndef CHARACTER_H
-#define CHARACTER_H
+#define CHARACTER_H 1
 
+#include <math.h>
 #include "../../include/Item/Inventory.h"
 #include "../../include/Character/Race.h"
 #include "../../include/Character/Job.h"

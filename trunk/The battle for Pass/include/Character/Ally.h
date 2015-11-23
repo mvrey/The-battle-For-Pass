@@ -5,7 +5,7 @@
  */
 
 #ifndef ALLY_H
-#define ALLY_H
+#define ALLY_H 1
 
 #include "Character.h"
 

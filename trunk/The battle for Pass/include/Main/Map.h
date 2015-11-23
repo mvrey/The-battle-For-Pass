@@ -18,6 +18,8 @@
 #include "../../lib/TMXparser/Tmx.h.in"
 #include "../../include/config.h"
 
+#include "../../include/Character/Brown_Asp.h"
+
 class Map {
   
   public:
@@ -40,12 +42,11 @@ class Map {
     Map(const Map& orig);
     ~Map();
     int LoadFromFile();
-    static ESAT::SpriteHandle GetSubImage(ESAT::SpriteHandle img, int x, int y, 
-                                      int width, int height);
-    
+
     MapId id_;
     Grid terrain_;
     Grid characters_;
+    Grid* enemies_;
     Grid collisions_;
 
     TileImage tiles[5000];
