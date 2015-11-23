@@ -72,6 +72,7 @@ void Character::Move(int direction) {
   }
 }
 
+
 //Updates character animation
 void Character::Update(int tile_width, int tile_height) {
   int anim_frame;
@@ -95,6 +96,10 @@ void Character::Update(int tile_width, int tile_height) {
   }
   
   //Stop animation if it does a full loop
-  if (anim_frame == 0)
+  if (anim_frame == 0) {
     Move(-1);
+    tile_x = x/tile_width;
+    tile_y = y/tile_height;
+    printf("Character is now at %d, %d\n", tile_x, tile_y);
+  }
 }
