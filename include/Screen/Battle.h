@@ -9,12 +9,18 @@
 #define BATTLE_H 1
 
 #include "Screen.h"
+#include "Game.h"
 
 class Battle: public Screen {
 public:
   Battle();
   Battle(const Battle& orig);
   virtual ~Battle();
+  
+  void Init();
+  void Input();
+  void Draw();
+  
 private:
 
 };

@@ -43,7 +43,7 @@ public:
   Screen(const Screen& orig);
   virtual ~Screen();
 
-  void Init();
+  void virtual Init();
   void virtual Input();
   void virtual Update();
   void virtual Draw();

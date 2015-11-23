@@ -32,6 +32,7 @@ class Character {
     float defense_;
     
     int level_;
+    int xp_;
     
     //position on the current map
     float x,y;
@@ -49,6 +50,7 @@ class Character {
     ESAT::SpriteHandle current_sprite_;
     
   private:
+    bool moving_ = false;
     bool moving_right_ = false;
     bool moving_left_ = false;
     bool moving_up_ = false;

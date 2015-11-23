@@ -47,6 +47,8 @@ void Character::LoadAnimations() {
 
 
 void Character::Move(int direction) {
+  moving_ = true;
+  
   switch(direction) {
     case 0:
       moving_up_ = true;
@@ -61,6 +63,7 @@ void Character::Move(int direction) {
       moving_left_ = true;
       break;
     default:
+      moving_ = false;
       moving_right_ = false;
       moving_left_ = false;
       moving_up_ = false;
@@ -96,10 +99,10 @@ void Character::Update(int tile_width, int tile_height) {
   }
   
   //Stop animation if it does a full loop
-  if (anim_frame == 0) {
+  if (anim_frame == 0 && moving_) {
     Move(-1);
-    tile_x = x/tile_width;
-    tile_y = y/tile_height;
+    tile_x = x/tile_width + 1;
+    tile_y = y/tile_height - 1;
     printf("Character is now at %d, %d\n", tile_x, tile_y);
   }
 }
