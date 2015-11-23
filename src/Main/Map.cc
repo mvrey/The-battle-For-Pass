@@ -104,7 +104,7 @@ int Map::LoadFromFile() {
           int pixel_x = (tid%(width / tile_width)) * tile_width;
 
           //Store final image for the tile
-          onetile.sprite = GetSubImage(tileset_img, pixel_x, pixel_y, tile_width, tile_height);
+          onetile.sprite = Misc::GetSubImage(tileset_img, pixel_x, pixel_y, tile_width, tile_height);
           
           //Calculate image stretching before storing the coordinates
           float escale_x = (float)kWindowWidth/(map->GetWidth()*tile_width);
@@ -131,29 +131,54 @@ int Map::LoadFromFile() {
     }
   }
 
+  
+  enemies_ = new Grid(height/tile_height, width/tile_width);
+  enemies_->init();
+  
+  printf("Enemies Grid is  %dx%d",width/tile_width, height/tile_height);
+  
+  // Iterate through all of the object groups.
+  for (int i = 0; i < map->GetNumObjectGroups(); ++i) {
+    
+    // Get an object group.
+    const Tmx::ObjectGroup *objectGroup = map->GetObjectGroup(i);
+
+    printf("                                    \n");
+    printf("====================================\n");
+    printf("Object group : %02d (%s)\n", i, objectGroup->GetName().c_str());
+    printf("====================================\n");
+
+    int tile_x, tile_y;
+    Foe* enemy;
+    
+    // Iterate through all objects in the object group.
+    for (int j = 0; j < objectGroup->GetNumObjects(); ++j) {
+
+      // Get an object.
+      const Tmx::Object *object = objectGroup->GetObject(j);
+
+      tile_x = floor(object->GetX() /tile_width);
+      tile_y = floor (object->GetY() / tile_height);
+      
+      // Print information about the object.
+      printf("Object Name: %s\n", object->GetName().c_str());
+      printf("Object Pixel Position: (%03d, %03d)\n", object->GetX(), object->GetY());
+      printf("Object Grid Position: (%d, %d)\n\n", tile_x, tile_y);
+      
+      //Insert object in corresponding grid (enemies)
+      enemy = new Brown_Asp();
+      
+      enemies_->setElement(tile_x, tile_y, enemy);
+      
+      //We DO NOT NEED to fetch the enemies, only to check if there's any when the players steps in position
+      //FOR THE TIME BEING, DRAWING THEM ISN'T EVEN NEEDED
+    }
+  }
+  
+  
+  
 
   delete map;
 
   return 0;
-}
-
-
-ESAT::SpriteHandle Map::GetSubImage(ESAT::SpriteHandle img, int x, int y, int width, int height) {
-  //Iterate through every single pixel and add it to a pixel buffer
-  unsigned char pixel_buffer[height*width*4];
-  int buffer_index=0;
-
-  for (int h=y; h<y+height; h++) {
-    for (int w=x; w<x+width; w++) {
-      unsigned char outRGBA[4];
-      ESAT::SpriteGetPixel(img, w, h, outRGBA);
-      pixel_buffer[buffer_index+0] = outRGBA[0];
-      pixel_buffer[buffer_index+1] = outRGBA[1];
-      pixel_buffer[buffer_index+2] = outRGBA[2];
-      pixel_buffer[buffer_index+3] = outRGBA[3];
-      buffer_index += 4;
-    }
-  }
-  
-  return ESAT::SpriteFromMemory(width, height, pixel_buffer);
 }

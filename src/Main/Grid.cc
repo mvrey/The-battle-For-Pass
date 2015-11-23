@@ -32,6 +32,8 @@ bool Grid::init() {
   Node* previous_column = root_;
   Node* node = root_;
   
+  this->zeros();
+  
   for (int i=0; i<rows_; i++) {
     
     for (int j=0; j<columns_; j++) {
@@ -89,7 +91,7 @@ void Grid::zeros() {
 /**
 * @brief  Returns the element value at row,column 
 **/
-int Grid::getElement(int row, int column) {
+void* Grid::getElement(int row, int column) {
   Node* node = root_;
   
   //Makes sure the position is valid
@@ -108,7 +110,7 @@ int Grid::getElement(int row, int column) {
 /**
 * @brief  Sets the value of an element at position row,column
 **/
-void Grid::setElement(int row, int column, int info) {
+void Grid::setElement(int row, int column, void* info) {
   Node* node = root_;
     
   //Makes sure the position is valid
@@ -132,11 +134,11 @@ void Grid::print() {
   Node* column = root_;
   
   while (row->next_row) {
-    printf("%d  :  ", row->info);
+    printf("%p  :  ", &row->info);
     column = row->next_column;
     
     while (column->next_column) {
-      printf("%d, ", column->info);
+      printf("%p, ", &column->info);
       column = column->next_column;
     }
     

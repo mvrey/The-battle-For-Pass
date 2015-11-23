@@ -9,11 +9,11 @@
  */
 
 #ifndef ANIMATION_H
-#define ANIMATION_H
+#define ANIMATION_H 1
 
 #include <ESAT/sprite.h>
 #include <string>
-#include "../../include/Main/Map.h"
+#include "../../include/Main/Misc.h"
 
 class Animation {
   public:
