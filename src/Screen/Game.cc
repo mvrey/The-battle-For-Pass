@@ -53,8 +53,17 @@ void Game::Draw() {
 
 /// @brief  Updates main menu status
 void Game::Update() {
-  Manager::getInstance()->player_->Update(Manager::getInstance()->map_->tile_width_,
-                                          Manager::getInstance()->map_->tile_height_);
+  Ally* player = Manager::getInstance()->player_;
+  Grid* enemies = Manager::getInstance()->map_->enemies_;
+  
+  player->Update(Manager::getInstance()->map_->tile_width_,
+                  Manager::getInstance()->map_->tile_height_);
+  
+  
+  //If there's an enemy at player's position, a battle begins
+  if (enemies->getElement(player->tile_x, player->tile_y)) {
+    Manager::getInstance()->screen_ = new Battle();
+  }
 }
 
 

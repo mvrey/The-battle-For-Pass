@@ -172,6 +172,10 @@ int Map::LoadFromFile() {
       
       //We DO NOT NEED to fetch the enemies, only to check if there's any when the players steps in position
       //FOR THE TIME BEING, DRAWING THEM ISN'T EVEN NEEDED
+      
+      //KEEP TRACK OF WHERE THE PLAYER IS ON THE MAP
+      
+      //CHECK IF HE STEPS ON AN ENEMY -> START BATTLE
     }
   }
   

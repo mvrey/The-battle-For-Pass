@@ -35,6 +35,7 @@ class Character {
     
     //position on the current map
     float x,y;
+    int tile_x, tile_y;
     
     Inventory* inventory_;
     Race* race_;
