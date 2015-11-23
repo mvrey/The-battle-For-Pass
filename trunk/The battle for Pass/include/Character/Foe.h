@@ -14,6 +14,9 @@ public:
     Foe();
     Foe(const Foe& orig);
     virtual ~Foe();
+    
+    void LoadImages();
+    
 private:
 
 };

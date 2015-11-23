@@ -10,10 +10,12 @@
 
 #include "Screen.h"
 #include "Game.h"
+#include "../../include/Character/Foe.h"
 
 class Battle: public Screen {
 public:
   Battle();
+  Battle(Foe* enemy);
   Battle(const Battle& orig);
   virtual ~Battle();
   
@@ -21,6 +23,7 @@ public:
   void Input();
   void Draw();
   
+  Foe* enemy_;
 private:
 
 };

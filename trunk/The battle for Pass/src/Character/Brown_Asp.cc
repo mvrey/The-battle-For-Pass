@@ -8,6 +8,7 @@
 #include "../../include/Character/Brown_Asp.h"
 
 Brown_Asp::Brown_Asp() {
+  name_ = "Brown Asp";
 }
 
 Brown_Asp::Brown_Asp(const Brown_Asp& orig) {
