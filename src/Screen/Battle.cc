@@ -11,6 +11,11 @@ Battle::Battle() {
   background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
 }
 
+Battle::Battle(Foe* enemy) {
+  background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
+  enemy_ = enemy;
+}
+
 Battle::Battle(const Battle& orig) {
 }
 
@@ -35,6 +40,12 @@ void Battle::Draw() {
   
   //Print Healthbars and bust/battler images
   //Print options to attack/flee/cast_spell
+  
+  Ally* player = Manager::getInstance()->player_;
+  
+  ESAT::DrawSprite(player->battler_img_, 100, 100);
+  
+  ESAT::DrawSprite(enemy_->battler_img_, 1000, 250);
   
   DrawEnd();
 }

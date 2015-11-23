@@ -22,9 +22,11 @@ class Character {
     Character() = default;
     Character(const Character& orig);
     virtual ~Character();
-    void LoadAnimations();
+    void virtual LoadImages();
     void Move(int direction);
     void Update(int tile_width, int tile_height);
+    
+    std::string name_;
     
     float HP_;
     float MP_;
@@ -48,6 +50,7 @@ class Character {
     Animation* animation_west_;
     
     ESAT::SpriteHandle current_sprite_;
+    ESAT::SpriteHandle battler_img_;
     
   private:
     bool moving_ = false;

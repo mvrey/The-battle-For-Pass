@@ -18,7 +18,7 @@ Character::~Character() {
   job_ = nullptr;
 }
 
-void Character::LoadAnimations() {
+void Character::LoadImages() {
   int side =70;
   
   //Orc sprites have a different ratio
@@ -43,6 +43,12 @@ void Character::LoadAnimations() {
   
   //Assign default animation
   current_sprite_ = animation_east_->frames_[0];
+  
+  
+  //Load battler image
+  path = "assets/character/"+race_->name_+"/"+Job::job_names_[job_->id_]+"/bust.png";
+  printf("Loading Battler from %s\n", path.c_str());
+  battler_img_ = ESAT::SpriteFromFile(path.c_str());
 }
 
 

@@ -62,7 +62,7 @@ void Game::Update() {
   
   //If there's an enemy at player's position, a battle begins
   if (enemies->getElement(player->tile_x, player->tile_y)) {
-    Manager::getInstance()->screen_ = new Battle();
+    Manager::getInstance()->screen_ = new Battle((Foe*)enemies->getElement(player->tile_x, player->tile_y));
     Manager::getInstance()->screen_->Init();
     
     //The enemy is removed from the enemies Grid beforehand

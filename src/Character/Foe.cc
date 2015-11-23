@@ -17,3 +17,12 @@ Foe::Foe(const Foe& orig) {
 Foe::~Foe() {
 }
 
+void Foe::LoadImages() {
+  
+  //Load battler image
+  std::replace( name_.begin(), name_.end(), ' ', '_');
+  std::string path = "assets/enemy/"+name_+"/battler.png";
+  printf("Loading Battler from %s\n", path.c_str());
+  battler_img_ = ESAT::SpriteFromFile(path.c_str());
+}
+
