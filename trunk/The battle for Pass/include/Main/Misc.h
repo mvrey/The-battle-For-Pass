@@ -14,6 +14,7 @@
 #include <ESAT/sprite.h>
 #include <stdio.h>
 #include <math.h>
+#include <vector>
 #include "../../include/config.h"
 
 

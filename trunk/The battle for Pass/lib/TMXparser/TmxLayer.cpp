@@ -28,7 +28,7 @@
 #define MINIZ_HEADER_FILE_ONLY
 #include "miniz.cpp"
 #else
-#include <zlib.h>
+#include "zlib.h"
 #endif
 
 #include <stdlib.h>

@@ -7,6 +7,7 @@
 #ifndef FOE_H
 #define FOE_H
 
+#include <algorithm>
 #include "Character.h"
 
 class Foe: public Character {
