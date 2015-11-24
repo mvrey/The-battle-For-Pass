@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <vector>
+#include <cstdlib>
 #include "../../include/config.h"
 
 
@@ -24,7 +25,10 @@ class Misc {
 
     static ESAT::SpriteHandle GetSubImage(ESAT::SpriteHandle img, int x, int y, 
                                           int width, int height);
-
+    static int random(int limit);
+    static int random_sign();
+    
+    
   private:
     Misc();
     Misc(const Misc& orig);

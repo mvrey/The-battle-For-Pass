@@ -39,3 +39,16 @@ ESAT::SpriteHandle Misc::GetSubImage(ESAT::SpriteHandle img, int x, int y, int w
   
   return ESAT::SpriteFromMemory(width, height, pixels_array);
 }
+
+/* Calculates a random number between 0 and <limit> */
+int Misc::random(int limit) {
+	return (rand() % limit);
+}
+
+/* Randomly returns 1 or -1*/
+int Misc::random_sign() {
+	if (random(2) == 1)
+		return 1;
+	else
+		return -1;
+}

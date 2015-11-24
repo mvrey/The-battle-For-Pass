@@ -17,3 +17,9 @@ Ally::Ally(const Ally& orig) {
 Ally::~Ally() {
 }
 
+void Ally::SetBaseStats() {
+  HP_ = race_->HP_;
+  MP_ = race_->MP_;
+  attack_ = race_->attack_;
+  defense_ = race_->defense_;
+}

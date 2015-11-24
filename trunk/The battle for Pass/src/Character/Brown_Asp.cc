@@ -9,6 +9,10 @@
 
 Brown_Asp::Brown_Asp() {
   name_ = "Brown Asp";
+  HP_ = 15;
+  MP_ = 0;
+  attack_ = 20;
+  defense_ = 15;
 }
 
 Brown_Asp::Brown_Asp(const Brown_Asp& orig) {
