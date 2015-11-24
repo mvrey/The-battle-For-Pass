@@ -29,7 +29,12 @@ int Map::LoadFromFile() {
   int tile_width, tile_height;
   //Tileset full image
   ESAT::SpriteHandle tileset_img;
-  
+  //Tileset caching
+  const Tmx::Tileset* tileSets[10];
+  int tileSet_first_gid[10];
+  int num_tileSets = 0;
+  //Path to the tileset image files
+  std::string path("assets/raw/");
   
   //Load Map
   Tmx::Map *map = new Tmx::Map();
@@ -44,8 +49,7 @@ int Map::LoadFromFile() {
   }
   
   printf("Map File Parsed\n");
-    
-    
+  
   // Load tilesets
   for (int i = 0; i < map->GetNumTilesets(); ++i) {
 
@@ -57,9 +61,7 @@ int Map::LoadFromFile() {
     // Get a tileset.
     const Tmx::Tileset *tileset = map->GetTileset(i);
 
-
     //Load the tileset image as a whole
-    std::string path("assets/raw/");
     tileset_img = ESAT::SpriteFromFile((path+tileset->GetImage()->GetSource()).c_str());
 
     //Tileset dimensions
@@ -73,6 +75,9 @@ int Map::LoadFromFile() {
     tile_height= tileset->GetTileHeight();
     printf("TIleWidth is:  %d\n", tile_width);
     printf("TileHeight is:  %d\n", tile_height);
+    
+    tileSets[num_tileSets] = tileset;
+    num_tileSets++;
   }
 
   // Get tile layers
@@ -86,9 +91,13 @@ int Map::LoadFromFile() {
     // Get a layer.
     const Tmx::TileLayer *tileLayer = map->GetTileLayer(i);
 
-
     printf("\nTileLayer dimensions are: %d, %d\n", tileLayer->GetWidth(), tileLayer->GetHeight());
 
+    //Reset tileset image and index
+    int current_tileSet = 0;      
+    tileset_img = ESAT::SpriteFromFile((path+tileSets[current_tileSet]->GetImage()->GetSource()).c_str());
+    
+    //Iterate through every single tile
     for (int y = 0; y < tileLayer->GetHeight(); ++y) {
       for (int x = 0; x < tileLayer->GetWidth(); ++x) {
 
@@ -96,9 +105,20 @@ int Map::LoadFromFile() {
         } else {
 
           TileImage onetile;
-
+          
           // Get the tile's id and gid.
           int tid = tileLayer->GetTileId(x, y);
+          int tgid = tileLayer->GetTileGid(x, y);
+          
+          //Find the right tileset for the current map tile
+          while (tid+tileSets[current_tileSet]->GetFirstGid() < tgid) {
+            if (current_tileSet == num_tileSets-1)
+              current_tileSet = 0;
+            else
+              current_tileSet++;
+            printf("\nChanging tileset\n");
+            tileset_img = ESAT::SpriteFromFile((path+tileSets[current_tileSet]->GetImage()->GetSource()).c_str());
+          }
 
           int pixel_y = (floor(tid/(width / tile_width))) * tile_height;                  
           int pixel_x = (tid%(width / tile_width)) * tile_width;
