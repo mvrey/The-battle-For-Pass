@@ -23,16 +23,17 @@ void Game::Init() {
 }
 
 void Game::Input() {
-  
-    if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
-      Manager::getInstance()->player_->Move(0);
-    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Right)) {
-      Manager::getInstance()->player_->Move(1);
-    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Down)) {
-      Manager::getInstance()->player_->Move(2);
-    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Left)) {
-      Manager::getInstance()->player_->Move(3);
-    }
+  click_ = ESAT::MouseButtonUp(0);
+
+  if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
+    Manager::getInstance()->player_->Move(0);
+  } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Right)) {
+    Manager::getInstance()->player_->Move(1);
+  } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Down)) {
+    Manager::getInstance()->player_->Move(2);
+  } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Left)) {
+    Manager::getInstance()->player_->Move(3);
+  }
 }
 
 void Game::Draw() {
@@ -55,6 +56,11 @@ void Game::Draw() {
 void Game::Update() {
   Ally* player = Manager::getInstance()->player_;
   Grid* enemies = Manager::getInstance()->map_->enemies_;
+  
+  if (click_ && player->HP_ <= 0) {
+    delete Manager::getInstance()->screen_;
+    Manager::getInstance()->screen_ = new GameOver();
+  }
   
   player->Update(Manager::getInstance()->map_->tile_width_,
                   Manager::getInstance()->map_->tile_height_);

@@ -12,6 +12,7 @@
 #define GAME_H 1
 
 #include "../../include/Screen/Battle.h"
+#include "../../include/Screen/GameOver.h"
 #include "../../include/Main/Manager.h"
 
 class Game: public Screen {

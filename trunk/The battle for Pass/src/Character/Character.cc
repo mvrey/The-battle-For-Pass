@@ -49,6 +49,12 @@ void Character::LoadImages() {
   path = "assets/character/"+race_->name_+"/"+Job::job_names_[job_->id_]+"/bust.png";
   printf("Loading Battler from %s\n", path.c_str());
   battler_img_ = ESAT::SpriteFromFile(path.c_str());
+  
+  //Load dead sprite
+  path = "assets/character/"+race_->name_+"/"+Job::job_names_[job_->id_]+"/dead.png";
+  printf("Loading Dead Sprite from %s\n", path.c_str());
+  dead_sprite_ = ESAT::SpriteFromFile(path.c_str());
+  dead_sprite_ = Misc::GetSubImage(dead_sprite_, 80, side*2, side, side);
 }
 
 
@@ -86,29 +92,31 @@ void Character::Move(int direction) {
 void Character::Update(int tile_width, int tile_height) {
   int anim_frame;
   
-  if (moving_up_) {
-    current_sprite_ = animation_north_->frames_[animation_north_->current_frame_];
-     anim_frame = animation_north_->NextFrame();
-     y -= (float)tile_height / 8;
-  } else if (moving_right_) {
-    current_sprite_ = animation_east_->frames_[animation_east_->current_frame_];
-    anim_frame = animation_east_->NextFrame();
-    x += (float)tile_width / 8;
-  } else if (moving_down_) {
-    current_sprite_ = animation_south_->frames_[animation_south_->current_frame_];
-    anim_frame = animation_south_->NextFrame();
-    y += (float)tile_height / 8;
-  } else if (moving_left_) {
-    current_sprite_ = animation_west_->frames_[animation_west_->current_frame_];
-    anim_frame = animation_west_->NextFrame();
-    x -= (float)tile_width / 8;
-  }
-  
-  //Stop animation if it does a full loop
-  if (anim_frame == 0 && moving_) {
-    Move(-1);
-    tile_x = x/tile_width + 1;
-    tile_y = y/tile_height - 1;
-    printf("Character is now at %d, %d\n", tile_x, tile_y);
+  if (HP_ > 0) {
+    if (moving_up_) {
+      current_sprite_ = animation_north_->frames_[animation_north_->current_frame_];
+       anim_frame = animation_north_->NextFrame();
+       y -= (float)tile_height / 8;
+    } else if (moving_right_) {
+      current_sprite_ = animation_east_->frames_[animation_east_->current_frame_];
+      anim_frame = animation_east_->NextFrame();
+      x += (float)tile_width / 8;
+    } else if (moving_down_) {
+      current_sprite_ = animation_south_->frames_[animation_south_->current_frame_];
+      anim_frame = animation_south_->NextFrame();
+      y += (float)tile_height / 8;
+    } else if (moving_left_) {
+      current_sprite_ = animation_west_->frames_[animation_west_->current_frame_];
+      anim_frame = animation_west_->NextFrame();
+      x -= (float)tile_width / 8;
+    }
+
+    //Stop animation if it does a full loop
+    if (anim_frame == 0 && moving_) {
+      Move(-1);
+      tile_x = x/tile_width + 1;
+      tile_y = y/tile_height - 1;
+      printf("Character is now at %d, %d\n", tile_x, tile_y);
+    }
   }
 }

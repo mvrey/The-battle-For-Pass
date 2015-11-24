@@ -9,12 +9,15 @@
 
 Battle::Battle() {
   background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
+  log_ = " ";
+  is_over_ = false;
 }
 
 Battle::Battle(Foe* enemy) {
   background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
   enemy_ = enemy;
   log_ = " ";
+  is_over_ = false;
 }
 
 Battle::Battle(const Battle& orig) {
@@ -39,24 +42,29 @@ void Battle::Input() {
 void Battle::Update() {
   
   if (click_) {
-    int clicked_button = CheckButtonsClick();
-    switch (clicked_button) {
-      case 0:
-        //Attack
-        Fight();
-        break;
-      case 1:
-        //Cast
-        break;
-      case 2:
-        //Potion
-        break;
-      case 3:
-        //Flee
-        Flee();
-        break;
-      default:
-        break;
+    if (this->is_over_) {
+      delete Manager::getInstance()->screen_;
+      Manager::getInstance()->screen_ = new Game();
+    } else {
+      int clicked_button = CheckButtonsClick();
+      switch (clicked_button) {
+        case 0:
+          //Attack
+          Fight();
+          break;
+        case 1:
+          //Cast
+          break;
+        case 2:
+          //Potion
+          break;
+        case 3:
+          //Flee
+          Flee();
+          break;
+        default:
+          break;
+      }
     }
   }
 }
@@ -121,10 +129,25 @@ void Battle::CheckLogLength() {
   }
 }
 
+void Battle::CheckResult() {
+  if (Manager::getInstance()->player_->HP_ <= 0) {
+    CheckLogLength();
+    log_ += "\nYou have been defeated. Click anywhere to continue\n";
+    Manager::getInstance()->player_->current_sprite_ = Manager::getInstance()->player_->dead_sprite_;
+    is_over_ = true;
+  } else if (enemy_->HP_ <= 0) {
+    CheckLogLength();
+    log_ += "\nYou win this battle. Click anywhere to continue\n";
+    is_over_ = true;
+  }
+}
+
 void Battle::Fight() {
   Ally* player = Manager::getInstance()->player_;
   int damage = 0;
   
+  CheckLogLength();
+          
   damage = player->attack_ * (100 - enemy_->defense_) / 300;
   enemy_->HP_ -= damage;
   log_ += "You attack for "+ std::to_string(damage)+" damage\n";
@@ -132,16 +155,26 @@ void Battle::Fight() {
   damage = enemy_->attack_ * (100 - player->defense_) / 300;
   player->HP_ -= damage;
   log_ += "Your foe attacks for "+ std::to_string(damage)+" damage\n";
+  
+  CheckResult();
 }
 
 void Battle::Flee() {
-  if (Misc::random(100) < 33) {
+  if (Misc::random(100) < 133) {
+    CheckLogLength();
     log_ += "You fail to flee!\n";
     int damage = enemy_->attack_ * (100 - Manager::getInstance()->player_->defense_) / 300;
     Manager::getInstance()->player_->HP_ -= damage;
     log_ += "Your foe attacks for "+ std::to_string(damage)+" damage\n";
+    CheckResult();
   } else {
     delete Manager::getInstance()->screen_;
     Manager::getInstance()->screen_ = new Game();
   }
 }
+
+//CHANGE CURRENT SPRITE TO DEAD IF DEFEATED
+
+//CREATE GAMEOVER SCREEN
+
+//ON BOTH, CLICKING TAKES YOU DIRECTLY TO THE NEXT SCREEN
