@@ -14,6 +14,7 @@ public:
     Ally();
     Ally(const Ally& orig);
     virtual ~Ally();
+    void SetBaseStats();
 private:
 
 };

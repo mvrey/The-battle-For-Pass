@@ -21,9 +21,17 @@ public:
   
   void Init();
   void Input();
+  void Update();
   void Draw();
+  void CreateButtons();
+  void DrawLog();
+  void Fight();
+  void CheckLogLength();
+  void Flee();
   
   Foe* enemy_;
+  std::string log_;
+  
 private:
 
 };

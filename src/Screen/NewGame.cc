@@ -174,6 +174,8 @@ void NewGame::createPlayer(std::string race_name) {
     Manager::getInstance()->player_->LoadImages();
   }
     
+  Manager::getInstance()->player_->SetBaseStats();
+  
   race_set = true;
 }
 
