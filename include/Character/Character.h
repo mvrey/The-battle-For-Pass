@@ -52,6 +52,8 @@ class Character {
     ESAT::SpriteHandle current_sprite_;
     ESAT::SpriteHandle battler_img_;
     
+    ESAT::SpriteHandle dead_sprite_;
+    
   private:
     bool moving_ = false;
     bool moving_right_ = false;

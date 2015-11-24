@@ -28,9 +28,11 @@ public:
   void Fight();
   void CheckLogLength();
   void Flee();
+  void CheckResult();
   
   Foe* enemy_;
   std::string log_;
+  bool is_over_;
   
 private:
 

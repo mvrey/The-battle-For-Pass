@@ -30,6 +30,7 @@ public:
     };
     
     static Manager* getInstance();
+    static void Reset();
     
     ScreenId screen_id_;
     Screen* screen_;

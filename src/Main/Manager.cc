@@ -20,7 +20,6 @@ Manager* Manager::instance_ = nullptr;
 Manager::Manager() {
   screen_id_ = kScreen_Intro;
   screen_ = new Intro();
-  //map_ = kMap_Village;
   quit_game_ = false;
   player_ = nullptr;
 }
@@ -37,4 +36,17 @@ Manager* Manager::getInstance() {
   }
 
   return instance_;
+}
+
+void Manager::Reset() {
+//  delete instance_->map_;
+//  delete instance_->player_;
+//  delete instance_->screen_;
+//  delete instance_;
+//  instance_ = new Manager();
+  
+  instance_->screen_id_ = kScreen_Intro;
+  instance_->screen_ = new Intro();
+  instance_->quit_game_ = false;
+  instance_->player_ = nullptr;
 }
