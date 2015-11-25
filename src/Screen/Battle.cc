@@ -160,7 +160,7 @@ void Battle::Fight() {
 }
 
 void Battle::Flee() {
-  if (Misc::random(100) < 133) {
+  if (Misc::random(100) < 30) {
     CheckLogLength();
     log_ += "You fail to flee!\n";
     int damage = enemy_->attack_ * (100 - Manager::getInstance()->player_->defense_) / 300;
@@ -172,9 +172,3 @@ void Battle::Flee() {
     Manager::getInstance()->screen_ = new Game();
   }
 }
-
-//CHANGE CURRENT SPRITE TO DEAD IF DEFEATED
-
-//CREATE GAMEOVER SCREEN
-
-//ON BOTH, CLICKING TAKES YOU DIRECTLY TO THE NEXT SCREEN
