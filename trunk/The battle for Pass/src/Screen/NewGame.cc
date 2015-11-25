@@ -58,9 +58,19 @@ void NewGame::Update() {
       case 0:{
         if (race_set && job_set) {
           Manager::getInstance()->screen_ = new Game();
-          Manager::getInstance()->map_ = new Map();
-          Manager::getInstance()->map_->LoadFromFile();
           
+          
+          //LOAD ALL MAPS AND STORE THEM IN AN ARRAY IN THE MANAGER
+          //SO WE CAN STORE POINTERS IN THE PORTALS GRID
+          Manager::getInstance()->maps_[0] = new Map();
+          Manager::getInstance()->maps_[1] = new Map();
+          Manager::getInstance()->maps_[2] = new Map();
+          Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
+          
+          Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];
+                  
           //Set player position on map
           Ally* player = Manager::getInstance()->player_;
           int tile_width = Manager::getInstance()->map_->tile_width_;

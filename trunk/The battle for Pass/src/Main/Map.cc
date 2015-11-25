@@ -22,7 +22,7 @@ Map::Map(const Map& orig) {
 Map::~Map() {
 }
 
-int Map::LoadFromFile() {
+int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   //Tileset dimensions
   int width, height;
   //Tile dimensions
@@ -38,7 +38,7 @@ int Map::LoadFromFile() {
   
   //Load Map
   Tmx::Map *map = new Tmx::Map();
-  std::string fileName = "assets/raw/village.tmx";
+  std::string fileName = "assets/raw/"+filename+".tmx";
   map->ParseFile(fileName);
 
   if (map->HasError()) {
@@ -156,6 +156,8 @@ int Map::LoadFromFile() {
   enemies_->init();
   collisions_ = new Grid(height/tile_height, width/tile_width);
   collisions_->init();
+  portals_ = new Grid(height/tile_height, width/tile_width);;
+  portals_->init();
   
   printf("Enemies Grid is  %dx%d",width/tile_width, height/tile_height);
   
@@ -190,6 +192,11 @@ int Map::LoadFromFile() {
       if (objectGroup->GetName() == "Collisions") {
         //Assign grid value to this object's pointer (Since it won't cause a segfault)
         collisions_->setElement(tile_x, tile_y, this);
+      } else if (objectGroup->GetName() == "Portals"){
+        printf("Creating Portal\n");
+        //The grid points to its target Map object
+        Map** m = &maps[atoi(object->GetType().c_str())];
+        portals_->setElement(tile_x, tile_y, m);
       } else if (objectGroup->GetName() == "Enemies") {
         //Insert object in corresponding grid (enemies)
         printf("Creating Enemy\n");

@@ -41,11 +41,12 @@ class Map {
     Map();
     Map(const Map& orig);
     ~Map();
-    int LoadFromFile();
+    int LoadFromFile(std::string filename, Map* maps[10]);
 
     MapId id_;
     Grid* enemies_;
     Grid* collisions_;
+    Grid* portals_;
 
     TileImage tiles[5000];
     int num_tiles = 0;

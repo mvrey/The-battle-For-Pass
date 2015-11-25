@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="357">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="377">
  <tileset firstgid="1" name="adventuretiles_exterior" tilewidth="16" tileheight="16" tilecount="1620">
   <image source="adventuretiles_exterior.png" trans="ffffff" width="480" height="864"/>
  </tileset>
@@ -3280,9 +3280,30 @@
   <object id="352" x="516" y="204"/>
   <object id="355" x="504" y="200"/>
   <object id="356" x="488" y="200"/>
+  <object id="359" x="276" y="408"/>
+  <object id="360" x="408" y="380"/>
+  <object id="361" x="392" y="380"/>
+  <object id="362" x="376" y="380"/>
+  <object id="363" x="360" y="376"/>
+  <object id="364" x="344" y="376"/>
+  <object id="365" x="332" y="376"/>
+  <object id="366" x="328" y="392"/>
  </objectgroup>
  <objectgroup name="Enemies">
   <object id="92" name="Brown Asp" type="0" x="168" y="248"/>
   <object id="94" name="Brown Asp" x="456" y="248"/>
+ </objectgroup>
+ <objectgroup name="Portals">
+  <object id="357" name="House1" type="1" x="296" y="404"/>
+  <object id="358" name="House1" type="1" x="312" y="404"/>
+  <object id="367" name="House1" type="1" x="152" y="88"/>
+  <object id="368" name="House1" type="1" x="168" y="88"/>
+  <object id="369" name="House1" type="1" x="312" y="100"/>
+  <object id="370" name="House1" type="1" x="328" y="100"/>
+  <object id="371" name="House1" type="1" x="552" y="196"/>
+  <object id="373" name="House1" type="1" x="568" y="196"/>
+  <object id="374" name="Marsh" type="2" x="792" y="236"/>
+  <object id="375" name="Marsh" type="2" x="792" y="248"/>
+  <object id="376" name="Marsh" type="2" x="792" y="264"/>
  </objectgroup>
 </map>
