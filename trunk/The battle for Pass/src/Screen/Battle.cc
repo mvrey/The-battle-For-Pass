@@ -157,6 +157,15 @@ void Battle::Fight() {
   log_ += "Your foe attacks for "+ std::to_string(damage)+" damage\n";
   
   CheckResult();
+  
+  //Check if the battle is over and the player has won
+  if (player->HP_ > 0 && is_over_) {
+    player->xp_ += enemy_->xp_;
+    player->gold_ = enemy_->gold_;
+    std::string xp_str = std::to_string(enemy_->xp_);
+    std::string gold_str = std::to_string(enemy_->gold_);
+    log_ += "Your earn "+xp_str+" xp and "+gold_str+" coins\n";
+  }
 }
 
 void Battle::Flee() {

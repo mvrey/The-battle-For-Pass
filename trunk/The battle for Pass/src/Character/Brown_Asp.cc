@@ -13,6 +13,8 @@ Brown_Asp::Brown_Asp() {
   MP_ = 0;
   attack_ = 20;
   defense_ = 15;
+  gold_ = 5;
+  xp_ = 15;
 }
 
 Brown_Asp::Brown_Asp(const Brown_Asp& orig) {
