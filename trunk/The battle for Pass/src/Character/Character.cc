@@ -16,6 +16,8 @@ Character::Character(const Character& orig) {
 Character::~Character() {
   race_ = nullptr;
   job_ = nullptr;
+  tile_x = 5;
+  tile_y = 5;
 }
 
 void Character::LoadImages() {
@@ -58,33 +60,52 @@ void Character::LoadImages() {
 }
 
 
-void Character::Move(int direction) {
+bool Character::Move(int direction, Grid* collisions) {
   moving_ = true;
   
   switch(direction) {
     case 0:
-      moving_up_ = true;
+//      collisions->print();
+      if (collisions->getElement(tile_x, tile_y-1) == nullptr) {
+        moving_up_ = true;
+        return true;
+      }
       break;
     case 1:
-      moving_right_ = true;
+      if (collisions->getElement(tile_x+1, tile_y) == nullptr) {
+        moving_right_ = true;
+        return true;
+      }
       break;
     case 2:
-      moving_down_ = true;
+      if (collisions->getElement(tile_x, tile_y+1) == nullptr) {
+        moving_down_ = true;
+        return true;
+      }
       break;
     case 3:
-      moving_left_ = true;
+      if (collisions->getElement(tile_x-1, tile_y) == nullptr) {
+        moving_left_ = true;
+        return true;
+      }
       break;
     default:
-      moving_ = false;
-      moving_right_ = false;
-      moving_left_ = false;
-      moving_up_ = false;
-      moving_down_ = false;
-      //Fix floating point accumulated inaccuracies
-      x = round(x);
-      y = round(y);
       break;
   }
+  
+  return false;
+}
+
+
+void Character::Stop() {
+  moving_ = false;
+  moving_right_ = false;
+  moving_left_ = false;
+  moving_up_ = false;
+  moving_down_ = false;
+  //Fix floating point accumulated inaccuracies
+  x = round(x);
+  y = round(y);
 }
 
 
@@ -113,7 +134,7 @@ void Character::Update(int tile_width, int tile_height) {
 
     //Stop animation if it does a full loop
     if (anim_frame == 0 && moving_) {
-      Move(-1);
+      Stop();
       tile_x = x/tile_width + 1;
       tile_y = y/tile_height - 1;
       printf("Character is now at %d, %d\n", tile_x, tile_y);

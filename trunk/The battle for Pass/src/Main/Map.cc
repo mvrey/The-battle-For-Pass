@@ -154,6 +154,8 @@ int Map::LoadFromFile() {
   
   enemies_ = new Grid(height/tile_height, width/tile_width);
   enemies_->init();
+  collisions_ = new Grid(height/tile_height, width/tile_width);
+  collisions_->init();
   
   printf("Enemies Grid is  %dx%d",width/tile_width, height/tile_height);
   
@@ -185,11 +187,17 @@ int Map::LoadFromFile() {
       printf("Object Pixel Position: (%03d, %03d)\n", object->GetX(), object->GetY());
       printf("Object Grid Position: (%d, %d)\n\n", tile_x, tile_y);
       
-      //Insert object in corresponding grid (enemies)
-      enemy = new Brown_Asp();
-      enemy->LoadImages();
+      if (objectGroup->GetName() == "Collisions") {
+        //Assign grid value to this object's pointer (Since it won't cause a segfault)
+        collisions_->setElement(tile_x, tile_y, this);
+      } else if (objectGroup->GetName() == "Enemies") {
+        //Insert object in corresponding grid (enemies)
+        printf("Creating Enemy\n");
+        enemy = new Brown_Asp();
+        enemy->LoadImages();
+        enemies_->setElement(tile_x, tile_y, enemy);
+      } 
       
-      enemies_->setElement(tile_x, tile_y, enemy);
     }
   }
   

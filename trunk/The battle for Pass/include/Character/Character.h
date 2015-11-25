@@ -16,6 +16,7 @@
 #include "../../include/Character/Race.h"
 #include "../../include/Character/Job.h"
 #include "../../include/Main/Animation.h"
+#include "../../include/Main/Grid.h"
 
 class Character {
   public:
@@ -23,7 +24,8 @@ class Character {
     Character(const Character& orig);
     virtual ~Character();
     void virtual LoadImages();
-    void Move(int direction);
+    bool Move(int direction, Grid* collisions);
+    void Stop();
     void Update(int tile_width, int tile_height);
     
     std::string name_;

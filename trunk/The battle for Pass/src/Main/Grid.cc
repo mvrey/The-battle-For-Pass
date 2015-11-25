@@ -76,11 +76,11 @@ void Grid::zeros() {
   Node* column = root_;
   
   while (row->next_row) {
-    row->info = 0;
+    row->info = nullptr;
     column = row->next_column;
     
     while (column->next_column) {
-      column->info = 0;
+      column->info = nullptr;
       column = column->next_column;
     }
     
@@ -134,11 +134,11 @@ void Grid::print() {
   Node* column = root_;
   
   while (row->next_row) {
-    printf("%p  :  ", &row->info);
+    printf("%p  :  ", row->info);
     column = row->next_column;
     
     while (column->next_column) {
-      printf("%p, ", &column->info);
+      printf("%p, ", column->info);
       column = column->next_column;
     }
     
