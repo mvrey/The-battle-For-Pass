@@ -44,10 +44,8 @@ class Map {
     int LoadFromFile();
 
     MapId id_;
-    Grid terrain_;
-    Grid characters_;
     Grid* enemies_;
-    Grid collisions_;
+    Grid* collisions_;
 
     TileImage tiles[5000];
     int num_tiles = 0;

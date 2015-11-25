@@ -24,15 +24,16 @@ void Game::Init() {
 
 void Game::Input() {
   click_ = ESAT::MouseButtonUp(0);
-
+  Grid* collisions = Manager::getInstance()->map_->collisions_;
+  
   if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
-    Manager::getInstance()->player_->Move(0);
+    Manager::getInstance()->player_->Move(0, collisions);
   } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Right)) {
-    Manager::getInstance()->player_->Move(1);
+    Manager::getInstance()->player_->Move(1, collisions);
   } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Down)) {
-    Manager::getInstance()->player_->Move(2);
+    Manager::getInstance()->player_->Move(2, collisions);
   } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Left)) {
-    Manager::getInstance()->player_->Move(3);
+    Manager::getInstance()->player_->Move(3, collisions);
   }
 }
 
