@@ -16,8 +16,6 @@ Character::Character(const Character& orig) {
 Character::~Character() {
   race_ = nullptr;
   job_ = nullptr;
-  tile_x = 5;
-  tile_y = 5;
 }
 
 void Character::LoadImages() {

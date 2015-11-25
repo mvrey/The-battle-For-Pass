@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="26" height="15" tilewidth="16" tileheight="16" nextobjectid="98">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="26" height="15" tilewidth="16" tileheight="16" nextobjectid="107">
+ <properties>
+  <property name="InitX" value="12"/>
+  <property name="InitY" value="12"/>
+ </properties>
  <tileset firstgid="1" name="A2_HF1R_Indoors" tilewidth="16" tileheight="16" tilecount="768">
   <image source="A2_HF1R_Indoors.png" trans="ffffff" width="512" height="384"/>
  </tileset>
@@ -887,5 +891,13 @@
   <object id="95" x="116" y="24"/>
   <object id="96" x="136" y="24"/>
   <object id="97" x="340" y="232"/>
+ </objectgroup>
+ <objectgroup name="Portals">
+  <object id="98" name="Village" type="0" x="169.565" y="231.609"/>
+  <object id="99" name="Village" type="0" x="183.348" y="231.435"/>
+  <object id="100" name="Village" type="0" x="201.13" y="230.826"/>
+  <object id="101" name="Village" type="0" x="216.652" y="231.174"/>
+  <object id="103" name="Village" type="0" x="231.261" y="231.043"/>
+  <object id="106" name="Village" type="0" x="245.652" y="230.696"/>
  </objectgroup>
 </map>
