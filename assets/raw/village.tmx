@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="312">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="357">
  <tileset firstgid="1" name="adventuretiles_exterior" tilewidth="16" tileheight="16" tilecount="1620">
   <image source="adventuretiles_exterior.png" trans="ffffff" width="480" height="864"/>
  </tileset>
@@ -3245,6 +3245,41 @@
   <object id="309" x="604" y="388"/>
   <object id="310" x="600" y="376"/>
   <object id="311" x="600" y="360"/>
+  <object id="312" x="236" y="4"/>
+  <object id="313" x="248" y="4"/>
+  <object id="314" x="264" y="4"/>
+  <object id="319" x="488" y="196"/>
+  <object id="320" x="488" y="176"/>
+  <object id="321" x="488" y="168"/>
+  <object id="322" x="488" y="152"/>
+  <object id="323" x="488" y="132"/>
+  <object id="324" x="488" y="120"/>
+  <object id="325" x="488" y="104"/>
+  <object id="326" x="508" y="104"/>
+  <object id="327" x="524" y="104"/>
+  <object id="328" x="536" y="104"/>
+  <object id="329" x="548" y="104"/>
+  <object id="331" x="552" y="104"/>
+  <object id="332" x="568" y="104"/>
+  <object id="333" x="584" y="104"/>
+  <object id="337" x="600" y="104"/>
+  <object id="338" x="600" y="120"/>
+  <object id="339" x="600" y="136"/>
+  <object id="340" x="600" y="152"/>
+  <object id="341" x="600" y="168"/>
+  <object id="342" x="600" y="184"/>
+  <object id="343" x="600" y="200"/>
+  <object id="344" x="584" y="200"/>
+  <object id="345" x="584" y="180"/>
+  <object id="346" x="584" y="168"/>
+  <object id="347" x="568" y="164"/>
+  <object id="348" x="548" y="164"/>
+  <object id="349" x="536" y="164"/>
+  <object id="350" x="536" y="184"/>
+  <object id="351" x="536" y="200"/>
+  <object id="352" x="516" y="204"/>
+  <object id="355" x="504" y="200"/>
+  <object id="356" x="488" y="200"/>
  </objectgroup>
  <objectgroup name="Enemies">
   <object id="92" name="Brown Asp" type="0" x="168" y="248"/>
