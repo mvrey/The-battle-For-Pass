@@ -60,6 +60,13 @@ void NewGame::Update() {
           Manager::getInstance()->screen_ = new Game();
           Manager::getInstance()->map_ = new Map();
           Manager::getInstance()->map_->LoadFromFile();
+          
+          //Set player position on map
+          Ally* player = Manager::getInstance()->player_;
+          int tile_width = Manager::getInstance()->map_->tile_width_;
+          int tile_height = Manager::getInstance()->map_->tile_height_;
+          player->x = player->tile_x * tile_width - tile_width/2;
+          player->y = (player->tile_y+1) * tile_height;
         }}
         break;
       case 1:
@@ -145,12 +152,9 @@ void NewGame::createPlayer(std::string race_name) {
   if (Manager::getInstance()->player_ == nullptr) {
     printf("\n\nCreating new player\n\n");
     Manager::getInstance()->player_ = new Ally();
-    Manager::getInstance()->player_->x = 92;
-    Manager::getInstance()->player_->y = 400;
     //Set a default map position
-    Manager::getInstance()->player_->tile_x = 0;
-    Manager::getInstance()->player_->tile_y = 0;
-    
+    Manager::getInstance()->player_->tile_x = 4;
+    Manager::getInstance()->player_->tile_y = 15;
   } else if (race_set) {
     printf("\n\nDeleting previous race\n\n");
     delete Manager::getInstance()->player_->race_;
