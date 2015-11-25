@@ -57,6 +57,7 @@ void Game::Draw() {
 void Game::Update() {
   Ally* player = Manager::getInstance()->player_;
   Grid* enemies = Manager::getInstance()->map_->enemies_;
+  Grid* portals = Manager::getInstance()->map_->portals_;
   
   if (click_ && player->HP_ <= 0) {
     delete Manager::getInstance()->screen_;
@@ -74,6 +75,10 @@ void Game::Update() {
     
     //The enemy is removed from the enemies Grid beforehand
     Manager::getInstance()->map_->enemies_->setElement(player->tile_x, player->tile_y, 0);
+  } else if (portals->getElement(player->tile_x, player->tile_y)) {
+    printf("Entering a portal\n");
+    Manager::getInstance()->map_ = (Map*)portals->getElement(player->tile_x, player->tile_y);
+    printf("Screen has changed\n");
   }
 }
 

@@ -37,6 +37,7 @@ public:
     Map* map_;
     Ally* player_;
     int quit_game_;
+    Map* maps_[10];
 
 private:
     
