@@ -45,7 +45,7 @@ void NewGame::Update() {
     if (ESAT::IsSpecialKeyDown(ESAT::kSpecialKey_Delete) && name_box.txt.length() > 0) {
       name_box.txt.pop_back();
     } else {
-      printf("%d", key);
+      printf("%c", key);
       name_box.txt += key;
     }
   }
@@ -55,10 +55,12 @@ void NewGame::Update() {
     int clicked_button = CheckButtonsClick();
     switch (clicked_button) {
       //UI Buttons
-      case 0:
-        Manager::getInstance()->screen_ = new Game();
-        Manager::getInstance()->map_ = new Map();
-        Manager::getInstance()->map_->LoadFromFile();
+      case 0:{
+        if (race_set && job_set) {
+          Manager::getInstance()->screen_ = new Game();
+          Manager::getInstance()->map_ = new Map();
+          Manager::getInstance()->map_->LoadFromFile();
+        }}
         break;
       case 1:
         Manager::getInstance()->screen_ = new MainMenu();
