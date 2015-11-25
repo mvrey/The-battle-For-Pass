@@ -27,6 +27,7 @@ class Character {
     bool Move(int direction, Grid* collisions);
     void Stop();
     void Update(int tile_width, int tile_height);
+    void ResetStatsToRace();
     
     std::string name_;
     
@@ -37,6 +38,7 @@ class Character {
     
     int level_;
     int xp_;
+    int gold_;
     
     //position on the current map
     float x,y;

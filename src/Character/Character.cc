@@ -139,3 +139,11 @@ void Character::Update(int tile_width, int tile_height) {
     }
   }
 }
+
+
+void Character::ResetStatsToRace() {
+  HP_ = race_->HP_;
+  MP_ = race_->MP_;
+  attack_ = race_->attack_;
+  defense_ = race_->defense_;
+}

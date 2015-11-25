@@ -1,4 +1,12 @@
-Create Map Object with (Maybe) several layers per map using Grids containing: Characters, (un)walkable, chests/items
+TODO
+==========================
+
+- Stats show on map when pressing 'S'
+- Show Mana Bar on battle screen
+- Music/Sounds
+- Spells: Open interface, update mana cost on hover, cast on click
+- Potions: Used on click && log shows how many you got left
+- Map: rest when pressing 'R', with a 30% chance of being attacked
  
 
 

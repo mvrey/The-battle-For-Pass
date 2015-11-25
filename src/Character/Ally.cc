@@ -9,6 +9,8 @@
 #include "../../include/Character/Ally.h"
 
 Ally::Ally() {
+  gold_ = 10;
+  xp_ = 0;
 }
 
 Ally::Ally(const Ally& orig) {

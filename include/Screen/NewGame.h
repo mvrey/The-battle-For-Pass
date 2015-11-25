@@ -36,7 +36,7 @@ public:
     void createPlayer(std::string race_name);
     void selectJob(int job_id);
     void CreateButtons();
-    void DrawRaceStats();
+    void DrawPlayerStats();
     
     ESAT::SpriteHandle dwarf_sprite;
     ESAT::SpriteHandle elf_sprite;

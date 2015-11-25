@@ -120,7 +120,7 @@ void NewGame::Draw() {
   DrawTextBox(name_box);
     
   if (race_set) {
-    DrawRaceStats();
+    DrawPlayerStats();
   }
   
   if (job_set) {
@@ -191,6 +191,9 @@ void NewGame::createPlayer(std::string race_name) {
   }
     
   Manager::getInstance()->player_->SetBaseStats();
+  if (job_set) {
+    selectJob(Manager::getInstance()->player_->job_->id_);
+  }
   
   race_set = true;
 }
@@ -203,20 +206,34 @@ void NewGame::selectJob(int job_id) {
     delete Manager::getInstance()->player_->job_;
   }
   
+  
   switch(job_id) {
     case 0:
       Manager::getInstance()->player_->job_ = new Boss();
+      Manager::getInstance()->player_->job_->id_ = job_id;
+      Manager::getInstance()->player_->ResetStatsToRace();
+      Manager::getInstance()->player_->gold_ *= 2;
       break;
     case 1:
       Manager::getInstance()->player_->job_ = new Hunter();
+      Manager::getInstance()->player_->job_->id_ = job_id;
+      Manager::getInstance()->player_->ResetStatsToRace();
+      Manager::getInstance()->player_->defense_ *= 1.3;
       break;
     case 2:
       Manager::getInstance()->player_->job_ = new Warrior();
+      Manager::getInstance()->player_->job_->id_ = job_id;
+      Manager::getInstance()->player_->ResetStatsToRace();
+      Manager::getInstance()->player_->attack_ *= 1.3;
       break;
     case 3:
       Manager::getInstance()->player_->job_ = new Wizard();
+      Manager::getInstance()->player_->job_->id_ = job_id;
+      Manager::getInstance()->player_->ResetStatsToRace();
+      Manager::getInstance()->player_->MP_ *= 1.3;
       break;
     default:
+      Manager::getInstance()->player_->job_->id_ = -1;
       job_set = false;
       break;
   }
@@ -248,13 +265,13 @@ void NewGame::CreateButtons() {
   
 }
 
-void NewGame::DrawRaceStats() {
+void NewGame::DrawPlayerStats() {
   int multiplier = 4;
   
-  int hp = Manager::getInstance()->player_->race_->HP_;
-  int mp = Manager::getInstance()->player_->race_->MP_;
-  int attack = Manager::getInstance()->player_->race_->attack_;
-  int defense = Manager::getInstance()->player_->race_->defense_;
+  int hp = Manager::getInstance()->player_->HP_;
+  int mp = Manager::getInstance()->player_->MP_;
+  int attack = Manager::getInstance()->player_->attack_;
+  int defense = Manager::getInstance()->player_->defense_;
   
   DrawRectangle(500.0f,280.0f,hp*multiplier,30,0x00CC00FF, false);
   DrawRectangle(500.0f,330.0f,mp*multiplier,30,0x0000CCFF, false);
