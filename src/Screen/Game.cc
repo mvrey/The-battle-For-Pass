@@ -46,7 +46,7 @@ void Game::Draw() {
   for (int i=0; i<map->num_tiles; i++) {
     ESAT::DrawSpriteWithMatrix(map->tiles[i].sprite, map->tiles[i].transform);
   }
-
+  
   ESAT::DrawSprite(player->current_sprite_, player->x, player->y - ESAT::SpriteHeight(player->current_sprite_));
   
   DrawEnd();
@@ -76,8 +76,15 @@ void Game::Update() {
     //The enemy is removed from the enemies Grid beforehand
     Manager::getInstance()->map_->enemies_->setElement(player->tile_x, player->tile_y, 0);
   } else if (portals->getElement(player->tile_x, player->tile_y)) {
-    printf("Entering a portal\n");
+	  printf("Entering a portal\n");
     Manager::getInstance()->map_ = (Map*)portals->getElement(player->tile_x, player->tile_y);
+	printf("Repositioning player\n");
+	player->tile_x = Manager::getInstance()->map_->init_x_;
+	player->tile_y = Manager::getInstance()->map_->init_y_;
+	
+	player->x = player->tile_x * Manager::getInstance()->map_->tile_width_;
+	player->y = player->tile_y * Manager::getInstance()->map_->tile_height_;
+
     printf("Screen has changed\n");
   }
 }

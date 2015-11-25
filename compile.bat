@@ -51,6 +51,7 @@ REM My Source Code
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/MainMenu.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/NewGame.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/OptionsMenu.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/GameOver.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/Screen.cc -I ../../../ESAT_rev109/include
 
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Main/Animation.cc -I ../../../ESAT_rev109/include
@@ -61,4 +62,4 @@ REM My Source Code
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Main/main.cc -I ../../../ESAT_rev109/include
 
 
-@cl /nologo /Zi /GR- /EHs /MDd /Fe:TheBattleForPass.exe miniz.obj TmxUtil.obj TmxTileset.obj TmxTileOffset.obj TmxTileLayer.obj TmxTile.obj TmxTerrainArray.obj TmxTerrain.obj TmxPropertySet.obj TmxPolyline.obj TmxPolygon.obj TmxObjectGroup.obj TmxObject.obj TmxMap.obj TmxLayer.obj TmxImageLayer.obj TmxImage.obj TmxEllipse.obj Ally.obj Boss.obj Brown_Asp.obj Character.obj Dwarf.obj Elf.obj Foe.obj Friend.obj Human.obj Hunter.obj Job.obj Orc.obj Race.obj Warrior.obj Wizard.obj Armor.obj Inventory.obj Item.obj Weapon.obj Battle.obj Game.obj Intro.obj MainMenu.obj NewGame.obj OptionsMenu.obj Screen.obj Animation.obj Grid.obj Manager.obj Map.obj Misc.obj main.obj ..\..\..\ESAT_rev109\bin\ESAT_d.lib opengl32.lib user32.lib gdi32.lib shell32.lib
+@cl /nologo /Zi /GR- /EHs /MDd /Fe:TheBattleForPass.exe miniz.obj TmxUtil.obj TmxTileset.obj TmxTileOffset.obj TmxTileLayer.obj TmxTile.obj TmxTerrainArray.obj TmxTerrain.obj TmxPropertySet.obj TmxPolyline.obj TmxPolygon.obj TmxObjectGroup.obj TmxObject.obj TmxMap.obj TmxLayer.obj TmxImageLayer.obj TmxImage.obj TmxEllipse.obj Ally.obj Boss.obj Brown_Asp.obj Character.obj Dwarf.obj Elf.obj Foe.obj Friend.obj Human.obj Hunter.obj Job.obj Orc.obj Race.obj Warrior.obj Wizard.obj Armor.obj Inventory.obj Item.obj Weapon.obj Battle.obj Game.obj Intro.obj MainMenu.obj NewGame.obj OptionsMenu.obj GameOver.obj Screen.obj Animation.obj Grid.obj Manager.obj Map.obj Misc.obj main.obj ..\..\..\ESAT_rev109\bin\ESAT_d.lib opengl32.lib user32.lib gdi32.lib shell32.lib

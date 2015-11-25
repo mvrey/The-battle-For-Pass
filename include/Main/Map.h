@@ -53,6 +53,8 @@ class Map {
     
     int tile_width_ = 0;
     int tile_height_ = 0;
+    int init_x_;
+    int init_y_;
 
   private:
     
