@@ -9,7 +9,9 @@
 
 #include "Character.h"
 #include "../Screen/Screen.h"
-#include "../Spell/Spell.h"
+#include "../Spell/Heal.h"
+#include "../Spell/FireSword.h"
+#include "../Spell/Blizzard.h"
 
 class Ally: public Character {
 public:
@@ -18,7 +20,8 @@ public:
     virtual ~Ally();
     void SetBaseStats();
     
-    Spell* spells[10];
+    Spell* spells_[10];
+    int num_spells_ = 0;
     
 private:
 

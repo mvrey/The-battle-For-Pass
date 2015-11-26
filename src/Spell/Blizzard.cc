@@ -14,6 +14,8 @@ Blizzard::Blizzard() {
   price_ = 150;
   mana_cost_ = 20;
   img_ = ESAT::SpriteFromFile("assets/raw/blizzard_spell.png");
+  log_line_ = "You frost your enemy for 20 damage\n";
+  description_ = "A cold blast that inflicts massive damage";
 }
 
 Blizzard::Blizzard(const Blizzard& orig) {
@@ -22,6 +24,11 @@ Blizzard::Blizzard(const Blizzard& orig) {
 Blizzard::~Blizzard() {
 }
 
-void Blizzard::Cast(Character* player, Character* enemy) {
-  enemy->HP_ -= 20;
+bool Blizzard::Cast(Character* player, Character* enemy) {
+  if (player->MP_ >= this->mana_cost_) {
+    player->MP_ -= this->mana_cost_;
+    enemy->HP_ -= 20;
+    return true;
+  } else
+    return false;
 }

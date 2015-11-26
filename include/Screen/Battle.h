@@ -25,21 +25,26 @@ public:
   void Init();
   void Input();
   void Update();
+  void DrawBegin();
   void Draw();
   void CreateButtons();
   void DrawLog();
-  void Fight();
+  void Fight(bool player_attacks);
   void CheckLogLength();
   void Flee();
   void CheckResult();
   void DrawSpells();
+  void DrawButtons();
   
   Foe* enemy_;
   ESAT::SpriteHandle spells_img_;
   std::string log_;
   bool is_over_;
   bool drawing_spells_ = false;
-  
+
+  //Player stats when entering battle to restore them later
+  int original_attack_;
+  int original_defense_;
 private:
 
 };

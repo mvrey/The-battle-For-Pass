@@ -14,6 +14,8 @@ FireSword::FireSword() {
   price_ = 120;
   mana_cost_ = 10;
   img_ = ESAT::SpriteFromFile("assets/raw/firesword_spell.png");
+  log_line_ = "Your attacks now inflict x1.5 damage\n";
+  description_ = "Enchants your melee weapon with fire damage";
 }
 
 FireSword::FireSword(const FireSword& orig) {
@@ -22,6 +24,11 @@ FireSword::FireSword(const FireSword& orig) {
 FireSword::~FireSword() {
 }
 
-void FireSword::Cast(Character* player, Character* enemy) {
-  player->attack_ *= 1.5;
+bool FireSword::Cast(Character* player, Character* enemy) {
+  if (player->MP_ >= this->mana_cost_) {
+    player->MP_ -= this->mana_cost_;
+    player->attack_ *= 1.5;
+    return true;
+  } else
+    return false;
 }

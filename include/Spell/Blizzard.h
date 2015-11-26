@@ -14,7 +14,7 @@ public:
     Blizzard();
     Blizzard(const Blizzard& orig);
     virtual ~Blizzard();
-    void Cast(Character* player, Character* enemy);
+    bool Cast(Character* player, Character* enemy);
     
 private:
 

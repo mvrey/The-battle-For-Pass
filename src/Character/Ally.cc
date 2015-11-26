@@ -24,9 +24,14 @@ Ally::~Ally() {
 
 void Ally::SetBaseStats() {
   HP_ = race_->HP_;
-  max_HP_ = race_->HP_;
+  max_HP_ = HP_;
   MP_ = race_->MP_;
-  max_MP_ = race_->MP_;
+  max_MP_ = MP_;
   attack_ = race_->attack_;
   defense_ = race_->defense_;
+  
+  for(int i=0; i<num_spells_; i++) {
+    delete spells_[i];
+  }
+  num_spells_ = 0;
 }

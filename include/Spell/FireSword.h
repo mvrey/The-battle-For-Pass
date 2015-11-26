@@ -14,7 +14,7 @@ public:
     FireSword();
     FireSword(const FireSword& orig);
     virtual ~FireSword();
-    void Cast(Character* player, Character* enemy);
+    bool Cast(Character* player, Character* enemy);
     
 private:
 
