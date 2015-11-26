@@ -21,6 +21,7 @@ public:
     int id_;
     std::string name_;
     int price_;
+    int mana_cost_;
     ESAT::SpriteHandle img_;
     
 private:

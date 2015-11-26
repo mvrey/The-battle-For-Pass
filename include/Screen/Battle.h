@@ -11,6 +11,9 @@
 #include "Screen.h"
 #include "Game.h"
 #include "../../include/Character/Foe.h"
+#include "../../include/Spell/Heal.h"
+#include "../../include/Spell/FireSword.h"
+#include "../../include/Spell/Blizzard.h"
 
 class Battle: public Screen {
 public:
