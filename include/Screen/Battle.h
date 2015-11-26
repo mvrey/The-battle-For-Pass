@@ -29,10 +29,13 @@ public:
   void CheckLogLength();
   void Flee();
   void CheckResult();
+  void DrawSpells();
   
   Foe* enemy_;
+  ESAT::SpriteHandle spells_img_;
   std::string log_;
   bool is_over_;
+  bool drawing_spells_ = false;
   
 private:
 
