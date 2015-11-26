@@ -152,5 +152,16 @@ void Character::ResetStatsToRace() {
 
 
 void Character::SetNextLevelXP() {
-  next_level_xp_ = 20 * (level_ * 1.2); 
+  next_level_xp_ = 20 * (level_ * 0.6); 
+}
+
+void Character::LevelUp() {
+  level_++;
+  max_HP_ *= 1.1;
+  HP_ = max_HP_;
+  max_MP_ *= 1.1;
+  MP_ = max_MP_;
+  attack_ *= 1.1;
+  defense_ *= 1.1;
+  SetNextLevelXP();
 }
