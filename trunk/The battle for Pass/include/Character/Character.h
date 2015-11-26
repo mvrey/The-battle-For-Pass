@@ -29,6 +29,7 @@ class Character {
     void Update(int tile_width, int tile_height);
     void ResetStatsToRace();
     void SetNextLevelXP();
+    void LevelUp();
     
     std::string name_;
     

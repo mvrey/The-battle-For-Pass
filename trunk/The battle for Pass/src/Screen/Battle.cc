@@ -43,6 +43,11 @@ void Battle::Update() {
   
   if (click_) {
     if (this->is_over_) {
+      Ally* player = Manager::getInstance()->player_;
+      if (player->xp_ > player->next_level_xp_) {
+        player->xp_ = player->xp_ - player->next_level_xp_;
+        player->LevelUp();
+      }
       delete Manager::getInstance()->screen_;
       Manager::getInstance()->screen_ = new Game();
     } else {
@@ -165,6 +170,9 @@ void Battle::Fight() {
     std::string xp_str = std::to_string(enemy_->xp_);
     std::string gold_str = std::to_string(enemy_->gold_);
     log_ += "Your earn "+xp_str+" xp and "+gold_str+" coins\n";
+    
+    if (player->xp_ > player->next_level_xp_)
+      log_ += "You have leveled up!\n";
   }
 }
 
