@@ -28,16 +28,20 @@ class Character {
     void Stop();
     void Update(int tile_width, int tile_height);
     void ResetStatsToRace();
+    void SetNextLevelXP();
     
     std::string name_;
     
     float HP_;
+    float max_HP_;
     float MP_;
+    float max_MP_;
     float attack_;
     float defense_;
     
     int level_;
     int xp_;
+    int next_level_xp_;
     int gold_;
     
     //position on the current map

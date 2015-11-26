@@ -20,20 +20,27 @@ Game::~Game() {
 
 void Game::Init() {
   CreateButtons();
+  stats_img_ = ESAT::SpriteFromFile("assets/raw/stats.png");
 }
 
 void Game::Input() {
   click_ = ESAT::MouseButtonUp(0);
   Grid* collisions = Manager::getInstance()->map_->collisions_;
   
-  if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
-    Manager::getInstance()->player_->Move(0, collisions);
-  } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Right)) {
-    Manager::getInstance()->player_->Move(1, collisions);
-  } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Down)) {
-    Manager::getInstance()->player_->Move(2, collisions);
-  } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Left)) {
-    Manager::getInstance()->player_->Move(3, collisions);
+  if (ESAT::IsKeyUp('S')) {
+    drawing_stats_ = !drawing_stats_;
+  }
+  
+  if (!drawing_stats_) {
+    if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
+      Manager::getInstance()->player_->Move(0, collisions);
+    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Right)) {
+      Manager::getInstance()->player_->Move(1, collisions);
+    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Down)) {
+      Manager::getInstance()->player_->Move(2, collisions);
+    } else if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Left)) {
+      Manager::getInstance()->player_->Move(3, collisions);
+    }
   }
 }
 
@@ -48,6 +55,10 @@ void Game::Draw() {
   }
   
   ESAT::DrawSprite(player->current_sprite_, player->x, player->y - ESAT::SpriteHeight(player->current_sprite_));
+  
+  if (drawing_stats_) {
+    DrawStats();
+  }
   
   DrawEnd();
 }
@@ -92,4 +103,43 @@ void Game::Update() {
 
 void Game::CreateButtons() {
   num_buttons_ = 0;
+}
+
+
+void Game::DrawStats() {
+  Ally* player = Manager::getInstance()->player_;
+  int base_x = 200;
+  float bar_max_length = 505.0f;
+  float bar_length = 0;
+  std::string bar_str;
+  
+  ESAT::DrawSetTextSize(18);
+  ESAT::DrawSprite(stats_img_, base_x, 0);
+  ESAT::DrawText(base_x+210.0f, 123.0f, std::to_string(player->level_).c_str());
+  
+  bar_str = std::to_string((int)player->xp_)+" / "+std::to_string((int)player->next_level_xp_);
+  bar_length = ((float)player->xp_ / (float)player->next_level_xp_) * bar_max_length;
+  Screen::DrawRectangle(base_x+255.0f, 107.0f, bar_length, 20.0f, 0xCCCCCCDD, true);
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  ESAT::DrawText(base_x+450.0f, 120.0f, bar_str.c_str());
+  
+  bar_str = std::to_string((int)player->HP_)+" / "+std::to_string((int)player->max_HP_);
+  bar_length = ((float)player->HP_ / (float)player->max_HP_) * bar_max_length;
+  Screen::DrawRectangle(base_x+255.0f, 145.0f, bar_length, 20.0f, 0x00CC00DD, true);
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  ESAT::DrawText(base_x+450.0f, 158.0f, bar_str.c_str());
+  
+  bar_str = std::to_string((int)player->MP_)+" / "+std::to_string((int)player->max_MP_);
+  bar_length = ((float)player->MP_ / (float)player->max_MP_) * bar_max_length;
+  Screen::DrawRectangle(base_x+255.0f, 183.0f, bar_length, 20, 0x0000CCDD, true);
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  ESAT::DrawText(base_x+450.0f, 196.0f, bar_str.c_str());
+  
+  ESAT::DrawSetTextSize(18);
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  
+  ESAT::DrawText(base_x+465.0f, 348.0f, std::to_string((int)player->attack_).c_str());
+  ESAT::DrawText(base_x+465.0f, 498.0f, std::to_string((int)player->defense_).c_str());
+  
+  ESAT::DrawText(base_x+700.0f, 668.0f, std::to_string((int)player->gold_).c_str());
 }

@@ -16,6 +16,8 @@ Character::Character(const Character& orig) {
 Character::~Character() {
   race_ = nullptr;
   job_ = nullptr;
+  level_ = 1;
+  SetNextLevelXP();
 }
 
 void Character::LoadImages() {
@@ -146,4 +148,9 @@ void Character::ResetStatsToRace() {
   MP_ = race_->MP_;
   attack_ = race_->attack_;
   defense_ = race_->defense_;
+}
+
+
+void Character::SetNextLevelXP() {
+  next_level_xp_ = 20 * (level_ * 1.2); 
 }

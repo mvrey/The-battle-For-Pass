@@ -231,6 +231,7 @@ void NewGame::selectJob(int job_id) {
       Manager::getInstance()->player_->job_->id_ = job_id;
       Manager::getInstance()->player_->ResetStatsToRace();
       Manager::getInstance()->player_->MP_ *= 1.3;
+      Manager::getInstance()->player_->max_MP_ *= 1.3;
       break;
     default:
       Manager::getInstance()->player_->job_->id_ = -1;
