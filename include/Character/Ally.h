@@ -8,6 +8,7 @@
 #define ALLY_H 1
 
 #include "Character.h"
+#include "../Screen/Screen.h"
 
 class Ally: public Character {
 public:
@@ -15,6 +16,7 @@ public:
     Ally(const Ally& orig);
     virtual ~Ally();
     void SetBaseStats();
+    
 private:
 
 };

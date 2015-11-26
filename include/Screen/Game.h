@@ -28,8 +28,11 @@ class Game: public Screen {
     void Update();
     void Draw();
     void CreateButtons();
+    void DrawStats();
     
     Map map_;
+    ESAT::SpriteHandle stats_img_;
+    bool drawing_stats_ = false;
 
   private:
     
