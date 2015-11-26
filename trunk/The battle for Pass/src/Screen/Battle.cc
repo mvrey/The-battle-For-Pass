@@ -83,9 +83,6 @@ void Battle::Draw() {
   Ally* player = Manager::getInstance()->player_;
   DrawBegin();
   
-  //Print Healthbars and bust/battler images
-  //Print options to attack/flee/cast_spell
-  
   DrawRectangle(100.0f, 20.0f, player->HP_*stat_multiplier, 30.0f, 0x00CC00FF, true);
   DrawRectangle(100.0f, 60.0f, player->MP_*stat_multiplier, 30.0f, 0x0000CCFF, true);
   ESAT::DrawSprite(player->battler_img_, 100, 100);
@@ -207,6 +204,9 @@ void Battle::DrawSpells() {
   
   ESAT::DrawSetTextSize(18);
   ESAT::DrawSprite(spells_img_, base_x, 0);
+  
+  
+  
 //  ESAT::DrawText(base_x+210.0f, 123.0f, std::to_string(player->level_).c_str());
 //  
 //  bar_str = std::to_string((int)player->xp_)+" / "+std::to_string((int)player->next_level_xp_);
