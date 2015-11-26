@@ -8,16 +8,16 @@
 #include "../../include/Screen/Battle.h"
 
 Battle::Battle() {
-  background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
   log_ = " ";
   is_over_ = false;
+  Init();
 }
 
 Battle::Battle(Foe* enemy) {
-  background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
   enemy_ = enemy;
   log_ = " ";
   is_over_ = false;
+  Init();
 }
 
 Battle::Battle(const Battle& orig) {
@@ -29,13 +29,15 @@ Battle::~Battle() {
 void Battle::Init() {
   printf("initializing battle\n");
   CreateButtons();
+  spells_img_ = ESAT::SpriteFromFile("assets/raw/spells.png");
+  background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
 }
 
 void Battle::Input() {
   click_ = ESAT::MouseButtonUp(0);
-//  if (ESAT::IsKeyDown('F')) {
-//    Manager::getInstance()->screen_ = new Game();
-//  }  
+  if (ESAT::IsKeyDown('S')) {
+    drawing_spells_ = !drawing_spells_;
+  }  
 }
 
 
@@ -59,6 +61,7 @@ void Battle::Update() {
           break;
         case 1:
           //Cast
+          drawing_spells_ = !drawing_spells_;
           break;
         case 2:
           //Potion
@@ -76,20 +79,25 @@ void Battle::Update() {
 
 
 void Battle::Draw() {
-  int life_multiplier = 10;
+  int stat_multiplier = 10;
   Ally* player = Manager::getInstance()->player_;
   DrawBegin();
   
   //Print Healthbars and bust/battler images
   //Print options to attack/flee/cast_spell
   
-  DrawRectangle(100.0f, 60.0f, player->HP_*life_multiplier, 30.0f, 0x00CC00FF, true);
+  DrawRectangle(100.0f, 20.0f, player->HP_*stat_multiplier, 30.0f, 0x00CC00FF, true);
+  DrawRectangle(100.0f, 60.0f, player->MP_*stat_multiplier, 30.0f, 0x0000CCFF, true);
   ESAT::DrawSprite(player->battler_img_, 100, 100);
   
-  DrawRectangle(1250.0f, 60.0f, enemy_->HP_*life_multiplier, 30, 0x00CC00FF, false);
+  DrawRectangle(1250.0f, 60.0f, enemy_->HP_*stat_multiplier, 30, 0x00CC00FF, false);
   ESAT::DrawSprite(enemy_->battler_img_, 1000, 250);
   
   DrawLog();
+  
+  if (drawing_spells_) {
+    DrawSpells();
+  }
   
   DrawEnd();
 }
@@ -188,4 +196,42 @@ void Battle::Flee() {
     delete Manager::getInstance()->screen_;
     Manager::getInstance()->screen_ = new Game();
   }
+}
+
+void Battle::DrawSpells() {
+  Ally* player = Manager::getInstance()->player_;
+  int base_x = 380;
+  float bar_max_length = 505.0f;
+  float bar_length = 0;
+  std::string bar_str;
+  
+  ESAT::DrawSetTextSize(18);
+  ESAT::DrawSprite(spells_img_, base_x, 0);
+//  ESAT::DrawText(base_x+210.0f, 123.0f, std::to_string(player->level_).c_str());
+//  
+//  bar_str = std::to_string((int)player->xp_)+" / "+std::to_string((int)player->next_level_xp_);
+//  bar_length = ((float)player->xp_ / (float)player->next_level_xp_) * bar_max_length;
+//  Screen::DrawRectangle(base_x+255.0f, 107.0f, bar_length, 20.0f, 0xCCCCCCDD, true);
+//  ESAT::DrawSetFillColor(255, 255, 255, 255);
+//  ESAT::DrawText(base_x+450.0f, 120.0f, bar_str.c_str());
+//  
+//  bar_str = std::to_string((int)player->HP_)+" / "+std::to_string((int)player->max_HP_);
+//  bar_length = ((float)player->HP_ / (float)player->max_HP_) * bar_max_length;
+//  Screen::DrawRectangle(base_x+255.0f, 145.0f, bar_length, 20.0f, 0x00CC00DD, true);
+//  ESAT::DrawSetFillColor(255, 255, 255, 255);
+//  ESAT::DrawText(base_x+450.0f, 158.0f, bar_str.c_str());
+//  
+//  bar_str = std::to_string((int)player->MP_)+" / "+std::to_string((int)player->max_MP_);
+//  bar_length = ((float)player->MP_ / (float)player->max_MP_) * bar_max_length;
+//  Screen::DrawRectangle(base_x+255.0f, 183.0f, bar_length, 20, 0x0000CCDD, true);
+//  ESAT::DrawSetFillColor(255, 255, 255, 255);
+//  ESAT::DrawText(base_x+450.0f, 196.0f, bar_str.c_str());
+//  
+//  ESAT::DrawSetTextSize(18);
+//  ESAT::DrawSetFillColor(255, 255, 255, 255);
+//  
+//  ESAT::DrawText(base_x+465.0f, 348.0f, std::to_string((int)player->attack_).c_str());
+//  ESAT::DrawText(base_x+465.0f, 498.0f, std::to_string((int)player->defense_).c_str());
+//  
+//  ESAT::DrawText(base_x+700.0f, 668.0f, std::to_string((int)player->gold_).c_str());
 }

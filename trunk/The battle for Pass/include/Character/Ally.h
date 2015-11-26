@@ -9,6 +9,7 @@
 
 #include "Character.h"
 #include "../Screen/Screen.h"
+#include "../Spell/Spell.h"
 
 class Ally: public Character {
 public:
@@ -16,6 +17,8 @@ public:
     Ally(const Ally& orig);
     virtual ~Ally();
     void SetBaseStats();
+    
+    Spell* spells[10];
     
 private:
 
