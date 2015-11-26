@@ -201,6 +201,11 @@ int Screen::CheckButtonsClick() {
   return (click) ? i - 1 : -1;
 }
 
+/// @brief  An alias for Screen::CheckButtonsClick(), to be used for detecting hover
+int Screen::CheckButtonsHover() {
+  return CheckButtonsClick();
+}
+
 void Screen::DrawTextWithLineBreaks(float x, float y, int width, int font_size, std::string txt) {
   ESAT::DrawSetTextSize(font_size);
   

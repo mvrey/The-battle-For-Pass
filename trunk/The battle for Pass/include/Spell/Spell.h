@@ -16,12 +16,14 @@ public:
     Spell();
     Spell(const Spell& orig);
     virtual ~Spell();
-    void Cast(Character* player, Character* enemy);
+    bool virtual Cast(Character* player, Character* enemy);
     
     int id_;
     std::string name_;
     int price_;
     int mana_cost_;
+    std::string log_line_;
+    std::string description_;
     ESAT::SpriteHandle img_;
     
 private:

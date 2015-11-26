@@ -213,18 +213,24 @@ void NewGame::selectJob(int job_id) {
       Manager::getInstance()->player_->job_->id_ = job_id;
       Manager::getInstance()->player_->ResetStatsToRace();
       Manager::getInstance()->player_->gold_ *= 2;
+      Manager::getInstance()->player_->spells_[0] = new Blizzard();
+      Manager::getInstance()->player_->num_spells_ = 1;
       break;
     case 1:
       Manager::getInstance()->player_->job_ = new Hunter();
       Manager::getInstance()->player_->job_->id_ = job_id;
       Manager::getInstance()->player_->ResetStatsToRace();
       Manager::getInstance()->player_->defense_ *= 1.3;
+      Manager::getInstance()->player_->spells_[0] = new Heal();
+      Manager::getInstance()->player_->num_spells_ = 1;
       break;
     case 2:
       Manager::getInstance()->player_->job_ = new Warrior();
       Manager::getInstance()->player_->job_->id_ = job_id;
       Manager::getInstance()->player_->ResetStatsToRace();
       Manager::getInstance()->player_->attack_ *= 1.3;
+      Manager::getInstance()->player_->spells_[0] = new FireSword();
+      Manager::getInstance()->player_->num_spells_ = 1;
       break;
     case 3:
       Manager::getInstance()->player_->job_ = new Wizard();
@@ -232,6 +238,10 @@ void NewGame::selectJob(int job_id) {
       Manager::getInstance()->player_->ResetStatsToRace();
       Manager::getInstance()->player_->MP_ *= 1.3;
       Manager::getInstance()->player_->max_MP_ *= 1.3;
+      Manager::getInstance()->player_->spells_[0] = new Heal();
+      Manager::getInstance()->player_->spells_[1] = new FireSword();
+      Manager::getInstance()->player_->spells_[2] = new Blizzard();
+      Manager::getInstance()->player_->num_spells_ = 3;
       break;
     default:
       Manager::getInstance()->player_->job_->id_ = -1;

@@ -1,8 +1,6 @@
 TODO
 ==========================
 
-- Show Mana Bar on battle screen
-- Spells: Open interface, update mana cost on hover, cast on click
 - Potions: Used on click && log shows how many you got left
 - Music/Sounds
 - Map: rest when pressing 'R', with a 30% chance of being attacked

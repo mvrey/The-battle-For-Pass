@@ -17,3 +17,6 @@ Spell::Spell(const Spell& orig) {
 Spell::~Spell() {
 }
 
+bool Spell::Cast(Character* player, Character* enemy) {
+  return false;
+}

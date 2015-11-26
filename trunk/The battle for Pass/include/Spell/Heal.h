@@ -14,7 +14,7 @@ public:
     Heal();
     Heal(const Heal& orig);
     virtual ~Heal();
-    void Cast(Character* player, Character* enemy);
+    bool Cast(Character* player, Character* enemy);
     
 private:
 

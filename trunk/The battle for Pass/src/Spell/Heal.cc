@@ -14,6 +14,8 @@ Heal::Heal() {
   price_ = 70;
   mana_cost_ = 15;
   img_ = ESAT::SpriteFromFile("assets/raw/heal_spell.png");
+  log_line_ = "You recover 10 HP\n";
+  description_ = "A healing spell";
 }
 
 Heal::Heal(const Heal& orig) {
@@ -22,8 +24,13 @@ Heal::Heal(const Heal& orig) {
 Heal::~Heal() {
 }
 
-void Heal::Cast(Character* player, Character* enemy) {
-  player->HP_ += 10;
-  if (player->HP_ > player->max_HP_)
-    player->HP_ = player->max_HP_;
+bool Heal::Cast(Character* player, Character* enemy) {
+  if (player->MP_ >= this->mana_cost_) {
+    player->MP_ -= this->mana_cost_;
+    player->HP_ += 10;
+    if (player->HP_ > player->max_HP_)
+      player->HP_ = player->max_HP_;
+    return true;
+  } else
+    return false;
 }
