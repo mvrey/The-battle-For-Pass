@@ -240,3 +240,20 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
 
   return 0;
 }
+
+
+Foe* Map::SelectRandomEnemy() {
+  int num = Misc::random(2);
+  Foe* enemy;
+  
+  switch (num) {
+    case 0:
+      enemy = new Brown_Asp();
+      break;
+    case 1:
+      enemy = new White_Asp();
+      break;
+  }
+  enemy->LoadImages();
+  return enemy;
+}

@@ -31,6 +31,10 @@ void Game::Input() {
     drawing_stats_ = !drawing_stats_;
   }
   
+  if (ESAT::IsKeyUp('R')) {
+    resting_ = true;
+  }
+  
   if (!drawing_stats_) {
     if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
       Manager::getInstance()->player_->Move(0, collisions);
@@ -78,6 +82,18 @@ void Game::Update() {
   player->Update(Manager::getInstance()->map_->tile_width_,
                   Manager::getInstance()->map_->tile_height_);
   
+  
+  if (resting_) {
+    int num = Misc::random(100);
+    if (num < 50) {
+      Foe* enemy = Manager::getInstance()->map_->SelectRandomEnemy();
+      enemies->setElement(player->tile_x, player->tile_y, enemy);
+    } else {
+      player->HP_ = player->max_HP_;
+      player->MP_ = player->max_MP_;
+    }
+    resting_ = false;
+  }
   
   //If there's an enemy at player's position, a battle begins
   if (enemies->getElement(player->tile_x, player->tile_y)) {
