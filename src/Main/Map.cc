@@ -221,7 +221,14 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
       } else if (objectGroup->GetName() == "Enemies") {
         //Insert object in corresponding grid (enemies)
         printf("Creating Enemy\n");
-        enemy = new Brown_Asp();
+        switch(atoi(object->GetType().c_str())) {
+          case 0:
+            enemy = new Brown_Asp();
+            break;
+          case 1:
+            enemy = new White_Asp();
+            break;
+        }
         enemy->LoadImages();
         enemies_->setElement(tile_x, tile_y, enemy);
       } 

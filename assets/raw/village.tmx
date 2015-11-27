@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="377">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="379">
  <properties>
   <property name="InitX" value="4"/>
   <property name="InitY" value="15"/>
@@ -3295,7 +3295,9 @@
  </objectgroup>
  <objectgroup name="Enemies">
   <object id="92" name="Brown Asp" type="0" x="168" y="248"/>
-  <object id="94" name="Brown Asp" x="456" y="248"/>
+  <object id="94" name="Brown Asp" type="0" x="456" y="248"/>
+  <object id="377" name="White Asp" type="1" x="312" y="136"/>
+  <object id="378" name="White Asp" type="1" x="568" y="344"/>
  </objectgroup>
  <objectgroup name="Portals">
   <object id="357" name="House1" type="1" x="296" y="404"/>

@@ -19,6 +19,7 @@
 #include "../../include/config.h"
 
 #include "../../include/Character/Brown_Asp.h"
+#include "../../include/Character/White_Asp.h"
 
 class Map {
   
