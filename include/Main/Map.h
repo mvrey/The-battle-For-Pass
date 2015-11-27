@@ -43,6 +43,7 @@ class Map {
     Map(const Map& orig);
     ~Map();
     int LoadFromFile(std::string filename, Map* maps[10]);
+    virtual Foe* SelectRandomEnemy();
 
     MapId id_;
     Grid* enemies_;

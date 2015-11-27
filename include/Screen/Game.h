@@ -33,6 +33,7 @@ class Game: public Screen {
     Map map_;
     ESAT::SpriteHandle stats_img_;
     bool drawing_stats_ = false;
+    bool resting_ = false;
 
   private:
     
