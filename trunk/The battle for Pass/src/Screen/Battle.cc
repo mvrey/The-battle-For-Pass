@@ -69,6 +69,16 @@ void Battle::Update() {
           drawing_spells_ = !drawing_spells_;
           break;
         case 2:
+          if (player->num_healing_potions_ > 0) {
+            player->num_healing_potions_--;
+            log_ += "You use a healing potion and gain 10 HP\n";
+            player->HP_ += 10;
+            if (player->HP_ > player->max_HP_) {
+              player->HP_ = player->max_HP_;
+            }  
+          } else {
+            log_ += "You do not have any potions left!\n";
+          }
           //Potion
           break;
         case 3:
@@ -107,11 +117,19 @@ void Battle::DrawBegin() {
 
 void Battle::Draw() {
   int stat_multiplier = 10;
+  std::string stats_str;
   Ally* player = Manager::getInstance()->player_;
   DrawBegin();
   
   DrawRectangle(100.0f, 20.0f, player->HP_*stat_multiplier, 30.0f, 0x00CC00FF, true);
   DrawRectangle(100.0f, 60.0f, player->MP_*stat_multiplier, 30.0f, 0x0000CCFF, true);
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  
+  stats_str = std::to_string((int)player->HP_)+"/"+std::to_string((int)player->max_HP_);
+  ESAT::DrawText(150.0f, 40.0f, stats_str.c_str());
+  stats_str = std::to_string((int)player->MP_)+"/"+std::to_string((int)player->max_MP_);
+  ESAT::DrawText(150.0f, 80.0f, stats_str.c_str());
+  
   ESAT::DrawSprite(player->battler_img_, 100, 100);
   
   DrawRectangle(1250.0f, 60.0f, enemy_->HP_*stat_multiplier, 30, 0x00CC00FF, false);

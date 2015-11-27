@@ -142,4 +142,5 @@ void Game::DrawStats() {
   ESAT::DrawText(base_x+465.0f, 498.0f, std::to_string((int)player->defense_).c_str());
   
   ESAT::DrawText(base_x+700.0f, 668.0f, std::to_string((int)player->gold_).c_str());
+  ESAT::DrawText(base_x+210.0f, 668.0f, std::to_string((int)player->num_healing_potions_).c_str());
 }

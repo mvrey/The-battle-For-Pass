@@ -22,6 +22,7 @@ public:
     
     Spell* spells_[10];
     int num_spells_ = 0;
+    int num_healing_potions_ = 3;
     
 private:
 
