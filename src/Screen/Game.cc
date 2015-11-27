@@ -58,7 +58,12 @@ void Game::Draw() {
     ESAT::DrawSpriteWithMatrix(map->tiles[i].sprite, map->tiles[i].transform);
   }
   
-  ESAT::DrawSprite(player->current_sprite_, player->x, player->y - ESAT::SpriteHeight(player->current_sprite_));
+  ESAT::Mat3 escale, translate, transform;
+  ESAT::Mat3InitAsScale(map->player_escale_, map->player_escale_, &escale);
+  ESAT::Mat3InitAsTranslate(player->x, player->y - ESAT::SpriteHeight(player->current_sprite_)*map->player_escale_, &translate);
+  ESAT::Mat3Multiply(translate, escale, &transform);
+  ESAT::DrawSpriteWithMatrix(player->current_sprite_, transform);
+//  ESAT::DrawSprite(player->current_sprite_, player->x, player->y - ESAT::SpriteHeight(player->current_sprite_));
   
   if (drawing_stats_) {
     DrawStats();

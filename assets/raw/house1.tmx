@@ -3,6 +3,7 @@
  <properties>
   <property name="InitX" value="12"/>
   <property name="InitY" value="12"/>
+  <property name="PlayerEscale" value="3"/>
  </properties>
  <tileset firstgid="1" name="A2_HF1R_Indoors" tilewidth="16" tileheight="16" tilecount="768">
   <image source="A2_HF1R_Indoors.png" trans="ffffff" width="512" height="384"/>
