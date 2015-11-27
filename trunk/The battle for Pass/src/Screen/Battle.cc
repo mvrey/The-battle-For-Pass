@@ -30,7 +30,7 @@ void Battle::Init() {
   printf("initializing battle\n");
   CreateButtons();
   spells_img_ = ESAT::SpriteFromFile("assets/raw/spells.png");
-  background_ = ESAT::SpriteFromFile("assets/background/battle_village.png");
+  background_ = Manager::getInstance()->map_->battle_background_;
   //Player stats when entering battle to restore them later
   original_attack_ = Manager::getInstance()->player_->attack_;
   original_defense_ = Manager::getInstance()->player_->defense_;

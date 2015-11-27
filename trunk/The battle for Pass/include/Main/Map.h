@@ -20,6 +20,8 @@
 
 #include "../../include/Character/Brown_Asp.h"
 #include "../../include/Character/White_Asp.h"
+#include "../../include/Character/Harpy.h"
+#include "../../include/Character/Skeleton.h"
 
 class Map {
   
@@ -42,9 +44,12 @@ class Map {
     Map();
     Map(const Map& orig);
     ~Map();
+    static Foe* GetEnemy(int n);
     int LoadFromFile(std::string filename, Map* maps[10]);
     virtual Foe* SelectRandomEnemy();
-
+    //A collection of ids of enemies that can spawn in this map
+    std::vector<int> enemies_pool_ {};
+    
     MapId id_;
     Grid* enemies_;
     Grid* collisions_;
@@ -57,6 +62,9 @@ class Map {
     int tile_height_ = 0;
     int init_x_;
     int init_y_;
+    float player_escale_;
+    
+    ESAT::SpriteHandle battle_background_;
 
   private:
     

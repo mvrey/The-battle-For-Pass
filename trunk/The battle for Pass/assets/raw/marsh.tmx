@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="40">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="44">
  <properties>
   <property name="InitX" value="2"/>
   <property name="InitY" value="14"/>
@@ -3028,4 +3028,10 @@
   <object id="39" name="Village" type="0" x="8" y="264"/>
  </objectgroup>
  <objectgroup name="Collisions"/>
+ <objectgroup name="Enemies">
+  <object id="40" name="Harpy" type="2" x="216" y="328"/>
+  <object id="41" name="Harpy" type="2" x="264" y="168"/>
+  <object id="42" name="Skeleton" type="3" x="552" y="308"/>
+  <object id="43" name="Skeleton" type="3" x="312" y="376"/>
+ </objectgroup>
 </map>

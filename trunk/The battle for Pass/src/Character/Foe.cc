@@ -25,4 +25,3 @@ void Foe::LoadImages() {
   printf("Loading Battler from %s\n", path.c_str());
   battler_img_ = ESAT::SpriteFromFile(path.c_str());
 }
-

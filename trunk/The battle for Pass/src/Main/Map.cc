@@ -36,6 +36,10 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   //Path to the tileset image files
   std::string path("assets/raw/");
   
+  
+  //Load battle background
+  battle_background_ = ESAT::SpriteFromFile(("assets/background/battle_"+filename+".png").c_str());
+  
   //Load Map
   Tmx::Map *map = new Tmx::Map();
   std::string fileName = "assets/raw/"+filename+".tmx";
@@ -54,6 +58,11 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   const Tmx::PropertySet properties = map->GetProperties();
   init_x_ = properties.GetIntProperty("InitX");
   init_y_ = properties.GetIntProperty("InitY");
+  //Get player sprite scaling for the current map
+  player_escale_ = properties.GetIntProperty("PlayerEscale");
+  if (player_escale_ == 0) player_escale_ = 1;
+    
+  printf("ESCALE = %d\n", player_escale_);
 
   // Load tilesets
   for (int i = 0; i < map->GetNumTilesets(); ++i) {
@@ -221,14 +230,15 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
       } else if (objectGroup->GetName() == "Enemies") {
         //Insert object in corresponding grid (enemies)
         printf("Creating Enemy\n");
-        switch(atoi(object->GetType().c_str())) {
-          case 0:
-            enemy = new Brown_Asp();
-            break;
-          case 1:
-            enemy = new White_Asp();
-            break;
+        int enemy_id = atoi(object->GetType().c_str());
+        enemy = Map::GetEnemy(enemy_id);
+        
+        //Add this enemy_id to the pool if it doesn't exist yet
+        if (std::find(enemies_pool_.begin(), enemies_pool_.end(), enemy_id) == enemies_pool_.end()) {
+          printf("PUSHING ENEMY: %d\n", enemy_id);
+          enemies_pool_.push_back(enemy_id);
         }
+        
         enemy->LoadImages();
         enemies_->setElement(tile_x, tile_y, enemy);
       } 
@@ -237,23 +247,39 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   }
   
   delete map;
-
   return 0;
 }
 
 
 Foe* Map::SelectRandomEnemy() {
-  int num = Misc::random(2);
+  
+  int index = Misc::random(enemies_pool_.size());
+  int id = enemies_pool_[index];
   Foe* enemy;
   
-  switch (num) {
+  enemy = GetEnemy(id);
+  enemy->LoadImages();
+  return enemy;
+}
+
+
+Foe* Map::GetEnemy(int n) {
+  Foe* enemy;
+  
+  switch(n) {
     case 0:
       enemy = new Brown_Asp();
       break;
     case 1:
       enemy = new White_Asp();
       break;
+    case 2:
+      enemy = new Harpy();
+      break;
+    case 3:
+      enemy = new Skeleton();
+      break;
   }
-  enemy->LoadImages();
+  
   return enemy;
 }
