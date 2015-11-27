@@ -85,6 +85,14 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
     num_tileSets++;
   }
 
+  //Reset tileset image and index
+  int current_tileSet = 0;      
+  tileset_img = ESAT::SpriteFromFile((path+tileSets[current_tileSet]->GetImage()->GetSource()).c_str());
+  //Calculate current tileset last global id
+  int horizontal = width / tile_width;
+  int vertical = height / tile_height;
+  int last_gid = tileSets[current_tileSet]->GetFirstGid() + (horizontal*vertical);
+          
   // Get tile layers
   for (int i = 0; i < map->GetNumTileLayers(); ++i) {
 
@@ -98,9 +106,6 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
 
     printf("\nTileLayer dimensions are: %d, %d\n", tileLayer->GetWidth(), tileLayer->GetHeight());
 
-    //Reset tileset image and index
-    int current_tileSet = 0;      
-    tileset_img = ESAT::SpriteFromFile((path+tileSets[current_tileSet]->GetImage()->GetSource()).c_str());
     
     //Iterate through every single tile
     for (int y = 0; y < tileLayer->GetHeight(); ++y) {
@@ -115,14 +120,25 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
           int tid = tileLayer->GetTileId(x, y);
           int tgid = tileLayer->GetTileGid(x, y);
           
+          //Just in case the loop goes apeshit
+          int exit = 0;
           //Find the right tileset for the current map tile
-          while (tid+tileSets[current_tileSet]->GetFirstGid() < tgid) {
+          while (!((tgid >= tileSets[current_tileSet]->GetFirstGid()) && (tgid<=last_gid)) && exit<100) {
+            exit++;
             if (current_tileSet == num_tileSets-1)
               current_tileSet = 0;
             else
               current_tileSet++;
-            printf("\nChanging tileset\n");
+            
             tileset_img = ESAT::SpriteFromFile((path+tileSets[current_tileSet]->GetImage()->GetSource()).c_str());
+            
+            // Recalculate new tileset variables
+            width = tileSets[current_tileSet]->GetImage()->GetWidth();
+            height = tileSets[current_tileSet]->GetImage()->GetHeight();
+            horizontal = width / tile_width;
+            vertical = height / tile_height;
+            last_gid = tileSets[current_tileSet]->GetFirstGid() + (horizontal*vertical);
+            /***********/
           }
 
           int pixel_y = (floor(tid/(width / tile_width))) * tile_height;                  
@@ -157,14 +173,14 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   }
 
   
-  enemies_ = new Grid(height/tile_height, width/tile_width);
+  enemies_ = new Grid(map->GetWidth(), map->GetHeight());
   enemies_->init();
-  collisions_ = new Grid(height/tile_height, width/tile_width);
+  collisions_ = new Grid(map->GetWidth(), map->GetHeight());
   collisions_->init();
-  portals_ = new Grid(height/tile_height, width/tile_width);;
+  portals_ = new Grid(map->GetWidth(), map->GetHeight());
   portals_->init();
   
-  printf("Enemies Grid is  %dx%d",width/tile_width, height/tile_height);
+  printf("Enemies Grid is  %dx%d",map->GetWidth(), map->GetHeight());
   
   // Iterate through all of the object groups.
   for (int i = 0; i < map->GetNumObjectGroups(); ++i) {
@@ -213,9 +229,6 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
     }
   }
   
-  
-  
-
   delete map;
 
   return 0;
