@@ -12,6 +12,7 @@
  */
 
 #include "../../include/Main/Map.h"
+#include "ESAT/draw.h"
 
 Map::Map() {
 }
@@ -35,10 +36,15 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   int num_tileSets = 0;
   //Path to the tileset image files
   std::string path("assets/raw/");
+  static int map_id = 0;
   
+  map_id++;
+  DrawLoadingScreen(map_id, 0);
   
   //Load battle background
   battle_background_ = ESAT::SpriteFromFile(("assets/background/battle_"+filename+".png").c_str());
+  
+  DrawLoadingScreen(map_id, 1);
   
   //Load Map
   Tmx::Map *map = new Tmx::Map();
@@ -63,6 +69,8 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   if (player_escale_ == 0) player_escale_ = 1;
 
 
+  DrawLoadingScreen(map_id, 2);
+  
   // Load tilesets
   for (int i = 0; i < map->GetNumTilesets(); ++i) {
 
@@ -101,6 +109,8 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   int vertical = height / tile_height;
   int last_gid = tileSets[current_tileSet]->GetFirstGid() + (horizontal*vertical);
           
+  DrawLoadingScreen(map_id, 3);
+  
   // Get tile layers
   for (int i = 0; i < map->GetNumTileLayers(); ++i) {
 
@@ -189,6 +199,8 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   portals_->init();
   
   printf("Enemies Grid is  %dx%d",map->GetWidth(), map->GetHeight());
+  
+  DrawLoadingScreen(map_id, 4);
   
   // Iterate through all of the object groups.
   for (int i = 0; i < map->GetNumObjectGroups(); ++i) {
@@ -296,4 +308,40 @@ Foe* Map::GetEnemy(int n) {
   }
   
   return enemy;
+}
+
+
+
+void Map::DrawLoadingScreen(int map_id, int stage) {
+  std::string stage_str;
+  
+  ESAT::DrawBegin();
+  ESAT::DrawClear(0, 0, 0);
+  
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  ESAT::DrawSetTextSize(25);
+  ESAT::DrawText(500, 300, ("Loading Map "+std::to_string(map_id)+"/6").c_str());
+  
+  switch(stage) {
+    case 0:
+      stage_str = "Loading battle background";
+      break;
+    case 1:
+      stage_str = "Reading tmx file";
+      break;
+    case 2:
+      stage_str = "Loading tileset files";
+      break;
+    case 3:
+      stage_str = "Loading tile layers";
+      break;
+    case 4:
+      stage_str = "Loading objects";
+      break;
+  }
+  
+  ESAT::DrawText(500, 450, stage_str.c_str());
+  
+  ESAT::DrawEnd();
+  ESAT::WindowFrame();
 }
