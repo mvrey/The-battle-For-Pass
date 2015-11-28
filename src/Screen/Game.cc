@@ -145,12 +145,14 @@ void Game::Update() {
     player->y = player->tile_y * Manager::getInstance()->map_->tile_height_;
 
     printf("Screen has changed\n");
+    //load new NPCs grid
+    npcs = Manager::getInstance()->map_->npcs_;
   } else {
     Manager::getInstance()->map_->last_x_ = player->tile_x;
     Manager::getInstance()->map_->last_y_ = player->tile_y;
   }
   
-  
+  printf("\n");
   //Healing potions merchant
   if (npcs->getElement(player->tile_x, player->tile_y) != nullptr) {
     talking_ = true;
