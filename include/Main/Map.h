@@ -62,6 +62,7 @@ class Map {
     Grid* enemies_;
     Grid* collisions_;
     Grid* portals_;
+    Grid* npcs_;
 
     TileImage tiles[5000];
     int num_tiles = 0;
