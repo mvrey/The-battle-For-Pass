@@ -12,7 +12,7 @@ const int kWindowHeight = 768;
 
 Screen::Screen() {
     cursor_sprite_ = ESAT::SpriteFromFile("assets/UI/Crosshair_02.png");
-    background_ = ESAT::SpriteFromFile("assets/background/intro.png");
+    background_ = ESAT::SpriteFromFile("assets/background/main_background.png");
     button_background_ = ESAT::SpriteFromFile("assets/UI/button_bg.png");
     Init();
 }

@@ -1,9 +1,26 @@
 TODO
 ==========================
 
-
+- Merchant for potions
+- Add collisions to marsh
+- 2 more maps: passage/cave && fortress of distinction
+- more enemies for new maps
+- dragon final boss
+- winning the game Scene
+- legend for available actions thru keyboard (e.g. s=spells, b=buy potion)
+- Show player name on stats
+- Being able to exit the game
+- Conversations and npcs??
 
 =======================================================
+
+POST
+==========================
+
+- Separate constructors and inits
+- Destructors
+- Call destructors
+- Doxygen-style in-code documentation
 
 
 SCREENS

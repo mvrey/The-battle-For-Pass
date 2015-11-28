@@ -8,6 +8,9 @@
 #include "../../include/Screen/Intro.h"
 
 Intro::Intro() {
+  num_buttons_ = 0;
+  frame_ = 0;
+  background_ = ESAT::SpriteFromFile("assets/background/intro_background.png");
 }
 
 Intro::Intro(const Intro& orig) {
@@ -17,12 +20,22 @@ Intro::~Intro() {
 }
 
 void Intro::Update() {
-  Manager::getInstance()->screen_ = new MainMenu();
+  if (click_) {
+    Manager::getInstance()->screen_ = new MainMenu();
+  }
+  
+  frame_+=2;
 }
 
 void Intro::Draw() {
   DrawBegin();
   
-  ESAT::DrawText(200.0f, 200.0f, "The Battle for Pass - Intro");
+  ESAT::DrawSetTextSize(70);
+  ESAT::DrawSetFillColor(255, 255, 255, 200);
+  ESAT::DrawText(150.0f, 250.0f, "The Battle for Pass");
+  ESAT::DrawSetFillColor(255, 255, 255, frame_);
+  ESAT::DrawSetTextSize(30);
+  ESAT::DrawText(450.0f, 350.0f, "Click to continue");
+  
   DrawEnd();
 }
