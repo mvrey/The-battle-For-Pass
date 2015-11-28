@@ -9,7 +9,7 @@
 
 Black_Dragon::Black_Dragon() {
   name_ = "Black Dragon";
-  HP_ = 200;
+  HP_ = 150;
   MP_ = 0;
   attack_ = 80;
   defense_ = 60;

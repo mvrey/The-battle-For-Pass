@@ -36,9 +36,11 @@ class Map {
     //Maps inside the game
     enum MapId {
       kMap_Village,
-      kMap_Road,
-      kMap_Cavern,
-      kMap_Fortress
+      kMap_House,
+      kMap_Marsh,
+      kMap_Cave,
+      kMap_Fortress,
+      kMap_Hall
     };
 
     struct TileImage {
@@ -64,8 +66,8 @@ class Map {
     Grid* portals_;
     Grid* npcs_;
 
-    TileImage tiles[5000];
-    int num_tiles = 0;
+    TileImage tiles_[5000];
+    int num_tiles_ = 0;
     
     int tile_width_ = 0;
     int tile_height_ = 0;

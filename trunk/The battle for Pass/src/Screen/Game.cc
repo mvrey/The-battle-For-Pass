@@ -59,8 +59,8 @@ void Game::Draw() {
   Map* map = Manager::getInstance()->map_;
   Ally* player = Manager::getInstance()->player_;
   
-  for (int i=0; i<map->num_tiles; i++) {
-    ESAT::DrawSpriteWithMatrix(map->tiles[i].sprite, map->tiles[i].transform);
+  for (int i=0; i<map->num_tiles_; i++) {
+    ESAT::DrawSpriteWithMatrix(map->tiles_[i].sprite, map->tiles_[i].transform);
   }
   
   ESAT::Mat3 escale, translate, transform;
@@ -195,6 +195,7 @@ void Game::DrawStats() {
   float bar_length = 0;
   std::string bar_str;
   
+  
   ESAT::DrawSetTextSize(18);
   ESAT::DrawSprite(stats_img_, base_x, 0);
   ESAT::DrawText(base_x+210.0f, 123.0f, std::to_string(player->level_).c_str());
@@ -225,4 +226,14 @@ void Game::DrawStats() {
   
   ESAT::DrawText(base_x+700.0f, 668.0f, std::to_string((int)player->gold_).c_str());
   ESAT::DrawText(base_x+210.0f, 668.0f, std::to_string((int)player->num_healing_potions_).c_str());
+  
+  //Draw escaled player's face
+  ESAT::Mat3 escale, translate, transform;
+  ESAT::Mat3InitAsScale(0.5, 0.5, &escale);
+  ESAT::Mat3InitAsTranslate(base_x+110, 40, &translate);
+  ESAT::Mat3Multiply(translate, escale, &transform);
+  ESAT::DrawSpriteWithMatrix(player->race_->face_imgs_[player->job_->id_], transform);
+  
+  //Draw player's name
+  ESAT::DrawText(base_x+370.0f, 70.0f, player->name_.c_str());
 }
