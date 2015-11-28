@@ -10,6 +10,7 @@
 
 #include "Screen.h"
 #include "Game.h"
+#include "GameWon.h"
 #include "../../include/Enemy/Foe.h"
 #include "../../include/Spell/Heal.h"
 #include "../../include/Spell/FireSword.h"
