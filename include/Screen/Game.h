@@ -39,6 +39,7 @@ class Game: public Screen {
     bool talking_ = false;
     bool just_bought_ = false;
     bool just_failed_bought_ = false;
+    bool exit_ = false;
 
   private:
     

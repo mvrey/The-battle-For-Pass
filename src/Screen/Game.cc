@@ -36,6 +36,9 @@ void Game::Input() {
   if (ESAT::IsKeyUp('B')) {
     buying_ = true;
   }
+  if (ESAT::IsSpecialKeyUp(ESAT::kSpecialKey_Escape)) {
+    exit_ = true;
+  }
   
   if (!drawing_stats_) {
     if (ESAT::IsSpecialKeyPressed(ESAT::kSpecialKey_Up)) {
@@ -83,6 +86,13 @@ void Game::Update() {
   Grid* enemies = Manager::getInstance()->map_->enemies_;
   Grid* portals = Manager::getInstance()->map_->portals_;
   Grid* npcs = Manager::getInstance()->map_->npcs_;
+  
+  
+  if (exit_) {
+    delete Manager::getInstance()->map_;
+    delete Manager::getInstance()->screen_;
+    Manager::getInstance()->screen_ = new MainMenu();
+  }
   
   if (click_ && player->HP_ <= 0) {
     delete Manager::getInstance()->screen_;

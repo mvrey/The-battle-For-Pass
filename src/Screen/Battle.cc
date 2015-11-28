@@ -53,12 +53,20 @@ void Battle::Update() {
       Manager::getInstance()->player_->attack_ = original_attack_;
       Manager::getInstance()->player_->defense_ = original_defense_;
       
-      if (player->xp_ > player->next_level_xp_) {
+      //Notice that the player's level may increase several times in a single battle
+      while (player->xp_ >= player->next_level_xp_) {
         player->xp_ = player->xp_ - player->next_level_xp_;
         player->LevelUp();
       }
-      delete Manager::getInstance()->screen_;
-      Manager::getInstance()->screen_ = new Game();
+      //Go to the GameWon screen if this was the final boss
+      if (enemy_->name_ == "Black_Dragon") {
+        delete Manager::getInstance()->screen_;
+        Manager::getInstance()->screen_ = new GameWon();
+      //Return to game otherwise
+      } else {
+        delete Manager::getInstance()->screen_;
+        Manager::getInstance()->screen_ = new Game();
+      }
     } else {
       int clicked_button = CheckButtonsClick();
       switch (clicked_button) {
@@ -71,8 +79,8 @@ void Battle::Update() {
         case 2:
           if (player->num_healing_potions_ > 0) {
             player->num_healing_potions_--;
-            log_ += "You use a healing potion and gain 10 HP\n";
-            player->HP_ += 10;
+            log_ += "You use a healing potion and gain 15 HP\n";
+            player->HP_ += 15;
             if (player->HP_ > player->max_HP_) {
               player->HP_ = player->max_HP_;
             }  

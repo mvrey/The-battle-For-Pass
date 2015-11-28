@@ -63,17 +63,17 @@ void NewGame::Update() {
           //LOAD ALL MAPS AND STORE THEM IN AN ARRAY IN THE MANAGER
           //SO WE CAN STORE POINTERS IN THE PORTALS GRID
           Manager::getInstance()->maps_[0] = new Map();
-          Manager::getInstance()->maps_[1] = new Map();
-          Manager::getInstance()->maps_[2] = new Map();
-          Manager::getInstance()->maps_[3] = new Map();
-          Manager::getInstance()->maps_[4] = new Map();
-          Manager::getInstance()->maps_[5] = new Map();
-          Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
-          Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
+//          Manager::getInstance()->maps_[1] = new Map();
+//          Manager::getInstance()->maps_[2] = new Map();
+//          Manager::getInstance()->maps_[3] = new Map();
+//          Manager::getInstance()->maps_[4] = new Map();
+//          Manager::getInstance()->maps_[5] = new Map();
+//          Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
+//          Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
 //          Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
 //          Manager::getInstance()->maps_[3]->LoadFromFile("cave", Manager::getInstance()->maps_);
 //          Manager::getInstance()->maps_[4]->LoadFromFile("fortress", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[5]->LoadFromFile("hall", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[0]->LoadFromFile("hall", Manager::getInstance()->maps_);
           
           Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];
                   
@@ -81,6 +81,9 @@ void NewGame::Update() {
           Ally* player = Manager::getInstance()->player_;
           int tile_width = Manager::getInstance()->map_->tile_width_;
           int tile_height = Manager::getInstance()->map_->tile_height_;
+          //Set a default map position
+          player->tile_x = Manager::getInstance()->map_->init_x_;
+          player->tile_y = Manager::getInstance()->map_->init_y_;
           player->x = player->tile_x * tile_width - tile_width/2;
           player->y = (player->tile_y+1) * tile_height;
         }}
@@ -169,8 +172,8 @@ void NewGame::createPlayer(std::string race_name) {
     printf("\n\nCreating new player\n\n");
     Manager::getInstance()->player_ = new Ally();
     //Set a default map position
-    Manager::getInstance()->player_->tile_x = 4;
-    Manager::getInstance()->player_->tile_y = 15;
+//    Manager::getInstance()->player_->tile_x = Manager::getInstance()->map_->init_x_;
+//    Manager::getInstance()->player_->tile_y = Manager::getInstance()->map_->init_y_;
   } else if (race_set) {
     printf("\n\nDeleting previous race\n\n");
     delete Manager::getInstance()->player_->race_;
