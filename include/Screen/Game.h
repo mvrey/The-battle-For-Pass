@@ -29,7 +29,7 @@ class Game: public Screen {
     void Draw();
     void CreateButtons();
     void DrawStats();
-    void DrawDialog();
+    void DrawDialog(Friend* npc);
     
     Map map_;
     ESAT::SpriteHandle stats_img_;

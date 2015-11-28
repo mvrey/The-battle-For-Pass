@@ -3228,8 +3228,8 @@
   <object id="195" name="Soldier2" type="7" x="152" y="328"/>
  </objectgroup>
  <objectgroup name="NPCs">
-  <object id="199" x="312" y="104"/>
-  <object id="200" x="328" y="104"/>
-  <object id="201" x="292" y="104"/>
+  <object id="199" name="Potions Merchant" type="0" x="312" y="104"/>
+  <object id="200" type="0" x="328" y="104"/>
+  <object id="201" type="0" x="292" y="104"/>
  </objectgroup>
 </map>
