@@ -79,6 +79,7 @@ void NewGame::Update() {
                   
           //Set player position on map
           Ally* player = Manager::getInstance()->player_;
+          player->name_ = name_box.txt;
           int tile_width = Manager::getInstance()->map_->tile_width_;
           int tile_height = Manager::getInstance()->map_->tile_height_;
           //Set a default map position

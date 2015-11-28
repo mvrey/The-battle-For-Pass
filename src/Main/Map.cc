@@ -21,6 +21,12 @@ Map::Map(const Map& orig) {
 }
 
 Map::~Map() {
+  int i;
+  //free (battle_background_);
+  for (i=0; i<num_tiles_; i++) {
+//    free(tiles_[i].sprite);
+//    free(tiles_[i].transform);
+  }
 }
 
 int Map::LoadFromFile(std::string filename, Map* maps[10]) {
@@ -183,8 +189,8 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
           //Store image final drawing matrix
           onetile.transform = transform;
 
-          tiles[num_tiles] = onetile;
-          num_tiles++;
+          tiles_[num_tiles_] = onetile;
+          num_tiles_++;
         }
       }
     }
@@ -262,7 +268,6 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
     }
   }
   
-  printf("INIT ES: %d, %d\n", this->init_x_, this->init_y_);
   delete map;
   return 0;
 }

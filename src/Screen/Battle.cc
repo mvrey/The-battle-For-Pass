@@ -59,7 +59,7 @@ void Battle::Update() {
         player->LevelUp();
       }
       //Go to the GameWon screen if this was the final boss
-      if (enemy_->name_ == "Black_Dragon") {
+      if (enemy_->name_ == "Black_Dragon" && player->HP_ > 0 && enemy_->HP_ <= 0) {
         delete Manager::getInstance()->screen_;
         Manager::getInstance()->screen_ = new GameWon();
       //Return to game otherwise
@@ -140,9 +140,14 @@ void Battle::Draw() {
   
   ESAT::DrawSprite(player->battler_img_, 100, 100);
   
-  DrawRectangle(1250.0f, 60.0f, enemy_->HP_*stat_multiplier, 30, 0x00CC00FF, false);
-  ESAT::DrawSprite(enemy_->battler_img_, 1000, 250);
-  
+  //The final boss shows slightly different
+  if (enemy_->name_ == "Black_Dragon") {
+    DrawRectangle(1250.0f, 60.0f, enemy_->HP_*5, 30, 0x00CC00FF, false);
+    ESAT::DrawSprite(enemy_->battler_img_, 700, 150);
+  } else {
+    DrawRectangle(1250.0f, 60.0f, enemy_->HP_*stat_multiplier, 30, 0x00CC00FF, false);
+    ESAT::DrawSprite(enemy_->battler_img_, 1000, 250);
+  }
   if (drawing_spells_) {
     DrawSpells();
   }
