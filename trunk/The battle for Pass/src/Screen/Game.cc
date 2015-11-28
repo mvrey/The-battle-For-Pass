@@ -69,6 +69,13 @@ void Game::Draw() {
   ESAT::Mat3Multiply(translate, escale, &transform);
   ESAT::DrawSpriteWithMatrix(player->current_sprite_, transform);
   
+  Screen::DrawRectangle(0, 0, 150, 60, 0x555555BB, true);
+  ESAT::DrawSetTextSize(15.0f);
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  ESAT::DrawText(10.0f, 20.0f, "S = Stats");
+  ESAT::DrawText(10.0f, 35.0f, "R = Rest");
+  ESAT::DrawText(10.0f, 50.0f, "ESC = Quit Game");
+          
   if (drawing_stats_) {
     DrawStats();
   }
