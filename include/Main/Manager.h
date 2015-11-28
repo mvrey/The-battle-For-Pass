@@ -14,7 +14,7 @@
 
 #include "../../include/Main/Map.h"
 #include "../../include/Character/Ally.h"
-#include "../../include/Screen/Screen.h"
+#include "../../include/Screen/Intro.h"
 
 class Manager {
 public:
@@ -38,6 +38,8 @@ public:
     Ally* player_;
     int quit_game_;
     Map* maps_[10];
+
+  
 
 private:
     

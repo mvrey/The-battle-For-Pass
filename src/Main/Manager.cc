@@ -10,8 +10,6 @@
  */
 
 #include "../../include/Main/Manager.h"
-#include "../../include/Screen/Intro.h"
-
 
 
 Manager* Manager::instance_ = nullptr;
