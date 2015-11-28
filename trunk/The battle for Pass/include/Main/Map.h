@@ -12,6 +12,7 @@
 #define MAP_H 1
 
 #include <ESAT/sprite.h>
+#include <ESAT/window.h>
 #include <stdio.h>
 #include <math.h>
 #include "../../include/Main/Grid.h"
@@ -52,6 +53,8 @@ class Map {
     static Foe* GetEnemy(int n);
     int LoadFromFile(std::string filename, Map* maps[10]);
     virtual Foe* SelectRandomEnemy();
+    void DrawLoadingScreen(int map_id, int stage);
+    
     //A collection of ids of enemies that can spawn in this map
     std::vector<int> enemies_pool_ {};
     
