@@ -63,7 +63,6 @@ void Game::Draw() {
   ESAT::Mat3InitAsTranslate(player->x, player->y - ESAT::SpriteHeight(player->current_sprite_)*map->player_escale_, &translate);
   ESAT::Mat3Multiply(translate, escale, &transform);
   ESAT::DrawSpriteWithMatrix(player->current_sprite_, transform);
-//  ESAT::DrawSprite(player->current_sprite_, player->x, player->y - ESAT::SpriteHeight(player->current_sprite_));
   
   if (drawing_stats_) {
     DrawStats();
@@ -108,16 +107,24 @@ void Game::Update() {
     //The enemy is removed from the enemies Grid beforehand
     Manager::getInstance()->map_->enemies_->setElement(player->tile_x, player->tile_y, 0);
   } else if (portals->getElement(player->tile_x, player->tile_y)) {
-	  printf("Entering a portal\n");
+    printf("Entering a portal\n");
     Manager::getInstance()->map_ = (Map*)portals->getElement(player->tile_x, player->tile_y);
-	printf("Repositioning player\n");
-	player->tile_x = Manager::getInstance()->map_->init_x_;
-	player->tile_y = Manager::getInstance()->map_->init_y_;
-	
-	player->x = player->tile_x * Manager::getInstance()->map_->tile_width_;
-	player->y = player->tile_y * Manager::getInstance()->map_->tile_height_;
+    printf("Repositioning player\n");
+    if (Manager::getInstance()->map_->last_x_ && Manager::getInstance()->map_->last_y_) {
+      player->tile_x = Manager::getInstance()->map_->last_x_;
+      player->tile_y = Manager::getInstance()->map_->last_y_;
+    } else {
+      player->tile_x = Manager::getInstance()->map_->init_x_;
+      player->tile_y = Manager::getInstance()->map_->init_y_;
+    }
+    
+    player->x = player->tile_x * Manager::getInstance()->map_->tile_width_;
+    player->y = player->tile_y * Manager::getInstance()->map_->tile_height_;
 
     printf("Screen has changed\n");
+  } else {
+    Manager::getInstance()->map_->last_x_ = player->tile_x;
+    Manager::getInstance()->map_->last_y_ = player->tile_y;
   }
 }
 

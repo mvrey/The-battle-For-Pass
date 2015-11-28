@@ -61,8 +61,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   //Get player sprite scaling for the current map
   player_escale_ = properties.GetIntProperty("PlayerEscale");
   if (player_escale_ == 0) player_escale_ = 1;
-    
-  printf("ESCALE = %d\n", player_escale_);
+
 
   // Load tilesets
   for (int i = 0; i < map->GetNumTilesets(); ++i) {

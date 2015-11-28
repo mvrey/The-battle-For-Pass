@@ -62,6 +62,8 @@ class Map {
     int tile_height_ = 0;
     int init_x_;
     int init_y_;
+    int last_x_;
+    int last_y_;
     float player_escale_;
     
     ESAT::SpriteHandle battle_background_;
