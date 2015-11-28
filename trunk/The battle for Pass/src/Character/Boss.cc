@@ -12,7 +12,7 @@ Boss::Boss() {
   id_ = 0;
   name_ = "Aristocrat";
   description_ = "Aristocrats have their origins in poweful lineages."
-          "Often with no special skills that make them stand amongst other individuals,"
+          " Often with no special skills that make them stand amongst other individuals,"
           " they compensate this by being largely wealthy and being able to afford"
           " the best equipment that money can buy";
   
