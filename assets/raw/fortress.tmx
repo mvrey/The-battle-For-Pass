@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="188">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="196">
  <properties>
   <property name="InitX" value="2"/>
   <property name="InitY" value="14"/>
@@ -3213,5 +3213,15 @@
   <object id="185" name="Hall" type="5" x="792" y="200"/>
   <object id="186" name="Hall" type="5" x="792" y="216"/>
   <object id="187" name="Hall" type="5" x="792" y="232"/>
+ </objectgroup>
+ <objectgroup name="Enemies">
+  <object id="188" name="Soldier1" type="6" x="376" y="216"/>
+  <object id="189" name="Soldier1" type="6" x="232" y="296"/>
+  <object id="190" name="Soldier1" x="568" y="324"/>
+  <object id="191" name="Soldier1" type="6" x="168" y="88"/>
+  <object id="192" name="Soldier2" type="7" x="376" y="280"/>
+  <object id="193" name="Soldier2" type="7" x="584" y="208"/>
+  <object id="194" name="Soldier2" type="7" x="232" y="184"/>
+  <object id="195" name="Soldier2" type="7" x="152" y="328"/>
  </objectgroup>
 </map>

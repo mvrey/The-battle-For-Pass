@@ -278,6 +278,21 @@ Foe* Map::GetEnemy(int n) {
     case 3:
       enemy = new Skeleton();
       break;
+    case 4:
+      enemy = new Torturer();
+      break;
+    case 5:
+      enemy = new Troll();
+      break;
+    case 6:
+      enemy = new Soldier1();
+      break;
+    case 7:
+      enemy = new Soldier2();
+      break;
+    case 8:
+      enemy = new Black_Dragon();
+      break;
   }
   
   return enemy;

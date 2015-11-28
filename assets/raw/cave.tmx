@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="333">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="343">
  <properties>
   <property name="InitX" value="1"/>
   <property name="InitY" value="15"/>
@@ -3031,7 +3031,16 @@
   <object id="327" name="Fortress" type="4" x="792" y="232"/>
   <object id="328" name="Fortress" type="4" x="792" y="216"/>
  </objectgroup>
- <objectgroup name="Enemies"/>
+ <objectgroup name="Enemies">
+  <object id="335" name="Torturer" type="4" x="184" y="232"/>
+  <object id="336" name="Torturer" type="4" x="552" y="88"/>
+  <object id="337" name="Torturer" type="4" x="536" y="248"/>
+  <object id="338" name="Torturer" type="4" x="184" y="408"/>
+  <object id="339" name="Troll" type="5" x="392" y="360"/>
+  <object id="340" name="Troll" type="5" x="328" y="248"/>
+  <object id="341" name="Troll" type="5" x="600" y="408"/>
+  <object id="342" name="Troll" type="5" x="264" y="104"/>
+ </objectgroup>
  <objectgroup name="Collisions">
   <object id="10" x="4" y="280"/>
   <object id="15" x="24" y="280"/>

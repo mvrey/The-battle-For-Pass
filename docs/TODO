@@ -1,10 +1,9 @@
 TODO
 ==========================
 
-- Merchant for potions
-- 2 more maps: passage/cave && fortress of distinction
-- "LOADING..." screen
 - more enemies for new maps
+- Merchant for potions
+- "LOADING..." screen
 - dragon final boss
 - winning the game Scene
 - legend for available actions thru keyboard (e.g. s=spells, b=buy potion)
