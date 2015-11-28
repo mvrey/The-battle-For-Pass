@@ -21,6 +21,8 @@ public:
     void Update();
     void Draw();
     
+    unsigned char frame_;
+    
 private:
 
 };
