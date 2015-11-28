@@ -44,7 +44,11 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   std::string path("assets/raw/");
   static int map_id = 0;
   
+  
   map_id++;
+  if (map_id==7)
+    map_id = 1;
+  
   DrawLoadingScreen(map_id, 0);
   
   //Load battle background
@@ -330,8 +334,8 @@ void Map::DrawLoadingScreen(int map_id, int stage) {
   ESAT::DrawClear(0, 0, 0);
   
   ESAT::DrawSetFillColor(255, 255, 255, 255);
-  ESAT::DrawSetTextSize(25);
-  ESAT::DrawText(500, 300, ("Loading Map "+std::to_string(map_id)+"/6").c_str());
+  ESAT::DrawSetTextSize(30);
+  ESAT::DrawText(550.0f, 300.0f, ("Loading Map "+std::to_string(map_id)+"/6").c_str());
   
   switch(stage) {
     case 0:
@@ -351,7 +355,7 @@ void Map::DrawLoadingScreen(int map_id, int stage) {
       break;
   }
   
-  ESAT::DrawText(500, 450, stage_str.c_str());
+  ESAT::DrawText(550.0f, 450, stage_str.c_str());
   
   ESAT::DrawEnd();
   ESAT::WindowFrame();

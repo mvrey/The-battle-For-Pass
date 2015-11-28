@@ -30,12 +30,12 @@ void Intro::Update() {
 void Intro::Draw() {
   DrawBegin();
   
-  ESAT::DrawSetTextSize(70);
+  ESAT::DrawSetTextSize(90);
   ESAT::DrawSetFillColor(255, 255, 255, 200);
-  ESAT::DrawText(150.0f, 250.0f, "The Battle for Pass");
+  ESAT::DrawText(330.0f, 250.0f, "The Battle for Pass");
   ESAT::DrawSetFillColor(255, 255, 255, frame_);
   ESAT::DrawSetTextSize(30);
-  ESAT::DrawText(450.0f, 350.0f, "Click to continue");
+  ESAT::DrawText(550.0f, 350.0f, "Click to continue");
   
   DrawEnd();
 }

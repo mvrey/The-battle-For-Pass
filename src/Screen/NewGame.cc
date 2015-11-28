@@ -59,21 +59,18 @@ void NewGame::Update() {
         if (race_set && job_set) {
           Manager::getInstance()->screen_ = new Game();
           
-          
-          //LOAD ALL MAPS AND STORE THEM IN AN ARRAY IN THE MANAGER
-          //SO WE CAN STORE POINTERS IN THE PORTALS GRID
           Manager::getInstance()->maps_[0] = new Map();
-//          Manager::getInstance()->maps_[1] = new Map();
-//          Manager::getInstance()->maps_[2] = new Map();
-//          Manager::getInstance()->maps_[3] = new Map();
-//          Manager::getInstance()->maps_[4] = new Map();
-//          Manager::getInstance()->maps_[5] = new Map();
-//          Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[3]->LoadFromFile("cave", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[4]->LoadFromFile("fortress", Manager::getInstance()->maps_);
-          Manager::getInstance()->maps_[0]->LoadFromFile("hall", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[1] = new Map();
+          Manager::getInstance()->maps_[2] = new Map();
+          Manager::getInstance()->maps_[3] = new Map();
+          Manager::getInstance()->maps_[4] = new Map();
+          Manager::getInstance()->maps_[5] = new Map();
+          Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[3]->LoadFromFile("cave", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[4]->LoadFromFile("fortress", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[5]->LoadFromFile("hall", Manager::getInstance()->maps_);
           
           Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];
                   
@@ -150,7 +147,7 @@ void NewGame::Draw() {
       
       //Draw race and job
       std::string profile = Manager::getInstance()->player_->race_->name_ + " - " + Manager::getInstance()->player_->job_->name_;
-      ESAT::DrawText(520.0f, 600.0f, profile.c_str());
+      ESAT::DrawText(550.0f, 600.0f, profile.c_str());
       
       //Draw job image
       ESAT::SpriteHandle desc_img = Manager::getInstance()->player_->job_->description_image_;
@@ -158,7 +155,7 @@ void NewGame::Draw() {
       
       //Draw job description
       
-      DrawTextWithLineBreaks(800.0f, 470.0f, 500, 15.0f, Manager::getInstance()->player_->job_->description_.c_str());
+      DrawTextWithLineBreaks(800.0f, 500.0f, 1000.0f, 22.0f, Manager::getInstance()->player_->job_->description_.c_str());
     }
   }
   

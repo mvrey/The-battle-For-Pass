@@ -150,7 +150,7 @@ void Screen::DrawButtons() {
       ESAT::DrawSpriteWithMatrix(option_buttons_[i].img, transform);
     }
 
-    ESAT::DrawSetTextSize(20);
+    ESAT::DrawSetTextSize(25);
 
     if (option_buttons_[i].text.c_str()) {
       ESAT::DrawText(x+margin, y+2*margin, option_buttons_[i].text.c_str());
@@ -170,8 +170,8 @@ void Screen::InitPoint2(Point2 *p, float x, float y) {
 
 /// @brief  Stablishes initial font settings
 void Screen::InitText() {
-  ESAT::DrawSetTextFont("assets/UI/ca.ttf");
-  ESAT::DrawSetTextSize(35);
+  ESAT::DrawSetTextFont("assets/UI/medieval.ttf");
+  ESAT::DrawSetTextSize(40);
   ESAT::DrawSetFillColor(0, 0, 0);
   ESAT::DrawSetStrokeColor(0, 0, 0);
 }
