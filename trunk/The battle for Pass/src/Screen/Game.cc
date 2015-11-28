@@ -30,9 +30,11 @@ void Game::Input() {
   if (ESAT::IsKeyUp('S')) {
     drawing_stats_ = !drawing_stats_;
   }
-  
   if (ESAT::IsKeyUp('R')) {
     resting_ = true;
+  }
+  if (ESAT::IsKeyUp('B')) {
+    buying_ = true;
   }
   
   if (!drawing_stats_) {
@@ -67,6 +69,9 @@ void Game::Draw() {
   if (drawing_stats_) {
     DrawStats();
   }
+  if (talking_) {
+  DrawDialog();
+  }
   
   DrawEnd();
 }
@@ -77,6 +82,7 @@ void Game::Update() {
   Ally* player = Manager::getInstance()->player_;
   Grid* enemies = Manager::getInstance()->map_->enemies_;
   Grid* portals = Manager::getInstance()->map_->portals_;
+  Grid* npcs = Manager::getInstance()->map_->npcs_;
   
   if (click_ && player->HP_ <= 0) {
     delete Manager::getInstance()->screen_;
@@ -126,11 +132,49 @@ void Game::Update() {
     Manager::getInstance()->map_->last_x_ = player->tile_x;
     Manager::getInstance()->map_->last_y_ = player->tile_y;
   }
+  
+  
+  //Healing potions merchant
+  if (npcs->getElement(player->tile_x, player->tile_y) != nullptr) {
+    talking_ = true;
+    if (buying_) {
+      if (player->gold_ >= 15) {
+        player->gold_ -= 15;
+        player->num_healing_potions_++;
+        buying_ = false;
+        just_failed_bought_ = false;
+        just_bought_ = true;
+      } else  {
+        just_bought_ = false;
+        just_failed_bought_ = true;
+      }
+    }
+  } else {
+    buying_ = false;
+    talking_ = false;
+    just_bought_ = false;
+    just_failed_bought_ = false;
+  }
 }
 
 
 void Game::CreateButtons() {
   num_buttons_ = 0;
+}
+
+
+
+void Game::DrawDialog() {
+  Screen::DrawRectangle(200.0f, 600.0f, 1000.0f, 200.0f, 0x55555599, true);
+  ESAT::DrawSetFillColor(255, 255, 255, 255);
+  ESAT::DrawSetTextSize(18);
+  ESAT::DrawText(240.0f, 660.0f, "You can buy healing potions (15gc each) from me by pressing 'B'");
+  
+  if (just_bought_) {
+    ESAT::DrawText(240.0f, 700.0f, "Thank you for your purchase!");
+  } else if (just_failed_bought_) {
+    ESAT::DrawText(240.0f, 700.0f, "You do not have the required coin!");
+  }
 }
 
 

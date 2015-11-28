@@ -29,11 +29,16 @@ class Game: public Screen {
     void Draw();
     void CreateButtons();
     void DrawStats();
+    void DrawDialog();
     
     Map map_;
     ESAT::SpriteHandle stats_img_;
     bool drawing_stats_ = false;
     bool resting_ = false;
+    bool buying_ = false;
+    bool talking_ = false;
+    bool just_bought_ = false;
+    bool just_failed_bought_ = false;
 
   private:
     

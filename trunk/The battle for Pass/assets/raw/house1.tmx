@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="26" height="15" tilewidth="16" tileheight="16" nextobjectid="107">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="26" height="15" tilewidth="16" tileheight="16" nextobjectid="108">
  <properties>
   <property name="InitX" value="12"/>
   <property name="InitY" value="12"/>
@@ -10,6 +10,9 @@
  </tileset>
  <tileset firstgid="769" name="B-E_HF1R_Interiors_3" tilewidth="16" tileheight="16" tilecount="1024">
   <image source="B-E_HF1R_Interiors_3.png" trans="ffffff" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="1793" name="$Human_HF1_Royalty_4" tilewidth="16" tileheight="16" tilecount="221">
+  <image source="../../../humble_assets/art/High Fantasy Mega Pack/HFMegaPak/Character Spritesheets/$Human_HF1_Royalty_4.png" trans="ffffff" width="210" height="280"/>
  </tileset>
  <layer name="floor" width="26" height="15">
   <data>
@@ -445,9 +448,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1798"/>
+   <tile gid="1799"/>
+   <tile gid="1800"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -471,9 +474,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1811"/>
+   <tile gid="1812"/>
+   <tile gid="1813"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -497,9 +500,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1824"/>
+   <tile gid="1825"/>
+   <tile gid="1826"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -523,9 +526,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1837"/>
+   <tile gid="1838"/>
+   <tile gid="1839"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -900,5 +903,8 @@
   <object id="101" name="Village" type="0" x="216.652" y="231.174"/>
   <object id="103" name="Village" type="0" x="231.261" y="231.043"/>
   <object id="106" name="Village" type="0" x="245.652" y="230.696"/>
+ </objectgroup>
+ <objectgroup name="NPCs">
+  <object id="107" name="Potions Merchant" type="0" x="216" y="88"/>
  </objectgroup>
 </map>
