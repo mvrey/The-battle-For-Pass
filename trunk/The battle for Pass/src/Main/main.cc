@@ -20,7 +20,7 @@
 #include "../../include/Character/Character.h"
 #include "../../include/Character/Ally.h"
 #include "../../include/Character/Friend.h"
-#include "../../include/Character/Foe.h"
+#include "../../include/Enemy/Foe.h"
 #include "../../include/Character/Race.h"
 #include "../../include/Character/Job.h"
 

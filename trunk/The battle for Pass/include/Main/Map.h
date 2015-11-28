@@ -18,10 +18,15 @@
 #include "../../lib/TMXparser/Tmx.h.in"
 #include "../../include/config.h"
 
-#include "../../include/Character/Brown_Asp.h"
-#include "../../include/Character/White_Asp.h"
-#include "../../include/Character/Harpy.h"
-#include "../../include/Character/Skeleton.h"
+#include "../../include/Enemy/Brown_Asp.h"
+#include "../../include/Enemy/White_Asp.h"
+#include "../../include/Enemy/Harpy.h"
+#include "../../include/Enemy/Skeleton.h"
+#include "../../include/Enemy/Torturer.h"
+#include "../../include/Enemy/Troll.h"
+#include "../../include/Enemy/Soldier1.h"
+#include "../../include/Enemy/Soldier2.h"
+#include "../../include/Enemy/Black_Dragon.h"
 
 class Map {
   
