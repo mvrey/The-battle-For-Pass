@@ -66,10 +66,14 @@ void NewGame::Update() {
           Manager::getInstance()->maps_[1] = new Map();
           Manager::getInstance()->maps_[2] = new Map();
           Manager::getInstance()->maps_[3] = new Map();
+          Manager::getInstance()->maps_[4] = new Map();
+          Manager::getInstance()->maps_[5] = new Map();
           Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
           Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
           Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
           Manager::getInstance()->maps_[3]->LoadFromFile("cave", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[4]->LoadFromFile("fortress", Manager::getInstance()->maps_);
+          Manager::getInstance()->maps_[5]->LoadFromFile("hall", Manager::getInstance()->maps_);
           
           Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];
                   
