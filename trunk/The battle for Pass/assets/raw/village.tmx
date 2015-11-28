@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="379">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="383">
  <properties>
   <property name="InitX" value="4"/>
   <property name="InitY" value="15"/>
  </properties>
  <tileset firstgid="1" name="adventuretiles_exterior" tilewidth="16" tileheight="16" tilecount="1620">
   <image source="adventuretiles_exterior.png" trans="ffffff" width="480" height="864"/>
+ </tileset>
+ <tileset firstgid="1621" name="as" tilewidth="16" tileheight="16" tilecount="48">
+  <image source="as.png" trans="ffffff" width="105" height="140"/>
+ </tileset>
+ <tileset firstgid="1669" name="c" tilewidth="16" tileheight="16" tilecount="48">
+  <image source="c.png" trans="ffffff" width="105" height="140"/>
  </tileset>
  <layer name="Ground" width="50" height="30">
   <data>
@@ -2121,9 +2127,9 @@
    <tile gid="1176"/>
    <tile gid="1177"/>
    <tile gid="1178"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1671"/>
+   <tile gid="1672"/>
+   <tile gid="1673"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2171,9 +2177,9 @@
    <tile gid="1206"/>
    <tile gid="1207"/>
    <tile gid="1208"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1677"/>
+   <tile gid="1678"/>
+   <tile gid="1679"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2540,8 +2546,8 @@
    <tile gid="1285"/>
    <tile gid="1286"/>
    <tile gid="1287"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1623"/>
+   <tile gid="1624"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2590,8 +2596,8 @@
    <tile gid="1315"/>
    <tile gid="1316"/>
    <tile gid="1317"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1629"/>
+   <tile gid="1630"/>
    <tile gid="895"/>
    <tile gid="896"/>
    <tile gid="897"/>
@@ -3311,5 +3317,11 @@
   <object id="374" name="Marsh" type="2" x="792" y="236"/>
   <object id="375" name="Marsh" type="2" x="792" y="248"/>
   <object id="376" name="Marsh" type="2" x="792" y="264"/>
+ </objectgroup>
+ <objectgroup name="NPCs">
+  <object id="379" type="1" x="136" y="232"/>
+  <object id="380" type="1" x="152" y="232"/>
+  <object id="381" type="2" x="456" y="344"/>
+  <object id="382" type="2" x="456" y="328"/>
  </objectgroup>
 </map>

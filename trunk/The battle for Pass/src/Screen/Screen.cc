@@ -213,7 +213,7 @@ void Screen::DrawTextWithLineBreaks(float x, float y, int width, int font_size, 
   int num_lines = ceil(txt.length()/(chars_per_line));
   
   for (int i=0; i <= num_lines; i++) {
-    ESAT::DrawText(x, y+(i*font_size), txt.substr (i*chars_per_line, chars_per_line).c_str());
+    ESAT::DrawText(x, y+((i+1)*font_size), txt.substr (i*chars_per_line, chars_per_line).c_str());
   }
 }
 

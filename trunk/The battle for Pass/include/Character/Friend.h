@@ -12,8 +12,12 @@
 class Friend: public Character {
 public:
     Friend();
+    Friend(int type);
     Friend(const Friend& orig);
     virtual ~Friend();
+    
+    int id_;
+    std::string Talk();
 private:
 
 };

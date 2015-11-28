@@ -73,7 +73,7 @@ void Game::Draw() {
     DrawStats();
   }
   if (talking_) {
-  DrawDialog();
+    DrawDialog((Friend*)map->npcs_->getElement(player->tile_x, player->tile_y));
   }
   
   DrawEnd();
@@ -174,16 +174,21 @@ void Game::CreateButtons() {
 
 
 
-void Game::DrawDialog() {
-  Screen::DrawRectangle(200.0f, 600.0f, 1000.0f, 200.0f, 0x55555599, true);
+void Game::DrawDialog(Friend* npc) {
+  Screen::DrawRectangle(100.0f, 600.0f, 1200.0f, 200.0f, 0x55555599, true);
   ESAT::DrawSetFillColor(255, 255, 255, 255);
   ESAT::DrawSetTextSize(18);
-  ESAT::DrawText(240.0f, 660.0f, "You can buy healing potions (15gc each) from me by pressing 'B'");
   
-  if (just_bought_) {
-    ESAT::DrawText(240.0f, 700.0f, "Thank you for your purchase!");
-  } else if (just_failed_bought_) {
-    ESAT::DrawText(240.0f, 700.0f, "You do not have the required coin!");
+  if (npc->id_ == 0) {
+    ESAT::DrawText(120.0f, 660.0f, "You can buy healing potions (15gc each) from me by pressing 'B'");
+    
+    if (just_bought_) {
+      ESAT::DrawText(120.0f, 700.0f, "Thank you for your purchase!");
+    } else if (just_failed_bought_) {
+      ESAT::DrawText(120.0f, 700.0f, "You do not have the required coin!");
+    }
+  } else {
+    Screen::DrawTextWithLineBreaks(120.0f , 620.0f, 2700.0f, 20, npc->Talk());
   }
 }
 

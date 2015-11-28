@@ -265,8 +265,9 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
         enemy->LoadImages();
         enemies_->setElement(tile_x, tile_y, enemy);
       } else if (objectGroup->GetName() == "NPCs") {
-        //Assign grid value to this object's pointer (Since it won't cause a segfault)
-        npcs_->setElement(tile_x, tile_y, this);
+        //Create a new npc and put it in the grid
+        Friend* npc = new Friend(atoi(object->GetType().c_str()));
+        npcs_->setElement(tile_x, tile_y, npc);
       }
       
     }

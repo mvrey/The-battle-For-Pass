@@ -19,6 +19,7 @@
 #include "../../lib/TMXparser/Tmx.h.in"
 #include "../../include/config.h"
 
+#include "../../include/Character/Friend.h"
 #include "../../include/Enemy/Brown_Asp.h"
 #include "../../include/Enemy/White_Asp.h"
 #include "../../include/Enemy/Harpy.h"
