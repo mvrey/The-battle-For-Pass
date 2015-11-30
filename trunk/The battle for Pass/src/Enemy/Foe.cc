@@ -17,13 +17,10 @@ Foe::Foe(const Foe& orig) {
 Foe::~Foe() {
 }
 
-/** @brief
+/** @brief Loads images of an enemy
  *
+ *  Loads battler image from disk, using the path assets/enemy/<name>battler.png
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void Foe::LoadImages() {
   //Load battler image

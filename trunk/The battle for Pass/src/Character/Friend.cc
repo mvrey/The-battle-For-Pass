@@ -18,13 +18,10 @@ Friend::Friend(const Friend& orig) {
 Friend::~Friend() {
 }
 
-/** @brief
+/** @brief Makes an npc talk
+ *  Acts as a factory using the id_ of the current instance
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  @return std::string with the conversation of this npc
  */
 std::string Friend::Talk() {
   std::string speech;

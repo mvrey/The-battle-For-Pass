@@ -8,14 +8,7 @@
 
 #include "../../include/Character/Boss.h"
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Sets variables and loads job/profession image for the Boss/Aristocrat
 Boss::Boss() {
   id_ = 0;
   name_ = "Aristocrat";

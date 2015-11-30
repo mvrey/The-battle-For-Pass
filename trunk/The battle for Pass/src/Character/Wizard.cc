@@ -8,14 +8,7 @@
 
 #include "../../include/Character/Wizard.h"
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Sets variables and loads job/profession image for the Wizard
 Wizard::Wizard() {
   id_ = 3;
   name_ = "Wizard";

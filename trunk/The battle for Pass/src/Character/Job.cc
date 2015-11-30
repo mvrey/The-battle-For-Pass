@@ -20,13 +20,11 @@ Job::~Job() {
   ESAT::SpriteRelease(description_image_);
 }
 
-/** @brief
+/** @brief Loads images for the current job, given a character race
  *
+ *  Loads images regarding faces and busts/battlers from assets/character/<race_name>/
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @param race The race whose name will be used to construct the files path
  */
 void Job::LoadImages(Race* race) {
   std::string face_path, bust_path;

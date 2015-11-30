@@ -29,14 +29,7 @@ Race::~Race() {
   }
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Loads job images for the current race
 void Race::LoadImages() {
   Job::LoadImages(this);
 }

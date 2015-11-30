@@ -8,14 +8,7 @@
 
 #include "../../include/Character/Hunter.h"
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Sets variables and loads job/profession image for the Hunter
 Hunter::Hunter() {
   id_ = 1;
   name_ = "Hunter";
