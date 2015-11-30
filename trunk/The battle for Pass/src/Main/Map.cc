@@ -8,14 +8,7 @@
 #include "../../include/Main/Map.h"
 #include "ESAT/draw.h"
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Sets variables to 0
 Map::Map() {
   tile_width_ = 0;
   tile_height_ = 0;
@@ -29,13 +22,9 @@ Map::Map() {
 Map::Map(const Map& orig) {
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
+/** @brief Deletes a Map.
+ *  Calls destructors for Grids of objects (enemies, collisions, portals and npcs).
+ *  Releases sprites for the tiles in the map.
  */
 Map::~Map() {
   printf("MAP IS BEING DELETED\n");
@@ -56,13 +45,31 @@ Map::~Map() {
   free(*tiles_);
 }
 
-/** @brief
+/** @brief Loads a map from file
  *
+ *  Loads a map written in tmx format. It supports multiple tileset files,
+ *  as long as they use the same tile width&height.
  *
+ *  It also supports object layers with the following names: 
+ *  Collisions -> Marks tiles that cannot be walked
+ *  Enemies -> Marks the position of enemies. The enemy id is fetched through the "type" property
+ *  Portals -> Marks tiles that lead to another map. The map id is fetched through the "type" property
+ *  NPCs -> Marks tiles where an NPC can be interacted with. The NPC id is fetched through the "type" property
  *
- *  @return
- *  @param
- *  @param
+ *  Object layers are stored in the Map's Grid variables with the same name.
+ *  Objects must be specified as an entity spawning in a single tile.
+ *  It DOES NOT support polylines or shapes spawning through several tiles.
+ *
+ *  Each map MUST have a InitX & InitY property, indicating the player spawn tile.
+ *  Optionally, a map can specify a "PlayerScale" property for scaling the player's sprite.
+ *
+ *  Upon parsing, each tile is stored as a SpriteHandle with a Mat3 transform.
+ *
+ *  @return int Returns 0 if everything went ok, or an error code otherwise.
+ *  @param  filename std::string indicating the <filename>.tmx where the map is stored
+            Maps are fetched from assets/raw/<filename>.tmx
+ *  @param  maps The array of currently defined maps. Any other map the current map
+            leads to (has a portal linking it) must be already defined here.
  */
 int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   //Tileset dimensions
@@ -313,13 +320,10 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   return 0;
 }
 
-/** @brief
+/** @brief Selects a random enemy for this map
+ *  Uses enemies_pool_ to select a random enemy_id and returns a new Foe* object
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  @return Foe* The newly created enemy
  */
 Foe* Map::SelectRandomEnemy() {
   
@@ -332,13 +336,11 @@ Foe* Map::SelectRandomEnemy() {
   return enemy;
 }
 
-/** @brief
+/** @brief Returns an enemy using its id
+ *  Acts as a factory, creating an returning a new enemy
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  @return Foe* A new enemy
+ *  @param n integer representing the enemy id
  */
 Foe* Map::GetEnemy(int n) {
   Foe* enemy;
@@ -376,13 +378,11 @@ Foe* Map::GetEnemy(int n) {
   return enemy;
 }
 
-/** @brief
+/** @brief Draws a loading screen indicating the map loading progress
+ *  Indicates both the map being loaded and the current stage of the loading process
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  @param map_id The number to be shown
+ *  @param stage An id for the method to decide which string to print
  */
 void Map::DrawLoadingScreen(int map_id, int stage) {
   std::string stage_str;

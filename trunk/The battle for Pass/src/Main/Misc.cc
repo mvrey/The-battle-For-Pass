@@ -19,13 +19,16 @@ Misc::Misc(const Misc& orig) {
 Misc::~Misc() {
 }
 
-/** @brief
+/** @brief Extracts a part of an image
+ *  This method scans an image pixel by pixel, creates a memory map of the pixels
+ *  and composes a new image using a subset of it.
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  @return ESAT::SpriteHandle The resulting sub-image
+ *  @param ESAT::SpriteHandle A big image to be trimmed
+ *  @param x Starting X pixel (top left)
+ *  @param y Starting Y pixel (top left)
+ *  @param width Number of pixels wide of the new image
+ *  @param height Number of pixels height of the new image
  */
 ESAT::SpriteHandle Misc::GetSubImage(ESAT::SpriteHandle img, int x, int y, int width, int height) {
   //Iterate through every single pixel and add it to a pixel buffer

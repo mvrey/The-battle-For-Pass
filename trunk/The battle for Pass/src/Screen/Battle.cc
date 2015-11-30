@@ -7,14 +7,7 @@
 
 #include "../../include/Screen/Battle.h"
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Starts a battle and calls Battle::Init()
 Battle::Battle() {
   log_ = " ";
   is_over_ = false;
@@ -22,14 +15,7 @@ Battle::Battle() {
   Init();
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Starts a new Battle, setting an enemy, and calls Battle::Init()
 Battle::Battle(Foe* enemy) {
   enemy_ = enemy;
   log_ = " ";
@@ -44,13 +30,8 @@ Battle::~Battle() {
   delete enemy_;
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
+/** @brief Initializes battle sprites
+ *  It also saves the current player stats to be restored when the battle ends
  */
 void Battle::Init() {
   printf("initializing battle\n");
@@ -62,14 +43,7 @@ void Battle::Init() {
   original_defense_ = Manager::getInstance()->player_->defense_;
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Detects mouse click & 'S' for showing/hiding spells window
 void Battle::Input() {
   click_ = ESAT::MouseButtonUp(0);
   if (ESAT::IsKeyDown('S')) {
@@ -77,13 +51,10 @@ void Battle::Input() {
   }  
 }
 
-/** @brief
+/** @brief Updates Battle status
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  Controls buttons clicking and performs actions.
+ *  It also leads to Game, GameOver or GameWon appropiately.
  */
 void Battle::Update() {
   Ally* player = Manager::getInstance()->player_;
@@ -199,6 +170,7 @@ void Battle::Draw() {
 }
 
 
+/// @brief Creates Battle & Spells buttons
 void Battle::CreateButtons() {
   Ally* player = Manager::getInstance()->player_;
   num_buttons_ = 0;
@@ -215,13 +187,10 @@ void Battle::CreateButtons() {
   }
 }
 
-/** @brief
+/** @brief Draws the Battle Log
  *
+ *  Prints one line per every '\n' found in the log
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void Battle::DrawLog() {
   int text_size = 15;
@@ -245,29 +214,19 @@ void Battle::DrawLog() {
   }
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Erases log content if it has more than 10 lines
 void Battle::CheckLogLength() {
   int log_lines = std::count(log_.begin(), log_.end(), '\n') + 0;
   
-  if (log_lines == 10) {
+  if (log_lines >= 10) {
     log_ = "";
   }
 }
 
-/** @brief
+/** @brief Checks if a battle has ended
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  Checks if any of the sides has HP<=0. If so, updates the log, 
+ *  sets is_over_=true & updates sprites.
  */
 void Battle::CheckResult() {
   if (Manager::getInstance()->player_->HP_ <= 0) {
@@ -282,13 +241,13 @@ void Battle::CheckResult() {
   }
 }
 
-/** @brief
+/** @brief Calculates a battle round
  *
+ *  Updates contenders stats making them attack each other and updates the log.
+ *  If the player has won, it updates their xp & gold
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @param player_attacks If false, only the enemy attacks the player, and not 
+ *  the other way around.
  */
 void Battle::Fight(bool player_attacks) {
   Ally* player = Manager::getInstance()->player_;
@@ -321,13 +280,11 @@ void Battle::Fight(bool player_attacks) {
   }
 }
 
-/** @brief
+/** @brief Makes the player try to run away from battle
  *
+ *  It has a 30% chance of the enemy attacking the player and updating the log.
+ *  It has a 70% chance of ending the battle and returning to the Game.
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void Battle::Flee() {
   if (Misc::random(100) < 30) {
@@ -343,14 +300,7 @@ void Battle::Flee() {
   }
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Draws the spells background, spell sprites and current spell description
 void Battle::DrawSpells() {
   Ally* player = Manager::getInstance()->player_;
   int base_x = 380;

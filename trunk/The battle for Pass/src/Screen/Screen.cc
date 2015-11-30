@@ -10,14 +10,7 @@
 const int kWindowWidth = 1366;
 const int kWindowHeight = 768;
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Creates a screen and loads its sprites
 Screen::Screen() {
     cursor_sprite_ = ESAT::SpriteFromFile("assets/UI/Crosshair_02.png");
     background_ = ESAT::SpriteFromFile("assets/background/main_background.png");
@@ -44,14 +37,11 @@ void Screen::Init() {
   CreateButtons();
 }
 
-/// @brief  Common drawn elements and functions called in every screen
-/** @brief
+/** @brief  Common drawn elements and functions called in every screen
  *
+ *  This method must be called at the start of every Draw cycle.
+ *  Draws screen background.
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void Screen::DrawBegin() {
   ESAT::DrawBegin();
@@ -67,14 +57,11 @@ void Screen::DrawBegin() {
   DrawButtons();
 }
 
-/// @brief  Common finishing drawing functions called in every screen
-/** @brief
+/** @brief Common finishing drawing functions called in every screen
  *
+ *  This method must be called at the start of every Draw cycle.
+ *  Draws cursor sprite and updates screen to the next frame.
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void Screen::DrawEnd() {
   DrawCursor();
@@ -82,38 +69,18 @@ void Screen::DrawEnd() {
   ESAT::WindowFrame();
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Detects mouse click
 void Screen::Input() {
   click_ = ESAT::MouseButtonUp(0);
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
+/** @brief Updates the screen
  */
 void Screen::Update() {
 
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Draws the screen
 void Screen::Draw() {
   DrawBegin();
   
@@ -122,26 +89,14 @@ void Screen::Draw() {
   DrawEnd();
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
+/** @brief Draws the cursor
+ *  Draws the sprite cursor_sprite_ on the mouse coordinates
  */
 void Screen::DrawCursor() {
   ESAT::DrawSprite(cursor_sprite_, (float)ESAT::MousePositionX(), (float)ESAT::MousePositionY());
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Creates buttons for the current screen
 void Screen::CreateButtons() {
   num_buttons_ = 0;
   
@@ -289,14 +244,7 @@ void Screen::DrawTextWithLineBreaks(float x, float y, int width, int font_size, 
   }
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+
 void Screen::DrawRectangle(float x, float y, int width, int height, int color, bool faces_right) {
     
   if (!faces_right) {

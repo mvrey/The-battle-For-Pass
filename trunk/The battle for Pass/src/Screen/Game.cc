@@ -20,26 +20,19 @@ Game::~Game() {
   ESAT::SpriteRelease(stats_img_);
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Creates buttons and loads stats background
 void Game::Init() {
   CreateButtons();
   stats_img_ = ESAT::SpriteFromFile("assets/raw/stats.png");
 }
 
-/** @brief
+/** @brief Detects game input
  *
+ *  Detects mouse click and pressing 'S'(stats), 'R'(rest), 'B'(buy) and ESC(exit).
+ *  Updates the status boolean variables indicating the current status.
  *
- *
- *  @return
- *  @param
- *  @param
+ *  If arrow keys are being pressed, checks for collision objects and 
+ *  moves the player towards that direction if there's none.
  */
 void Game::Input() {
   click_ = ESAT::MouseButtonUp(0);
@@ -71,13 +64,14 @@ void Game::Input() {
   }
 }
 
-/** @brief
+/** @brief Draws the game screen
  *
+ *  Draws the current map as set in the Manager.
+ *  Draws the player sprite in its current position.
+ *  Draws actions legend in the top left corner.
+ *  If the drawing_stats_ flag is set to true, draws player stats.
+ *  If the talking_ flag is set to true, draws NPC dialog for the player's current tile.
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void Game::Draw() {
   DrawBegin();
@@ -113,14 +107,13 @@ void Game::Draw() {
 }
 
 
-/// @brief  Updates main menu status
-/** @brief
+/** @brief Updates game status
  *
+ *  Leads to GameOver screens if the player's HP<=0.
+ *  Leads to MainMenu if the flag exit_ is set to true and mouse is clicked.
+ *  If the player is resting, randomly calculñates if he's either attacked or recovers stats.
+ *  Sets flags for battle starting && npc talking by checking current maps's grids.
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void Game::Update() {
   Ally* player = Manager::getInstance()->player_;
@@ -218,14 +211,12 @@ void Game::CreateButtons() {
 }
 
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/** @brief Draws a dialog for a given npc
+  * If the npc is type 0 (potions merchant), uses the just_bought_ and 
+  * just_failed_bought_ flags to choose which line to show after the intro.
+  *
+  * @param npc The npc the dialog will be fetched from
+**/
 void Game::DrawDialog(Friend* npc) {
   Screen::DrawRectangle(100.0f, 600.0f, 1200.0f, 200.0f, 0x55555599, true);
   ESAT::DrawSetFillColor(255, 255, 255, 255);
@@ -244,13 +235,10 @@ void Game::DrawDialog(Friend* npc) {
   }
 }
 
-/** @brief
+/** @brief Draws player stats
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  Draws xp, HP, MP, attack, defense, num_potions & gold over the stats background.
+ *  It also draws the player's face and displays its name.
  */
 void Game::DrawStats() {
   Ally* player = Manager::getInstance()->player_;

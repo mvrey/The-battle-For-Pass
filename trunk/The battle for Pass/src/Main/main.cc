@@ -53,6 +53,7 @@ int ESAT::main(int argc, char **argv) {
 
   ESAT::WindowInit(kWindowWidth, kWindowHeight);
   
+  //GameLoop
   while (ESAT::WindowIsOpened() && !Manager::getInstance()->quit_game_) {
     Manager::getInstance()->screen_->Input();
     Manager::getInstance()->screen_->Update();
