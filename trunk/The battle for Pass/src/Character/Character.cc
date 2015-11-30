@@ -10,6 +10,14 @@
 
 #include "../../include/Character/Character.h"
 
+/** @brief 
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Character::Character() {
   inventory_ = nullptr;
   race_ = nullptr;
@@ -29,6 +37,14 @@ Character::Character() {
 Character::Character(const Character& orig) {
 }
 
+/** @brief 
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Character::~Character() {
   delete race_;
   delete job_;
@@ -49,6 +65,14 @@ Character::~Character() {
   dead_sprite_ = nullptr;
 }
 
+/** @brief 
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Character::LoadImages() {
   int side =70;
   
@@ -87,7 +111,14 @@ void Character::LoadImages() {
   dead_sprite_ = Misc::GetSubImage(dead_sprite_, 80, side*2, side, side);
 }
 
-
+/** @brief 
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 bool Character::Move(int direction, Grid* collisions) {
   moving_ = true;
   
@@ -124,7 +155,14 @@ bool Character::Move(int direction, Grid* collisions) {
   return false;
 }
 
-
+/** @brief 
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Character::Stop() {
   moving_ = false;
   moving_right_ = false;
@@ -132,12 +170,18 @@ void Character::Stop() {
   moving_up_ = false;
   moving_down_ = false;
   //Fix floating point accumulated inaccuracies
-  x = round(x);
-  y = round(y);
+  x_ = round(x_);
+  y_ = round(y_);
 }
 
-
-//Updates character animation
+/** @brief  Updates character animation
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Character::Update(int tile_width, int tile_height) {
   int anim_frame;
   
@@ -145,32 +189,39 @@ void Character::Update(int tile_width, int tile_height) {
     if (moving_up_) {
       current_sprite_ = animation_north_->frames_[animation_north_->current_frame_];
        anim_frame = animation_north_->NextFrame();
-       y -= (float)tile_height / 8;
+       y_ -= (float)tile_height / 8;
     } else if (moving_right_) {
       current_sprite_ = animation_east_->frames_[animation_east_->current_frame_];
       anim_frame = animation_east_->NextFrame();
-      x += (float)tile_width / 8;
+      x_ += (float)tile_width / 8;
     } else if (moving_down_) {
       current_sprite_ = animation_south_->frames_[animation_south_->current_frame_];
       anim_frame = animation_south_->NextFrame();
-      y += (float)tile_height / 8;
+      y_ += (float)tile_height / 8;
     } else if (moving_left_) {
       current_sprite_ = animation_west_->frames_[animation_west_->current_frame_];
       anim_frame = animation_west_->NextFrame();
-      x -= (float)tile_width / 8;
+      x_ -= (float)tile_width / 8;
     }
 
     //Stop animation if it does a full loop
     if (anim_frame == 0 && moving_) {
       Stop();
-      tile_x = x/tile_width + 1;
-      tile_y = y/tile_height - 1;
+      tile_x = x_/tile_width + 1;
+      tile_y = y_/tile_height - 1;
       printf("Character is now at %d, %d\n", tile_x, tile_y);
     }
   }
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Character::ResetStatsToRace() {
   HP_ = race_->HP_;
   MP_ = race_->MP_;
@@ -178,11 +229,26 @@ void Character::ResetStatsToRace() {
   defense_ = race_->defense_;
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Character::SetNextLevelXP() {
   next_level_xp_ = 20 * (level_ * 0.6); 
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Character::LevelUp() {
   level_++;
   max_HP_ *= 1.1;

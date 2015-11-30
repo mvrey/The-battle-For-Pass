@@ -3,6 +3,8 @@
  * Author: Marcos Vazquez
  *
  * Created on November 28, 2015, 1:01 PM
+ * 
+ * This is intended to act as the final boss of the game.
  */
 
 #ifndef BLACK_DRAGON_H

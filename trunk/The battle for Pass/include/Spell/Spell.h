@@ -5,11 +5,12 @@
  */
 
 #ifndef SPELL_H
-#define SPELL_H
+#define SPELL_H 1
 
+#include <string>
 #include <ESAT/sprite.h>
 #include "../../include/Character/Character.h"
-#include <string>
+
 
 class Spell {
 public:

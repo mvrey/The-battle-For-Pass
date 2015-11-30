@@ -7,9 +7,8 @@
 #ifndef WARRIOR_H
 #define WARRIOR_H 1
 
-#include <ESAT/sprite.h>
-
 #include <string>
+#include <ESAT/sprite.h>
 #include "Job.h"
 
 class Warrior: public Job {
@@ -17,8 +16,6 @@ public:
   Warrior();
   Warrior(const Warrior& orig);
   virtual ~Warrior();
-  void Init();
-  static void LoadImage(Race* race);
   
 private:
   

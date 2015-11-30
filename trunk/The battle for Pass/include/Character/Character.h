@@ -46,7 +46,7 @@ class Character {
     int gold_;
     
     //position on the current map
-    float x,y;
+    float x_,y_;
     int tile_x, tile_y;
     
     Inventory* inventory_;

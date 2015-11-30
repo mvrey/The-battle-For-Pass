@@ -5,7 +5,7 @@
  */
 
 #ifndef HUMAN_H
-#define HUMAN_H
+#define HUMAN_H 1
 
 #include "Race.h"
 

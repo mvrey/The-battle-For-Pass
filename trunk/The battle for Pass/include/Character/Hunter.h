@@ -7,9 +7,8 @@
 #ifndef HUNTER_H
 #define HUNTER_H 1
 
-#include <ESAT/sprite.h>
-
 #include <string>
+#include <ESAT/sprite.h>
 #include "Job.h"
 
 class Hunter: public Job {
@@ -17,8 +16,6 @@ public:
   Hunter();
   Hunter(const Hunter& orig);
   virtual ~Hunter();
-  void Init();
-  static void LoadImage(Race* race);
   
 private:
   

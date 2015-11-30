@@ -5,7 +5,7 @@
  */
 
 #ifndef FIRESWORD_H
-#define FIRESWORD_H
+#define FIRESWORD_H 1
 
 #include "Spell.h"
 

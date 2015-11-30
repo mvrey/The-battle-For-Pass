@@ -6,10 +6,9 @@
  */
 
 #ifndef NEWGAME_H
-#define NEWGAME_H
+#define NEWGAME_H 1
 
 #include "ESAT/sprite.h"
-
 #include "Screen.h"
 #include "MainMenu.h"
 #include "Game.h"

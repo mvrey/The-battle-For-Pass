@@ -8,13 +8,13 @@
 #ifndef SCREEN_H
 #define SCREEN_H 1
 
+#include <math.h>
+#include <stdlib.h>
+#include <string>
 #include <ESAT/window.h>
 #include <ESAT/draw.h>
 #include <ESAT/sprite.h>
-#include <ESAT/input.h>
-#include <stdlib.h>
-#include <string>
-#include <math.h> 
+#include <ESAT/input.h> 
 
 class Screen {
 public:

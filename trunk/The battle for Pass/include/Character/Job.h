@@ -7,9 +7,9 @@
 #ifndef JOB_H
 #define JOB_H 1
 
-#include <ESAT/sprite.h>
 #include <stdlib.h>
 #include <string>
+#include <ESAT/sprite.h>
 #include "Race.h"
 
 class Job {

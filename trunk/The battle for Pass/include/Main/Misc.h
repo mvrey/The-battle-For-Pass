@@ -11,11 +11,11 @@
 #ifndef MISC_H
 #define MISC_H 1
 
-#include <ESAT/sprite.h>
 #include <stdio.h>
 #include <math.h>
 #include <vector>
 #include <cstdlib>
+#include <ESAT/sprite.h>
 #include "../../include/config.h"
 
 

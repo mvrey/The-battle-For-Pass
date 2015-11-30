@@ -5,7 +5,7 @@
  */
 
 #ifndef FRIEND_H
-#define FRIEND_H
+#define FRIEND_H 1
 
 #include "Character.h"
 
@@ -15,9 +15,10 @@ public:
     Friend(int type);
     Friend(const Friend& orig);
     virtual ~Friend();
+    std::string Talk();
     
     int id_;
-    std::string Talk();
+    
 private:
 
 };

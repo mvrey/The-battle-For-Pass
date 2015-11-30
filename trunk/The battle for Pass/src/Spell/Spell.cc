@@ -18,6 +18,14 @@ Spell::~Spell() {
   ESAT::SpriteRelease(img_);
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 bool Spell::Cast(Character* player, Character* enemy) {
   return false;
 }

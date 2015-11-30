@@ -5,7 +5,7 @@
  */
 
 #ifndef HEAL_H
-#define HEAL_H
+#define HEAL_H 1
 
 #include "Spell.h"
 

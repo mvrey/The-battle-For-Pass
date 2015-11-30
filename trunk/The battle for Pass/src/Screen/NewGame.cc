@@ -22,7 +22,14 @@ NewGame::~NewGame() {
   ESAT::SpriteRelease(orc_sprite);
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void NewGame::Init() {
   dwarf_sprite = ESAT::SpriteFromFile("assets/character/dwarf/dwarf.png");
   elf_sprite = ESAT::SpriteFromFile("assets/character/elf/elf.png");
@@ -40,6 +47,14 @@ void NewGame::Init() {
   CreateButtons();
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void NewGame::Update() {
   char key;
   
@@ -82,8 +97,8 @@ void NewGame::Update() {
           //Set a default map position
           player->tile_x = Manager::getInstance()->map_->init_x_;
           player->tile_y = Manager::getInstance()->map_->init_y_;
-          player->x = player->tile_x * tile_width - tile_width/2;
-          player->y = (player->tile_y+1) * tile_height;
+          player->x_ = player->tile_x * tile_width - tile_width/2;
+          player->y_ = (player->tile_y+1) * tile_height;
         }}
         break;
       case 1:
@@ -117,6 +132,14 @@ void NewGame::Update() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void NewGame::Draw() {
   DrawBegin();
   
@@ -163,7 +186,14 @@ void NewGame::Draw() {
   DrawEnd();
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void NewGame::createPlayer(std::string race_name) {
   
   
@@ -207,6 +237,14 @@ void NewGame::createPlayer(std::string race_name) {
   race_set = true;
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void NewGame::selectJob(int job_id) {
   Ally* player = Manager::getInstance()->player_;
   
@@ -274,6 +312,14 @@ void NewGame::selectJob(int job_id) {
   job_set = true;
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void NewGame::CreateButtons() {
   num_buttons_ = 0;
   float box_side = 90.0f;
@@ -298,6 +344,14 @@ void NewGame::CreateButtons() {
   
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void NewGame::DrawPlayerStats() {
   int multiplier = 4;
   

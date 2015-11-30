@@ -8,6 +8,14 @@
 
 #include "../../include/Character/Wizard.h"
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Wizard::Wizard() {
   id_ = 3;
   name_ = "Wizard";
@@ -22,12 +30,4 @@ Wizard::Wizard(const Wizard& orig) {
 }
 
 Wizard::~Wizard() {
-  Init();
-}
-
-void Wizard::Init() {
-}
-
-
-void Wizard::LoadImage(Race* race) {
 }

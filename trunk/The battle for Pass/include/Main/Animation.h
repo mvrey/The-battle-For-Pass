@@ -11,8 +11,8 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H 1
 
-#include <ESAT/sprite.h>
 #include <string>
+#include <ESAT/sprite.h>
 #include "../../include/Main/Misc.h"
 
 class Animation {

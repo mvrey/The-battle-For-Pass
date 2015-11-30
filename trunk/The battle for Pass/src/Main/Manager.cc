@@ -4,7 +4,7 @@
  * Created on November 9, 2015, 12:34 PM
  *
  * File:   Manager.cc                                               
- * A class that holds all global variables used throughout the game 
+ * A singleton class that holds all global variables used throughout the game 
  * or needed by various different classes
  *
  */
@@ -15,6 +15,14 @@
 Manager* Manager::instance_ = nullptr;
 
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Manager::Manager() {
   screen_id_ = kScreen_Intro;
   screen_ = new Intro();
@@ -25,9 +33,16 @@ Manager::Manager() {
 Manager::Manager(const Manager& orig) {
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Manager::~Manager() {
   delete screen_;
-//  delete map_;
   delete player_;
 
   for (int i=0; i<kNumMaps; i++) {
@@ -36,6 +51,14 @@ Manager::~Manager() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Manager* Manager::getInstance() {
   if(!instance_) {
       instance_ = new Manager();
@@ -44,6 +67,14 @@ Manager* Manager::getInstance() {
   return instance_;
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Manager::Reset() {
   delete instance_;
   instance_ = nullptr;

@@ -8,6 +8,14 @@
 
 #include "../../include/Character/Boss.h"
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Boss::Boss() {
   id_ = 0;
   name_ = "Aristocrat";
@@ -24,12 +32,4 @@ Boss::Boss(const Boss& orig) {
 }
 
 Boss::~Boss() {
-  Init();
-}
-
-void Boss::Init() {
-}
-
-
-void Boss::LoadImage(Race* race) {
 }
