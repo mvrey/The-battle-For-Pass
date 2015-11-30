@@ -11,6 +11,7 @@
 //window size
 const int kWindowWidth = 1366;
 const int kWindowHeight = 768;
+const int kNumMaps = 2;
 
 #endif /* CONFIG_H */
 

@@ -30,7 +30,7 @@ Manager::~Manager() {
 //  delete map_;
   delete player_;
 
-  for (int i=0; i<2; i++) {
+  for (int i=0; i<kNumMaps; i++) {
     delete maps_[i];
     maps_[i] = nullptr;
   }

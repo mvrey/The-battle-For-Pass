@@ -25,6 +25,7 @@ void GameOver::Input() {
 void GameOver::Update() {
   if (click_) {
     Manager::Reset();
+    Manager::getInstance()->screen_ = new MainMenu();
   }
 }
 
