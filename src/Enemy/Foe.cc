@@ -17,8 +17,15 @@ Foe::Foe(const Foe& orig) {
 Foe::~Foe() {
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Foe::LoadImages() {
-  
   //Load battler image
   std::replace( name_.begin(), name_.end(), ' ', '_');
   std::string path = "assets/enemy/"+name_+"/battler.png";

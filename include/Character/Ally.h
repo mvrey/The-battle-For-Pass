@@ -2,6 +2,8 @@
  * 
  * Author: Marcos Vazquez <vazquezre@esat-alumni.es>  
  * Created on November 9, 2015, 12:06 PM
+ * 
+ * A class representing a playable character
  */
 
 #ifndef ALLY_H
@@ -19,6 +21,7 @@ public:
     Ally(const Ally& orig);
     virtual ~Ally();
     void SetBaseStats();
+    void Init();
     
     Spell* spells_[10];
     int num_spells_ = 0;

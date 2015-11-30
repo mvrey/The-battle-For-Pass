@@ -11,13 +11,12 @@
 #ifndef MAP_H
 #define MAP_H 1
 
-#include <ESAT/sprite.h>
-#include <ESAT/window.h>
 #include <stdio.h>
 #include <math.h>
+#include <ESAT/sprite.h>
+#include <ESAT/window.h>
 #include "../../include/Main/Grid.h"
 #include "../../lib/TMXparser/Tmx.h.in"
-#include "../../include/config.h"
 
 #include "../../include/Character/Friend.h"
 #include "../../include/Enemy/Brown_Asp.h"
@@ -29,6 +28,7 @@
 #include "../../include/Enemy/Soldier1.h"
 #include "../../include/Enemy/Soldier2.h"
 #include "../../include/Enemy/Black_Dragon.h"
+#include "../../include/config.h"
 
 class Map {
   

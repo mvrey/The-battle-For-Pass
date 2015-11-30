@@ -16,6 +16,14 @@ Animation::Animation() {
 Animation::Animation(const Animation& orig) {
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Animation::~Animation() {
   for (int i=0; i<num_frames_; i++) {
     if (frames_[i] != nullptr)
@@ -26,6 +34,14 @@ Animation::~Animation() {
   free(*frames_);
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Animation::LoadFromFile(std::string path, int rows, int columns, float width, 
                         float height, float offsetX, float offsetY) {
 
@@ -42,7 +58,14 @@ void Animation::LoadFromFile(std::string path, int rows, int columns, float widt
   current_frame_ = 0;
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 int Animation::NextFrame() {
   current_frame_++;
   

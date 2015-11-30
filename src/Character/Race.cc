@@ -27,10 +27,16 @@ Race::~Race() {
     face_imgs_[i] = nullptr;
     bust_imgs_[i] = nullptr;
   }
-//  free(face_imgs_);
-//  free(bust_imgs_);
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Race::LoadImages() {
   Job::LoadImages(this);
 }

@@ -7,10 +7,9 @@
 #ifndef RACE_H
 #define RACE_H 1
 
-#include <ESAT/sprite.h>
 #include <stdlib.h>
 #include <string>
-
+#include <ESAT/sprite.h>
 
 class Race {
 public:

@@ -7,6 +7,14 @@
 
 #include "../../include/Screen/Intro.h"
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Intro::Intro() {
   num_buttons_ = 0;
   frame_ = 0;

@@ -5,7 +5,7 @@
  */
 
 #ifndef BLIZZARD_H
-#define BLIZZARD_H
+#define BLIZZARD_H 1
 
 #include "Spell.h"
 

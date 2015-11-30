@@ -8,6 +8,14 @@
 
 #include "../../include/Character/Hunter.h"
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Hunter::Hunter() {
   id_ = 1;
   name_ = "Hunter";
@@ -22,12 +30,4 @@ Hunter::Hunter(const Hunter& orig) {
 }
 
 Hunter::~Hunter() {
-  Init();
-}
-
-void Hunter::Init() {
-}
-
-
-void Hunter::LoadImage(Race* race) {
 }

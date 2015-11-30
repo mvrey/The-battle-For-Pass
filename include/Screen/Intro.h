@@ -6,7 +6,7 @@
  */
 
 #ifndef INTRO_H
-#define INTRO_H
+#define INTRO_H 1
 
 #include "Screen.h"
 #include "MainMenu.h"

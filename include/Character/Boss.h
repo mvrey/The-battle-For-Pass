@@ -7,9 +7,8 @@
 #ifndef BOSS_H
 #define BOSS_H 1
 
-#include <ESAT/sprite.h>
-
 #include <string>
+#include <ESAT/sprite.h>
 #include "Job.h"
 
 class Boss: public Job {
@@ -17,8 +16,6 @@ public:
   Boss();
   Boss(const Boss& orig);
   virtual ~Boss();
-  void Init();
-  static void LoadImage(Race* race);
   
 private:
   

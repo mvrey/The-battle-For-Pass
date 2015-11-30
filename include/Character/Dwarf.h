@@ -5,7 +5,7 @@
  */
 
 #ifndef DWARF_H
-#define DWARF_H
+#define DWARF_H 1
 
 #include "Race.h"
 

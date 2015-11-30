@@ -6,7 +6,7 @@
  */
 
 #ifndef OPTIONSMENU_H
-#define OPTIONSMENU_H
+#define OPTIONSMENU_H 1
 
 #include "Screen.h"
 

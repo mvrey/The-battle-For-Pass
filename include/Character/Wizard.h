@@ -7,9 +7,8 @@
 #ifndef WIZARD_H
 #define WIZARD_H 1
 
-#include <ESAT/sprite.h>
-
 #include <string>
+#include <ESAT/sprite.h>
 #include "Job.h"
 
 class Wizard: public Job {
@@ -17,8 +16,6 @@ public:
   Wizard();
   Wizard(const Wizard& orig);
   virtual ~Wizard();
-  void Init();
-  static void LoadImage(Race* race);
   
 private:
   

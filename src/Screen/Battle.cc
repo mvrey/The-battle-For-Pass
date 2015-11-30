@@ -7,6 +7,14 @@
 
 #include "../../include/Screen/Battle.h"
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Battle::Battle() {
   log_ = " ";
   is_over_ = false;
@@ -14,6 +22,14 @@ Battle::Battle() {
   Init();
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Battle::Battle(Foe* enemy) {
   enemy_ = enemy;
   log_ = " ";
@@ -26,9 +42,16 @@ Battle::Battle(const Battle& orig) {
 
 Battle::~Battle() {
   delete enemy_;
-//  ESAT::SpriteRelease(spells_img_);
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::Init() {
   printf("initializing battle\n");
   CreateButtons();
@@ -39,6 +62,14 @@ void Battle::Init() {
   original_defense_ = Manager::getInstance()->player_->defense_;
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::Input() {
   click_ = ESAT::MouseButtonUp(0);
   if (ESAT::IsKeyDown('S')) {
@@ -46,7 +77,14 @@ void Battle::Input() {
   }  
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::Update() {
   Ally* player = Manager::getInstance()->player_;
   
@@ -177,6 +215,14 @@ void Battle::CreateButtons() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::DrawLog() {
   int text_size = 15;
   int start = 0;
@@ -199,6 +245,14 @@ void Battle::DrawLog() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::CheckLogLength() {
   int log_lines = std::count(log_.begin(), log_.end(), '\n') + 0;
   
@@ -207,6 +261,14 @@ void Battle::CheckLogLength() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::CheckResult() {
   if (Manager::getInstance()->player_->HP_ <= 0) {
     CheckLogLength();
@@ -220,6 +282,14 @@ void Battle::CheckResult() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::Fight(bool player_attacks) {
   Ally* player = Manager::getInstance()->player_;
   int damage = 0;
@@ -251,6 +321,14 @@ void Battle::Fight(bool player_attacks) {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::Flee() {
   if (Misc::random(100) < 30) {
     CheckLogLength();
@@ -265,6 +343,14 @@ void Battle::Flee() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Battle::DrawSpells() {
   Ally* player = Manager::getInstance()->player_;
   int base_x = 380;

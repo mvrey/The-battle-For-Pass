@@ -5,7 +5,7 @@
  */
 
 #ifndef FOE_H
-#define FOE_H
+#define FOE_H 1
 
 #include <algorithm>
 #include "../../include/Character/Character.h"

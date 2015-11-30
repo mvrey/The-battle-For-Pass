@@ -13,23 +13,30 @@ Ally::Ally() {
   gold_ = 10;
   xp_ = 0;
   level_ = 1;
-  SetNextLevelXP();
+  Init();
+}
+
+void Ally::Init() {
+  SetNextLevelXP();;
 }
 
 Ally::Ally(const Ally& orig) {
 }
 
 Ally::~Ally() {
-//  ESAT::SpriteRelease(current_sprite_);
-//  ESAT::SpriteRelease(dead_sprite_);
-  
   for(int i=0; i<num_spells_; i++) {
     delete spells_[i];
     spells_[i] = nullptr;
   }
-//  free(spells_);
+  free(*spells_);
 }
 
+/** @brief Sets Ally's stats to its race base stats
+ *
+ *  Resets HP, MP, attack & defense to those of the associated class.
+ *  This also removes all associated spells.
+ *
+ */
 void Ally::SetBaseStats() {
   HP_ = race_->HP_;
   max_HP_ = HP_;

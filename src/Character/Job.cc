@@ -20,7 +20,14 @@ Job::~Job() {
   ESAT::SpriteRelease(description_image_);
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Job::LoadImages(Race* race) {
   std::string face_path, bust_path;
   

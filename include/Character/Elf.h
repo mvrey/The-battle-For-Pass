@@ -5,7 +5,7 @@
  */
 
 #ifndef ELF_H
-#define ELF_H
+#define ELF_H 1
 
 #include "Race.h"
 

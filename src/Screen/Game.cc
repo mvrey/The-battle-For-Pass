@@ -20,11 +20,27 @@ Game::~Game() {
   ESAT::SpriteRelease(stats_img_);
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Game::Init() {
   CreateButtons();
   stats_img_ = ESAT::SpriteFromFile("assets/raw/stats.png");
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Game::Input() {
   click_ = ESAT::MouseButtonUp(0);
   Grid* collisions = Manager::getInstance()->map_->collisions_;
@@ -55,6 +71,14 @@ void Game::Input() {
   }
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Game::Draw() {
   DrawBegin();
   
@@ -67,7 +91,7 @@ void Game::Draw() {
   
   ESAT::Mat3 escale, translate, transform;
   ESAT::Mat3InitAsScale(map->player_escale_, map->player_escale_, &escale);
-  ESAT::Mat3InitAsTranslate(player->x, player->y - ESAT::SpriteHeight(player->current_sprite_)*map->player_escale_, &translate);
+  ESAT::Mat3InitAsTranslate(player->x_, player->y_ - ESAT::SpriteHeight(player->current_sprite_)*map->player_escale_, &translate);
   ESAT::Mat3Multiply(translate, escale, &transform);
   ESAT::DrawSpriteWithMatrix(player->current_sprite_, transform);
   
@@ -90,6 +114,14 @@ void Game::Draw() {
 
 
 /// @brief  Updates main menu status
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Game::Update() {
   Ally* player = Manager::getInstance()->player_;
   Grid* enemies = Manager::getInstance()->map_->enemies_;
@@ -146,8 +178,8 @@ void Game::Update() {
       player->tile_y = Manager::getInstance()->map_->init_y_;
     }
     
-    player->x = player->tile_x * Manager::getInstance()->map_->tile_width_;
-    player->y = player->tile_y * Manager::getInstance()->map_->tile_height_;
+    player->x_ = player->tile_x * Manager::getInstance()->map_->tile_width_;
+    player->y_ = player->tile_y * Manager::getInstance()->map_->tile_height_;
 
     printf("Screen has changed\n");
     //load new NPCs grid
@@ -186,7 +218,14 @@ void Game::CreateButtons() {
 }
 
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Game::DrawDialog(Friend* npc) {
   Screen::DrawRectangle(100.0f, 600.0f, 1200.0f, 200.0f, 0x55555599, true);
   ESAT::DrawSetFillColor(255, 255, 255, 255);
@@ -205,7 +244,14 @@ void Game::DrawDialog(Friend* npc) {
   }
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Game::DrawStats() {
   Ally* player = Manager::getInstance()->player_;
   int base_x = 200;

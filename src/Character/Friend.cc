@@ -18,6 +18,14 @@ Friend::Friend(const Friend& orig) {
 Friend::~Friend() {
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 std::string Friend::Talk() {
   std::string speech;
   switch (id_) {

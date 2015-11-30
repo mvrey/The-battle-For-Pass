@@ -8,6 +8,14 @@
 
 #include "../../include/Character/Warrior.h"
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Warrior::Warrior() {
   id_ = 2;
   name_ = "Warrior";
@@ -22,12 +30,4 @@ Warrior::Warrior(const Warrior& orig) {
 }
 
 Warrior::~Warrior() {
-  Init();
-}
-
-void Warrior::Init() {
-}
-
-
-void Warrior::LoadImage(Race* race) {
 }

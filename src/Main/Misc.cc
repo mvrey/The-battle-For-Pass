@@ -3,6 +3,8 @@
  * Author: Marcos Vazquez
  * 
  * Created on November 23, 2015, 1:22 AM
+ * 
+ * General purpose and misc functions
  */
 
 #include "../../include/Main/Misc.h"
@@ -17,6 +19,14 @@ Misc::Misc(const Misc& orig) {
 Misc::~Misc() {
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 ESAT::SpriteHandle Misc::GetSubImage(ESAT::SpriteHandle img, int x, int y, int width, int height) {
   //Iterate through every single pixel and add it to a pixel buffer
   //unsigned char pixel_buffer[height*width*4];
@@ -40,12 +50,18 @@ ESAT::SpriteHandle Misc::GetSubImage(ESAT::SpriteHandle img, int x, int y, int w
   return ESAT::SpriteFromMemory(width, height, pixels_array);
 }
 
-/* Calculates a random number between 0 and <limit> */
+/** @brief  Calculates a random number between 0 and <limit>
+ * 
+ *  @return A random number between 0 and <limit>
+ *  @param  limit an integer limit
+ */
 int Misc::random(int limit) {
 	return (rand() % limit);
 }
 
-/* Randomly returns 1 or -1*/
+/** @brief  Randomly returns 1 or -1
+ *  @return Randomly returns 1 or -1
+ */
 int Misc::random_sign() {
 	if (random(2) == 1)
 		return 1;

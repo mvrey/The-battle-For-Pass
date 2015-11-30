@@ -14,6 +14,14 @@
 #include "../../include/Main/Map.h"
 #include "ESAT/draw.h"
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Map::Map() {
   tile_width_ = 0;
   tile_height_ = 0;
@@ -27,6 +35,14 @@ Map::Map() {
 Map::Map(const Map& orig) {
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Map::~Map() {
   printf("MAP IS BEING DELETED\n");
   delete enemies_;
@@ -46,6 +62,14 @@ Map::~Map() {
   free(*tiles_);
 }
 
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   //Tileset dimensions
   int width, height;
@@ -295,7 +319,14 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   return 0;
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Foe* Map::SelectRandomEnemy() {
   
   int index = Misc::random(enemies_pool_.size());
@@ -307,7 +338,14 @@ Foe* Map::SelectRandomEnemy() {
   return enemy;
 }
 
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 Foe* Map::GetEnemy(int n) {
   Foe* enemy;
   
@@ -344,8 +382,14 @@ Foe* Map::GetEnemy(int n) {
   return enemy;
 }
 
-
-
+/** @brief
+ *
+ *
+ *
+ *  @return
+ *  @param
+ *  @param
+ */
 void Map::DrawLoadingScreen(int map_id, int stage) {
   std::string stage_str;
   
