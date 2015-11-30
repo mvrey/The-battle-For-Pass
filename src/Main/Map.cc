@@ -15,18 +15,33 @@
 #include "ESAT/draw.h"
 
 Map::Map() {
+  tile_width_ = 0;
+  tile_height_ = 0;
+  init_x_ = 0;
+  init_y_ = 0;
+  last_x_ = 0;
+  last_y_ = 0;
+  player_escale_ = 0.0f;
 }
 
 Map::Map(const Map& orig) {
 }
 
 Map::~Map() {
-  int i;
-  //free (battle_background_);
-  for (i=0; i<num_tiles_; i++) {
-//    free(tiles_[i].sprite);
-//    free(tiles_[i].transform);
+  delete enemies_;
+  delete collisions_;
+  delete portals_;
+  delete npcs_;
+  enemies_ = nullptr;
+  collisions_ = nullptr;
+  portals_ = nullptr;
+  npcs_ = nullptr;
+
+  ESAT::SpriteRelease(battle_background_);
+  for (int i=1; i<num_tiles_; i++) {
+    delete tiles_[i];
   }
+  free(*tiles_);
 }
 
 int Map::LoadFromFile(std::string filename, Map* maps[10]) {
@@ -74,6 +89,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   const Tmx::PropertySet properties = map->GetProperties();
   init_x_ = properties.GetIntProperty("InitX");
   init_y_ = properties.GetIntProperty("InitY");
+  printf("\n\ninit: %d, %d\n\n", init_x_, init_y_);
   //Get player sprite scaling for the current map
   player_escale_ = properties.GetIntProperty("PlayerEscale");
   if (player_escale_ == 0) player_escale_ = 1;
@@ -142,7 +158,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
         if (tileLayer->GetTileTilesetIndex(x, y) == -1) {
         } else {
 
-          TileImage onetile;
+          TileImage* onetile = new TileImage();
           
           // Get the tile's id and gid.
           int tid = tileLayer->GetTileId(x, y);
@@ -173,7 +189,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
           int pixel_x = (tid%(width / tile_width)) * tile_width;
 
           //Store final image for the tile
-          onetile.sprite = Misc::GetSubImage(tileset_img, pixel_x, pixel_y, tile_width, tile_height);
+          onetile->sprite = Misc::GetSubImage(tileset_img, pixel_x, pixel_y, tile_width, tile_height);
           
           //Calculate image stretching before storing the coordinates
           float escale_x = (float)kWindowWidth/(map->GetWidth()*tile_width);
@@ -191,7 +207,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
           ESAT::Mat3Multiply(translate, escale, &transform);
           
           //Store image final drawing matrix
-          onetile.transform = transform;
+          onetile->transform = transform;
 
           tiles_[num_tiles_] = onetile;
           num_tiles_++;
@@ -238,9 +254,9 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
       tile_y = floor (object->GetY() / tile_height);
       
       // Print information about the object.
-      printf("Object Name: %s\n", object->GetName().c_str());
-      printf("Object Pixel Position: (%03d, %03d)\n", object->GetX(), object->GetY());
-      printf("Object Grid Position: (%d, %d)\n\n", tile_x, tile_y);
+//      printf("Object Name: %s\n", object->GetName().c_str());
+//      printf("Object Pixel Position: (%03d, %03d)\n", object->GetX(), object->GetY());
+//      printf("Object Grid Position: (%d, %d)\n\n", tile_x, tile_y);
       
       if (objectGroup->GetName() == "Collisions") {
         //Assign grid value to this object's pointer (Since it won't cause a segfault)
@@ -273,7 +289,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
     }
   }
   
-  delete map;
+//  delete map;
   return 0;
 }
 

@@ -11,6 +11,8 @@ Intro::Intro() {
   num_buttons_ = 0;
   frame_ = 0;
   background_ = ESAT::SpriteFromFile("assets/background/intro_background.png");
+  cursor_sprite_ = ESAT::SpriteFromFile("assets/UI/Crosshair_02.png");  
+  button_background_ = ESAT::SpriteFromFile("assets/UI/button_bg.png");
 }
 
 Intro::Intro(const Intro& orig) {

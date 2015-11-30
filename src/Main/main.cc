@@ -52,14 +52,11 @@ int ESAT::main(int argc, char **argv) {
   srand(time(NULL));
 
   ESAT::WindowInit(kWindowWidth, kWindowHeight);
-
-  Manager* manager = Manager::getInstance();
   
-  
-  while (ESAT::WindowIsOpened() && !manager->quit_game_) {
-    manager->screen_->Input();
-    manager->screen_->Update();
-    manager->screen_->Draw();
+  while (ESAT::WindowIsOpened() && !Manager::getInstance()->quit_game_) {
+    Manager::getInstance()->screen_->Input();
+    Manager::getInstance()->screen_->Update();
+    Manager::getInstance()->screen_->Draw();
   }
   
   ESAT::WindowDestroy();

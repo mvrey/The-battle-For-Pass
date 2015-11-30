@@ -20,6 +20,14 @@ Ally::Ally(const Ally& orig) {
 }
 
 Ally::~Ally() {
+//  ESAT::SpriteRelease(current_sprite_);
+//  ESAT::SpriteRelease(dead_sprite_);
+  
+  for(int i=0; i<num_spells_; i++) {
+    delete spells_[i];
+    spells_[i] = nullptr;
+  }
+//  free(spells_);
 }
 
 void Ally::SetBaseStats() {

@@ -16,6 +16,8 @@ Game::Game(const Game& orig) {
 }
 
 Game::~Game() {
+//  delete map_;
+  ESAT::SpriteRelease(stats_img_);
 }
 
 void Game::Init() {
@@ -60,7 +62,7 @@ void Game::Draw() {
   Ally* player = Manager::getInstance()->player_;
   
   for (int i=0; i<map->num_tiles_; i++) {
-    ESAT::DrawSpriteWithMatrix(map->tiles_[i].sprite, map->tiles_[i].transform);
+    ESAT::DrawSpriteWithMatrix(map->tiles_[i]->sprite, map->tiles_[i]->transform);
   }
   
   ESAT::Mat3 escale, translate, transform;
@@ -96,9 +98,10 @@ void Game::Update() {
   
   
   if (exit_) {
-    delete Manager::getInstance()->map_;
-    delete Manager::getInstance()->screen_;
+    Manager::Reset();
     Manager::getInstance()->screen_ = new MainMenu();
+    printf("SHIT RESET\n");
+    return;
   }
   
   if (click_ && player->HP_ <= 0) {
@@ -124,6 +127,7 @@ void Game::Update() {
   
   //If there's an enemy at player's position, a battle begins
   if (enemies->getElement(player->tile_x, player->tile_y)) {
+    delete Manager::getInstance()->screen_;
     Manager::getInstance()->screen_ = new Battle((Foe*)enemies->getElement(player->tile_x, player->tile_y));
     Manager::getInstance()->screen_->Init();
     
@@ -152,7 +156,6 @@ void Game::Update() {
     Manager::getInstance()->map_->last_y_ = player->tile_y;
   }
   
-  printf("\n");
   //Healing potions merchant
   if (npcs->getElement(player->tile_x, player->tile_y) != nullptr) {
     talking_ = true;

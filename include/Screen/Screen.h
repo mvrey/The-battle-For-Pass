@@ -12,7 +12,7 @@
 #include <ESAT/draw.h>
 #include <ESAT/sprite.h>
 #include <ESAT/input.h>
-
+#include <stdlib.h>
 #include <string>
 #include <math.h> 
 
@@ -32,7 +32,7 @@ public:
     unsigned short int option;
     bool border;
   } Button;
-
+    
   typedef struct {
     Point2 pos;
     int size;

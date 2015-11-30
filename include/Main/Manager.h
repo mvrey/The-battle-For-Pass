@@ -26,7 +26,8 @@ public:
       kScreen_NewGame,
       kScreen_Map,
       kScreen_Fight,
-      kScreen_GameOver
+      kScreen_GameOver,
+      kScreen_GameWon
     };
     
     static Manager* getInstance();

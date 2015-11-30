@@ -10,14 +10,43 @@
 
 #include "../../include/Character/Character.h"
 
+Character::Character() {
+  inventory_ = nullptr;
+  race_ = nullptr;
+  job_ = nullptr;
+  animation_north_ = nullptr;
+  animation_south_ = nullptr;
+  animation_east_ = nullptr;
+  animation_west_ = nullptr;
+  current_sprite_ = nullptr;
+  battler_img_ = nullptr;
+  dead_sprite_ = nullptr;
+  current_sprite_ = nullptr;
+  battler_img_ = nullptr;
+  dead_sprite_ = nullptr;
+}
+
 Character::Character(const Character& orig) {
 }
 
 Character::~Character() {
+  delete race_;
+  delete job_;
+  delete animation_north_;
+  delete animation_south_;
+  delete animation_east_;
+  delete animation_west_;
+  ESAT::SpriteRelease(battler_img_);
+  inventory_ = nullptr;
   race_ = nullptr;
   job_ = nullptr;
-  level_ = 1;
-  SetNextLevelXP();
+  animation_north_ = nullptr;
+  animation_south_ = nullptr;
+  animation_east_ = nullptr;
+  animation_west_ = nullptr;
+  current_sprite_ = nullptr;
+  battler_img_ = nullptr;
+  dead_sprite_ = nullptr;
 }
 
 void Character::LoadImages() {
@@ -29,7 +58,6 @@ void Character::LoadImages() {
   
   std::string path = "assets/character/"+race_->name_+"/"+Job::job_names_[job_->id_]+"/animation.png";
   printf("Loading animations from %s\n", path.c_str());
-  printf("Sprite size is %dpx\n", side);
   
   animation_south_ = new Animation();
   animation_south_->LoadFromFile(path, 1, 8, side, side, 0, side*0);

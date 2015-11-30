@@ -25,6 +25,27 @@ Grid::Grid(const Grid& g) {
 }
 
 /**
+ * Destructor
+ */
+Grid::~Grid() {
+  Node* next_row = root_;
+  Node* next_column = root_;
+  Node* node = root_;
+  
+  for (int i=0; i<rows_; i++) {
+    
+    next_row = node->next_row;
+    
+    for (int j=0; j<columns_; j++) {
+      next_column = node->next_column; 
+      delete node;
+      node = next_column;
+    }
+    node = next_row;
+  }
+}
+
+/**
 * @brief  Initializes grid by creating nodes
 **/
 bool Grid::init() {

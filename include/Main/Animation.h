@@ -28,9 +28,8 @@ class Animation {
     ESAT::SpriteHandle GetNextFrame();
     int NextFrame();
     void DrawCurrentFrame();
-    
-    //ESAT::SpriteHandle(s), not int(s)
-    ESAT::SpriteHandle frames_[100];
+
+    ESAT::SpriteHandle frames_[30];
     int num_frames_;
     int current_frame_;
     int fps_;

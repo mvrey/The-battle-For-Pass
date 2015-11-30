@@ -47,6 +47,9 @@ class Map {
     struct TileImage {
       ESAT::SpriteHandle sprite;
       ESAT::Mat3 transform;
+      ~TileImage() {
+        ESAT::SpriteRelease(sprite);
+      };
     };
     typedef struct TileImage TileImage;
     
@@ -67,11 +70,11 @@ class Map {
     Grid* portals_;
     Grid* npcs_;
 
-    TileImage tiles_[5000];
+    TileImage* tiles_[5000];
     int num_tiles_ = 0;
     
-    int tile_width_ = 0;
-    int tile_height_ = 0;
+    int tile_width_;
+    int tile_height_;
     int init_x_;
     int init_y_;
     int last_x_;
