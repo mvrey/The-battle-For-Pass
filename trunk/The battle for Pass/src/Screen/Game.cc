@@ -105,8 +105,9 @@ void Game::Update() {
   }
   
   if (click_ && player->HP_ <= 0) {
-    delete Manager::getInstance()->screen_;
+//    delete Manager::getInstance()->screen_;
     Manager::getInstance()->screen_ = new GameOver();
+    return;
   }
   
   player->Update(Manager::getInstance()->map_->tile_width_,
@@ -135,6 +136,7 @@ void Game::Update() {
     Manager::getInstance()->map_->enemies_->setElement(player->tile_x, player->tile_y, 0);
   } else if (portals->getElement(player->tile_x, player->tile_y)) {
     printf("Entering a portal\n");
+    
     Manager::getInstance()->map_ = (Map*)portals->getElement(player->tile_x, player->tile_y);
     printf("Repositioning player\n");
     if (Manager::getInstance()->map_->last_x_ && Manager::getInstance()->map_->last_y_) {

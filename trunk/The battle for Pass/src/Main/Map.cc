@@ -352,7 +352,7 @@ void Map::DrawLoadingScreen(int map_id, int stage) {
   
   ESAT::DrawSetFillColor(255, 255, 255, 255);
   ESAT::DrawSetTextSize(30);
-  ESAT::DrawText(550.0f, 300.0f, ("Loading Map "+std::to_string(map_id)+"/6").c_str());
+  ESAT::DrawText(550.0f, 300.0f, ("Loading Map "+std::to_string(map_id)+"/"+std::to_string(kNumMaps)).c_str());
   
   switch(stage) {
     case 0:

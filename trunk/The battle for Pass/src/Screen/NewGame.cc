@@ -63,19 +63,15 @@ void NewGame::Update() {
         if (race_set && job_set) {
           Manager::getInstance()->screen_ = new Game();
           
-          Manager::getInstance()->maps_[0] = new Map();
-          Manager::getInstance()->maps_[1] = new Map();
-//          Manager::getInstance()->maps_[2] = new Map();
-//          Manager::getInstance()->maps_[3] = new Map();
-//          Manager::getInstance()->maps_[4] = new Map();
-//          Manager::getInstance()->maps_[5] = new Map();
-          Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
-          Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[3]->LoadFromFile("cave", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[4]->LoadFromFile("fortress", Manager::getInstance()->maps_);
-//          Manager::getInstance()->maps_[5]->LoadFromFile("hall", Manager::getInstance()->maps_);
-          
+          const std::string maps_names[10] = {"village", "house1", "marsh", "cave", "fortress", "hall"};
+//          
+          //These 2 loops need to be consecutive so we can assign pointers between maps
+          for (int i=0; i<kNumMaps; i++) {
+            Manager::getInstance()->maps_[i] = new Map();
+          }
+          for (int i=0; i<kNumMaps; i++) {
+            Manager::getInstance()->maps_[i]->LoadFromFile(maps_names[i], Manager::getInstance()->maps_);
+          }
           Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];
                   
           //Set player position on map
@@ -91,6 +87,7 @@ void NewGame::Update() {
         }}
         break;
       case 1:
+        delete Manager::getInstance()->screen_;
         Manager::getInstance()->screen_ = new MainMenu();
         break;
       //Race Buttons
