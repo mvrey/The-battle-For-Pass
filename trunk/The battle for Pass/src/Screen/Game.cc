@@ -100,7 +100,6 @@ void Game::Update() {
   if (exit_) {
     Manager::Reset();
     Manager::getInstance()->screen_ = new MainMenu();
-    printf("SHIT RESET\n");
     return;
   }
   

@@ -28,6 +28,7 @@ Map::Map(const Map& orig) {
 }
 
 Map::~Map() {
+  printf("MAP IS BEING DELETED\n");
   delete enemies_;
   delete collisions_;
   delete portals_;
@@ -40,6 +41,7 @@ Map::~Map() {
   ESAT::SpriteRelease(battle_background_);
   for (int i=1; i<num_tiles_; i++) {
     delete tiles_[i];
+    tiles_[i] = nullptr;
   }
   free(*tiles_);
 }
@@ -61,7 +63,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
   
   
   map_id++;
-  if (map_id==7)
+  if (map_id==kNumMaps+1)
     map_id = 1;
   
   DrawLoadingScreen(map_id, 0);
