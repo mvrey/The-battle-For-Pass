@@ -22,14 +22,7 @@ NewGame::~NewGame() {
   ESAT::SpriteRelease(orc_sprite);
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Loads race sprites and initializes textbox
 void NewGame::Init() {
   dwarf_sprite = ESAT::SpriteFromFile("assets/character/dwarf/dwarf.png");
   elf_sprite = ESAT::SpriteFromFile("assets/character/elf/elf.png");
@@ -47,13 +40,11 @@ void NewGame::Init() {
   CreateButtons();
 }
 
-/** @brief
+/** @brief Processes input
  *
+ *  Detects keys being pressed and appends the char to the player's name
+ *  Detects clicking on buttons and processes their actions.
  *
- *
- *  @return
- *  @param
- *  @param
  */
 void NewGame::Update() {
   char key;
@@ -132,14 +123,7 @@ void NewGame::Update() {
   }
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Draws NewGame screen buttons, text & sprites
 void NewGame::Draw() {
   DrawBegin();
   
@@ -186,13 +170,11 @@ void NewGame::Draw() {
   DrawEnd();
 }
 
-/** @brief
+/** @brief Creates a new player
  *
+ *  If a player exists, assigns a new race to it and loads images for that race.
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @param race_name std::string Name of the race to be assigned to the player
  */
 void NewGame::createPlayer(std::string race_name) {
   
@@ -200,10 +182,6 @@ void NewGame::createPlayer(std::string race_name) {
   if (Manager::getInstance()->player_ == nullptr) {
     printf("\n\nCreating new player\n\n");
     Manager::getInstance()->player_ = new Ally();
-
-    //Set a default map position
-//    Manager::getInstance()->player_->tile_x = Manager::getInstance()->map_->init_x_;
-//    Manager::getInstance()->player_->tile_y = Manager::getInstance()->map_->init_y_;
   } else if (race_set) {
     printf("\n\nDeleting previous race\n\n");
     delete Manager::getInstance()->player_->race_;
@@ -237,13 +215,11 @@ void NewGame::createPlayer(std::string race_name) {
   race_set = true;
 }
 
-/** @brief
+/** @brief Assigns a new job to the player
  *
+ *  Loads animations, spells and stats for the current race/job combination.
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @param job_id An integer <0-3> identifier of the job
  */
 void NewGame::selectJob(int job_id) {
   Ally* player = Manager::getInstance()->player_;
@@ -312,14 +288,7 @@ void NewGame::selectJob(int job_id) {
   job_set = true;
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Override for Screen::CreateButtons()
 void NewGame::CreateButtons() {
   num_buttons_ = 0;
   float box_side = 90.0f;
@@ -344,14 +313,7 @@ void NewGame::CreateButtons() {
   
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Draws player stats as coloured rectangles
 void NewGame::DrawPlayerStats() {
   int multiplier = 4;
   

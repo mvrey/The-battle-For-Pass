@@ -16,14 +16,7 @@ Animation::Animation() {
 Animation::Animation(const Animation& orig) {
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Releases all sprites in the animation before getting destroyed
 Animation::~Animation() {
   for (int i=0; i<num_frames_; i++) {
     if (frames_[i] != nullptr)
@@ -34,13 +27,17 @@ Animation::~Animation() {
   free(*frames_);
 }
 
-/** @brief
+/** @brief Loads the animation sprites from file
  *
+ *  Extracts subimages from a properly spaced tilesheet
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @param path std::string Path to the spritesheet file
+ *  @param rows Number of rows to be fetched
+ *  @param columns Number of columns to be fetched
+ *  @param width Number of pixels width per sprite
+ *  @param height Number of pixels height per sprite
+ *  @param offsetX Starting X coordinate (top left)
+ *  @param offsetY Starting Y coordinate (top left)
  */
 void Animation::LoadFromFile(std::string path, int rows, int columns, float width, 
                         float height, float offsetX, float offsetY) {
@@ -58,14 +55,7 @@ void Animation::LoadFromFile(std::string path, int rows, int columns, float widt
   current_frame_ = 0;
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Advances the current frame to the next in line
 int Animation::NextFrame() {
   current_frame_++;
   

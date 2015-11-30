@@ -18,13 +18,14 @@ Spell::~Spell() {
   ESAT::SpriteRelease(img_);
 }
 
-/** @brief
+/** @brief Casts this spell
  *
+ *  Checks if the player has enough mana to cast this Spell.
+ *  Aplies spell effects if so, and substracts its mana cost from the player's available mana.
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @return Returns if the spell has been cast, or the player didn't have enough mana
+ *  @param player The player that casts the spell
+ *  @param enemy The foe that the spell CAN be cast upon (some spells are cast on the player himself)
  */
 bool Spell::Cast(Character* player, Character* enemy) {
   return false;

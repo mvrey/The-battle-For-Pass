@@ -15,14 +15,7 @@
 Manager* Manager::instance_ = nullptr;
 
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Creates a new Manager, with screen_ defaulting to Intro
 Manager::Manager() {
   screen_id_ = kScreen_Intro;
   screen_ = new Intro();
@@ -33,14 +26,7 @@ Manager::Manager() {
 Manager::Manager(const Manager& orig) {
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Deletes current screen, player and all loaded maps
 Manager::~Manager() {
   delete screen_;
   delete player_;
@@ -51,14 +37,7 @@ Manager::~Manager() {
   }
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Retrieves the singleton instance
 Manager* Manager::getInstance() {
   if(!instance_) {
       instance_ = new Manager();
@@ -67,14 +46,7 @@ Manager* Manager::getInstance() {
   return instance_;
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Deletes the current instance and creates a new one from scratch
 void Manager::Reset() {
   delete instance_;
   instance_ = nullptr;
