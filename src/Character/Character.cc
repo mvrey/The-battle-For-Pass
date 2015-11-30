@@ -10,14 +10,7 @@
 
 #include "../../include/Character/Character.h"
 
-/** @brief 
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Sets all pointers in this class to null
 Character::Character() {
   inventory_ = nullptr;
   race_ = nullptr;
@@ -37,14 +30,7 @@ Character::Character() {
 Character::Character(const Character& orig) {
 }
 
-/** @brief 
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Calls the destructors of every class pointer variable in Character
 Character::~Character() {
   delete race_;
   delete job_;
@@ -65,13 +51,10 @@ Character::~Character() {
   dead_sprite_ = nullptr;
 }
 
-/** @brief 
+/** @brief Loads characters images.
  *
- *
- *
- *  @return
- *  @param
- *  @param
+ *  Loads movement animations from disk. It also loads bust & dead sprites
+ *  and assigns them to the corresponding class variables.
  */
 void Character::LoadImages() {
   int side =70;
@@ -111,13 +94,15 @@ void Character::LoadImages() {
   dead_sprite_ = Misc::GetSubImage(dead_sprite_, 80, side*2, side, side);
 }
 
-/** @brief 
+/** @brief Checks if the movement of a character is possible
  *
+ *  Checks if the next tile in line is a collision and, if not, sets the moving_<direction>_
+ *  class variable to true
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @return whether the character has moved (true) or has collided with a boundary (false)
+ *  @param direction integer <0-3> representing the direction, clockwisely and starting up
+ *  @param collisions Grid* This parameter is needed to check if movement towards 
+ *  that direction is possible
  */
 bool Character::Move(int direction, Grid* collisions) {
   moving_ = true;
@@ -155,13 +140,10 @@ bool Character::Move(int direction, Grid* collisions) {
   return false;
 }
 
-/** @brief 
+/** @brief Stops a character movement
+ *  Sets the movement class variables to false and recalculates the 
+ *  character coordinates on the map
  *
- *
- *
- *  @return
- *  @param
- *  @param
  */
 void Character::Stop() {
   moving_ = false;
@@ -176,11 +158,13 @@ void Character::Stop() {
 
 /** @brief  Updates character animation
  *
+ *  Sets the current sprite to the next on the current_animation_ and advances
+ *  said sprite in the map proportionally to the map's tile size.
+ *  E.g. If a tile is 8px side and there's 8 frames in the current animation,
+ *  it'll advance 1px per frame.
  *
- *
- *  @return
- *  @param
- *  @param
+ *  @param tile_width
+ *  @param tile_height
  */
 void Character::Update(int tile_width, int tile_height) {
   int anim_frame;
@@ -214,14 +198,7 @@ void Character::Update(int tile_width, int tile_height) {
   }
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Reset's Character stats to those of its race
 void Character::ResetStatsToRace() {
   HP_ = race_->HP_;
   MP_ = race_->MP_;
@@ -229,26 +206,12 @@ void Character::ResetStatsToRace() {
   defense_ = race_->defense_;
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Calculates the experience needed for the next level
 void Character::SetNextLevelXP() {
   next_level_xp_ = 20 * (level_ * 0.6); 
 }
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Levels up the Character and sets the new stats
 void Character::LevelUp() {
   level_++;
   max_HP_ *= 1.1;

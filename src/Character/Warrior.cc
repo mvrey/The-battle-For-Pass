@@ -8,14 +8,7 @@
 
 #include "../../include/Character/Warrior.h"
 
-/** @brief
- *
- *
- *
- *  @return
- *  @param
- *  @param
- */
+/// @brief Sets variables and loads job/profession image for the Warrior
 Warrior::Warrior() {
   id_ = 2;
   name_ = "Warrior";
