@@ -62,7 +62,7 @@ class Map {
     void DrawLoadingScreen(int map_id, int stage);
     
     //A collection of ids of enemies that can spawn in this map
-    std::vector<int> enemies_pool_ {};
+    std::vector<int> enemies_pool_ ;
     
     MapId id_;
     Grid* enemies_;

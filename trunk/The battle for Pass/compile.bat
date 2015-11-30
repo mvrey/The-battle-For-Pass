@@ -26,11 +26,9 @@ REM Third Part Libraries
 REM My Source Code
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Ally.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Boss.cc -I ../../../ESAT_rev109/include
-@cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Brown_Asp.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Character.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Dwarf.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Elf.cc -I ../../../ESAT_rev109/include
-@cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Foe.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Friend.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Human.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Hunter.cc -I ../../../ESAT_rev109/include
@@ -39,6 +37,18 @@ REM My Source Code
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Race.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Warrior.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Character/Wizard.cc -I ../../../ESAT_rev109/include
+
+
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Foe.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Brown_Asp.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/White_Asp.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Harpy.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Skeleton.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Torturer.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Troll.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Soldier1.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Soldier2.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Enemy/Black_Dragon.cc -I ../../../ESAT_rev109/include
 
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Item/Armor.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Item/Inventory.cc -I ../../../ESAT_rev109/include
@@ -52,6 +62,7 @@ REM My Source Code
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/NewGame.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/OptionsMenu.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/GameOver.cc -I ../../../ESAT_rev109/include
+@cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/GameWon.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Screen/Screen.cc -I ../../../ESAT_rev109/include
 
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Main/Animation.cc -I ../../../ESAT_rev109/include
@@ -66,4 +77,4 @@ REM My Source Code
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Spell/FireSword.cc -I ../../../ESAT_rev109/include
 @cl /nologo /Zi /GR- /EHs /MDd /c src/Spell/Blizzard.cc -I ../../../ESAT_rev109/include
 
-@cl /nologo /Zi /GR- /EHs /MDd /Fe:TheBattleForPass.exe miniz.obj TmxUtil.obj TmxTileset.obj TmxTileOffset.obj TmxTileLayer.obj TmxTile.obj TmxTerrainArray.obj TmxTerrain.obj TmxPropertySet.obj TmxPolyline.obj TmxPolygon.obj TmxObjectGroup.obj TmxObject.obj TmxMap.obj TmxLayer.obj TmxImageLayer.obj TmxImage.obj TmxEllipse.obj Ally.obj Boss.obj Brown_Asp.obj Character.obj Dwarf.obj Elf.obj Foe.obj Friend.obj Human.obj Hunter.obj Job.obj Orc.obj Race.obj Warrior.obj Wizard.obj Armor.obj Inventory.obj Item.obj Weapon.obj Battle.obj Game.obj Intro.obj MainMenu.obj NewGame.obj OptionsMenu.obj GameOver.obj Screen.obj Animation.obj Grid.obj Manager.obj Map.obj Misc.obj main.obj Spell.obj Heal.obj FireSword.obj Blizzard.obj ..\..\..\ESAT_rev109\bin\ESAT_d.lib opengl32.lib user32.lib gdi32.lib shell32.lib
+@cl /nologo /Zi /GR- /EHs /MDd /Fe:TheBattleForPass.exe miniz.obj TmxUtil.obj TmxTileset.obj TmxTileOffset.obj TmxTileLayer.obj TmxTile.obj TmxTerrainArray.obj TmxTerrain.obj TmxPropertySet.obj TmxPolyline.obj TmxPolygon.obj TmxObjectGroup.obj TmxObject.obj TmxMap.obj TmxLayer.obj TmxImageLayer.obj TmxImage.obj TmxEllipse.obj Ally.obj Boss.obj Character.obj Dwarf.obj Elf.obj Foe.obj Friend.obj Human.obj Hunter.obj Job.obj Orc.obj Race.obj Warrior.obj Wizard.obj Brown_Asp.obj White_Asp.obj Harpy.obj Skeleton.obj Torturer.obj Troll.obj Soldier1.obj Soldier2.obj Black_Dragon.obj Armor.obj Inventory.obj Item.obj Weapon.obj Battle.obj Game.obj Intro.obj MainMenu.obj NewGame.obj OptionsMenu.obj GameOver.obj GameWon.obj Screen.obj Animation.obj Grid.obj Manager.obj Map.obj Misc.obj main.obj Spell.obj Heal.obj FireSword.obj Blizzard.obj ..\..\..\ESAT_rev109\bin\ESAT_d.lib opengl32.lib user32.lib gdi32.lib shell32.lib
