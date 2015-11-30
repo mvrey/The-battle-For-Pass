@@ -20,7 +20,7 @@
 
 class Character {
   public:
-    Character() = default;
+    Character();
     Character(const Character& orig);
     virtual ~Character();
     void virtual LoadImages();

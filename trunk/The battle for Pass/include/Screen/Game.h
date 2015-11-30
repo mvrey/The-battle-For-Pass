@@ -31,7 +31,7 @@ class Game: public Screen {
     void DrawStats();
     void DrawDialog(Friend* npc);
     
-    Map map_;
+//    Map map_;
     ESAT::SpriteHandle stats_img_;
     bool drawing_stats_ = false;
     bool resting_ = false;

@@ -17,6 +17,13 @@ Animation::Animation(const Animation& orig) {
 }
 
 Animation::~Animation() {
+  for (int i=0; i<num_frames_; i++) {
+    if (frames_[i] != nullptr)
+      ESAT::SpriteRelease(frames_[i]);
+    frames_[i] = nullptr;
+  }
+  num_frames_ = 0;
+  free(*frames_);
 }
 
 void Animation::LoadFromFile(std::string path, int rows, int columns, float width, 

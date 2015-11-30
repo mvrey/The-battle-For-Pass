@@ -26,6 +26,14 @@ Manager::Manager(const Manager& orig) {
 }
 
 Manager::~Manager() {
+  delete screen_;
+//  delete map_;
+  delete player_;
+
+  for (int i=0; i<2; i++) {
+    delete maps_[i];
+    maps_[i] = nullptr;
+  }
 }
 
 Manager* Manager::getInstance() {
@@ -37,14 +45,7 @@ Manager* Manager::getInstance() {
 }
 
 void Manager::Reset() {
-//  delete instance_->map_;
-//  delete instance_->player_;
-//  delete instance_->screen_;
-//  delete instance_;
-//  instance_ = new Manager();
-  
-  instance_->screen_id_ = kScreen_Intro;
-  instance_->screen_ = new Intro();
-  instance_->quit_game_ = false;
-  instance_->player_ = nullptr;
+  delete instance_;
+  instance_ = nullptr;
+  instance_ = new Manager();
 }

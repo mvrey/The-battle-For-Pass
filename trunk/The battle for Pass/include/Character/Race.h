@@ -8,6 +8,7 @@
 #define RACE_H 1
 
 #include <ESAT/sprite.h>
+#include <stdlib.h>
 #include <string>
 
 

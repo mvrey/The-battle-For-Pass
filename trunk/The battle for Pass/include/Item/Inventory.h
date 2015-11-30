@@ -18,11 +18,11 @@ class Inventory {
     virtual ~Inventory();
     
     int gold_;
-    Weapon left_hand_;
-    Weapon right_hand_;
-    Armor armor_;
+    Weapon* left_hand_;
+    Weapon* right_hand_;
+    Armor* armor_;
     
-    Item slots_[10];
+    Item* slots_[10];
     
   private:
 

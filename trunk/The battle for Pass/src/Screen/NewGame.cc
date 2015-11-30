@@ -16,6 +16,10 @@ NewGame::NewGame(const NewGame& orig) {
 }
 
 NewGame::~NewGame() {
+  ESAT::SpriteRelease(dwarf_sprite);
+  ESAT::SpriteRelease(elf_sprite);
+  ESAT::SpriteRelease(human_sprite);
+  ESAT::SpriteRelease(orc_sprite);
 }
 
 
@@ -61,16 +65,16 @@ void NewGame::Update() {
           
           Manager::getInstance()->maps_[0] = new Map();
           Manager::getInstance()->maps_[1] = new Map();
-          Manager::getInstance()->maps_[2] = new Map();
-          Manager::getInstance()->maps_[3] = new Map();
-          Manager::getInstance()->maps_[4] = new Map();
-          Manager::getInstance()->maps_[5] = new Map();
+//          Manager::getInstance()->maps_[2] = new Map();
+//          Manager::getInstance()->maps_[3] = new Map();
+//          Manager::getInstance()->maps_[4] = new Map();
+//          Manager::getInstance()->maps_[5] = new Map();
           Manager::getInstance()->maps_[0]->LoadFromFile("village", Manager::getInstance()->maps_);
           Manager::getInstance()->maps_[1]->LoadFromFile("house1", Manager::getInstance()->maps_);
-          Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
-          Manager::getInstance()->maps_[3]->LoadFromFile("cave", Manager::getInstance()->maps_);
-          Manager::getInstance()->maps_[4]->LoadFromFile("fortress", Manager::getInstance()->maps_);
-          Manager::getInstance()->maps_[5]->LoadFromFile("hall", Manager::getInstance()->maps_);
+//          Manager::getInstance()->maps_[2]->LoadFromFile("marsh", Manager::getInstance()->maps_);
+//          Manager::getInstance()->maps_[3]->LoadFromFile("cave", Manager::getInstance()->maps_);
+//          Manager::getInstance()->maps_[4]->LoadFromFile("fortress", Manager::getInstance()->maps_);
+//          Manager::getInstance()->maps_[5]->LoadFromFile("hall", Manager::getInstance()->maps_);
           
           Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];
                   
@@ -169,6 +173,7 @@ void NewGame::createPlayer(std::string race_name) {
   if (Manager::getInstance()->player_ == nullptr) {
     printf("\n\nCreating new player\n\n");
     Manager::getInstance()->player_ = new Ally();
+
     //Set a default map position
 //    Manager::getInstance()->player_->tile_x = Manager::getInstance()->map_->init_x_;
 //    Manager::getInstance()->player_->tile_y = Manager::getInstance()->map_->init_y_;
@@ -187,71 +192,84 @@ void NewGame::createPlayer(std::string race_name) {
       Manager::getInstance()->player_->race_ = new Orc();
   }
   
+  //Loads job faces and busts for current race
   Manager::getInstance()->player_->race_->LoadImages();
-
+  
   for (int i=0; i<Job::num_jobs_; i++) {
     this->option_buttons_[i+6].img = Manager::getInstance()->player_->race_->face_imgs_[i];
   }
 
-  if(job_set) {
+  Manager::getInstance()->player_->SetBaseStats();
+
+  if (job_set) {
+    //Refresh current job for the newly selected race
+    selectJob(Manager::getInstance()->player_->job_->id_);
     Manager::getInstance()->player_->LoadImages();
   }
-    
-  Manager::getInstance()->player_->SetBaseStats();
-  if (job_set) {
-    selectJob(Manager::getInstance()->player_->job_->id_);
-  }
-  
+   
   race_set = true;
 }
 
 void NewGame::selectJob(int job_id) {
-  
+  Ally* player = Manager::getInstance()->player_;
   
   if (job_set) {
     printf("\n\nDeleting previous job\n\n");
-    delete Manager::getInstance()->player_->job_;
+    delete player->job_;
+    for (int i=0; i<player->num_spells_; i++) {
+      delete player->spells_[i];
+    }
+    printf("Deleting animations\n");
+    delete player->animation_south_;
+    delete player->animation_west_;
+    delete player->animation_east_;
+    delete player->animation_north_;
+    
+    printf("Deleting dead sprite\n");
+    ESAT::SpriteRelease(player->dead_sprite_);
+    
+    printf("Deleting battler\n");
+    ESAT::SpriteRelease(player->battler_img_);
   }
-  
   
   switch(job_id) {
     case 0:
-      Manager::getInstance()->player_->job_ = new Boss();
-      Manager::getInstance()->player_->job_->id_ = job_id;
-      Manager::getInstance()->player_->ResetStatsToRace();
-      Manager::getInstance()->player_->gold_ *= 2;
-      Manager::getInstance()->player_->spells_[0] = new Blizzard();
-      Manager::getInstance()->player_->num_spells_ = 1;
+      player->job_ = new Boss();
+      player->job_->id_ = job_id;
+      player->ResetStatsToRace();
+      player->gold_ *= 2;
+      player->spells_[0] = new Blizzard();
+      player->num_spells_ = 1;
       break;
     case 1:
-      Manager::getInstance()->player_->job_ = new Hunter();
-      Manager::getInstance()->player_->job_->id_ = job_id;
-      Manager::getInstance()->player_->ResetStatsToRace();
-      Manager::getInstance()->player_->defense_ *= 1.3;
-      Manager::getInstance()->player_->spells_[0] = new Heal();
-      Manager::getInstance()->player_->num_spells_ = 1;
+      player->job_ = new Hunter();
+      player->job_->id_ = job_id;
+      player->ResetStatsToRace();
+      player->defense_ *= 1.3;
+      player->spells_[0] = new Heal();
+      player->num_spells_ = 1;
       break;
     case 2:
-      Manager::getInstance()->player_->job_ = new Warrior();
-      Manager::getInstance()->player_->job_->id_ = job_id;
-      Manager::getInstance()->player_->ResetStatsToRace();
-      Manager::getInstance()->player_->attack_ *= 1.3;
-      Manager::getInstance()->player_->spells_[0] = new FireSword();
-      Manager::getInstance()->player_->num_spells_ = 1;
+      player->job_ = new Warrior();
+      player->job_->id_ = job_id;
+      player->ResetStatsToRace();
+      player->attack_ *= 1.3;
+      player->spells_[0] = new FireSword();
+      player->num_spells_ = 1;
       break;
     case 3:
-      Manager::getInstance()->player_->job_ = new Wizard();
-      Manager::getInstance()->player_->job_->id_ = job_id;
-      Manager::getInstance()->player_->ResetStatsToRace();
-      Manager::getInstance()->player_->MP_ *= 1.3;
-      Manager::getInstance()->player_->max_MP_ *= 1.3;
-      Manager::getInstance()->player_->spells_[0] = new Heal();
-      Manager::getInstance()->player_->spells_[1] = new FireSword();
-      Manager::getInstance()->player_->spells_[2] = new Blizzard();
-      Manager::getInstance()->player_->num_spells_ = 3;
+      player->job_ = new Wizard();
+      player->job_->id_ = job_id;
+      player->ResetStatsToRace();
+      player->MP_ *= 1.3;
+      player->max_MP_ *= 1.3;
+      player->spells_[0] = new Heal();
+      player->spells_[1] = new FireSword();
+      player->spells_[2] = new Blizzard();
+      player->num_spells_ = 3;
       break;
     default:
-      Manager::getInstance()->player_->job_->id_ = -1;
+      player->job_->id_ = -1;
       job_set = false;
       break;
   }

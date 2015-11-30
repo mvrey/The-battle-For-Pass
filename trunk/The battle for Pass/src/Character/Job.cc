@@ -17,10 +17,7 @@ Job::Job(const Job& orig) {
 }
 
 Job::~Job() {
-  Init();
-}
-
-void Job::Init() {
+  ESAT::SpriteRelease(description_image_);
 }
 
 
@@ -29,10 +26,10 @@ void Job::LoadImages(Race* race) {
   
   for (int i=0; i<num_jobs_; i++) {
     face_path = "assets/character/" + race->name_ + "/" + Job::job_names_[i] + "/face.png";
-    printf("%s\n", face_path.c_str());
+    printf("Loading job face from %s\n", face_path.c_str());
     race->face_imgs_[i] = ESAT::SpriteFromFile(face_path.c_str());
     bust_path = "assets/character/" + race->name_ + "/" + Job::job_names_[i] + "/bust.png";
-    printf("%s\n", bust_path.c_str());
+    printf("Loading bust from %s\n", bust_path.c_str());
     race->bust_imgs_[i] = ESAT::SpriteFromFile(bust_path.c_str());
   }
 }

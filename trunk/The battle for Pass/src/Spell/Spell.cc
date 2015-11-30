@@ -15,6 +15,7 @@ Spell::Spell(const Spell& orig) {
 }
 
 Spell::~Spell() {
+  ESAT::SpriteRelease(img_);
 }
 
 bool Spell::Cast(Character* player, Character* enemy) {

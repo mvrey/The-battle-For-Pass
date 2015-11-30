@@ -13,6 +13,7 @@ class Grid {
     Grid() = default;
     Grid(int rows, int columns);
     Grid(const Grid& g);
+    virtual ~Grid();
     bool init();
     void zeros();
     void* getElement(int row, int column);
@@ -29,14 +30,14 @@ class Grid {
   private:
     
     struct Node {
-        void* info;
-        Node *next_row;
-        Node *next_column;
-        Node(void* info, Node* next_row, Node* next_column)
-            : info(info)
-            , next_row(next_row)
-            , next_column(next_column) {
-        }
+      void* info;
+      Node *next_row;
+      Node *next_column;
+      Node(void* info, Node* next_row, Node* next_column)
+        : info(info)
+        , next_row(next_row)
+        , next_column(next_column) {
+      }
     };
     typedef struct Node Node;
     

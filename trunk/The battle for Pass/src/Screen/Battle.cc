@@ -10,6 +10,7 @@
 Battle::Battle() {
   log_ = " ";
   is_over_ = false;
+  spells_img_ = nullptr;
   Init();
 }
 
@@ -24,6 +25,8 @@ Battle::Battle(const Battle& orig) {
 }
 
 Battle::~Battle() {
+  delete enemy_;
+//  ESAT::SpriteRelease(spells_img_);
 }
 
 void Battle::Init() {

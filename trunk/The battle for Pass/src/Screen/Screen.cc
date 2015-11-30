@@ -21,6 +21,14 @@ Screen::Screen(const Screen& orig) {
 }
 
 Screen::~Screen() {
+//  ESAT::SpriteRelease(background_);
+  ESAT::SpriteRelease(cursor_sprite_);
+  ESAT::SpriteRelease(button_background_);
+
+  for (int i=0; i<num_buttons_; i++) {
+//    delete(option_buttons_[i]);
+  }
+//  free(option_buttons_);
 }
 
 void Screen::Init() {

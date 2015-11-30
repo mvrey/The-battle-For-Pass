@@ -8,7 +8,7 @@
 #define JOB_H 1
 
 #include <ESAT/sprite.h>
-
+#include <stdlib.h>
 #include <string>
 #include "Race.h"
 
@@ -17,7 +17,6 @@ public:
   Job();
   Job(const Job& orig);
   virtual ~Job();
-  void Init();
   static void LoadImages(Race* race);
   
   int id_;
