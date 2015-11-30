@@ -12,7 +12,7 @@
   <image source="B-E_HF1R_Interiors_3.png" trans="ffffff" width="512" height="512"/>
  </tileset>
  <tileset firstgid="1793" name="$Human_HF1_Royalty_4" tilewidth="16" tileheight="16" tilecount="221">
-  <image source="../../../humble_assets/art/High Fantasy Mega Pack/HFMegaPak/Character Spritesheets/$Human_HF1_Royalty_4.png" trans="ffffff" width="210" height="280"/>
+  <image source="$Human_HF1_Royalty_4.png" trans="ffffff" width="210" height="280"/>
  </tileset>
  <layer name="floor" width="26" height="15">
   <data>
