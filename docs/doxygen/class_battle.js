@@ -1,0 +1,27 @@
+var class_battle =
+[
+    [ "Battle", "class_battle.html#abecc253b23b71da260445e4bdc8522e2", null ],
+    [ "Battle", "class_battle.html#a90687c6f2f94110af4cefa7a3563f69f", null ],
+    [ "Battle", "class_battle.html#a236fbbc361ee998d4e989728c22cd614", null ],
+    [ "~Battle", "class_battle.html#ae44141e587836ba84243cad46b17c228", null ],
+    [ "CheckLogLength", "class_battle.html#a7c865bdb74b217187961df5939534395", null ],
+    [ "CheckResult", "class_battle.html#abe9e36cedb6889771838224a6a0c68e3", null ],
+    [ "CreateButtons", "class_battle.html#af61ad5a6389e98dc78475dbb595caf98", null ],
+    [ "Draw", "class_battle.html#af8fc94d0af16479d51ed4d37846ebd13", null ],
+    [ "DrawBegin", "class_battle.html#ab30f732e54fc4e0df995feff033ac146", null ],
+    [ "DrawButtons", "class_battle.html#a9a9c86fa5f298f606f89e91736dedcba", null ],
+    [ "DrawLog", "class_battle.html#afec35b3121042e8731e3632383269fb7", null ],
+    [ "DrawSpells", "class_battle.html#acb49a8da5c11fe8cd2048115f01dc896", null ],
+    [ "Fight", "class_battle.html#ab7c496735728087fdbb71f9d4862dab0", null ],
+    [ "Flee", "class_battle.html#a8112de82269aa232d6451e4a122d5735", null ],
+    [ "Init", "class_battle.html#a68c19f4baf11444323b7796a88153bd3", null ],
+    [ "Input", "class_battle.html#ad53272e048b56744e35e2a7970df526d", null ],
+    [ "Update", "class_battle.html#af20e1c75e287a58c907fd614bd745b96", null ],
+    [ "drawing_spells_", "class_battle.html#ac3cc7fc8cf31586a45ee158862edb808", null ],
+    [ "enemy_", "class_battle.html#a996bdea73a3c972026a99be5ce9d8bde", null ],
+    [ "is_over_", "class_battle.html#a50f114755723f7350463e8275a2212b8", null ],
+    [ "log_", "class_battle.html#a2396f3c60cb48077d7d82c32fa866d1f", null ],
+    [ "original_attack_", "class_battle.html#ac06f9a01cd567a77467318b0784b553a", null ],
+    [ "original_defense_", "class_battle.html#a07b360f68f6f254924221b7372c9e770", null ],
+    [ "spells_img_", "class_battle.html#ab291c1d9e9cd220e520067a3ecf6b954", null ]
+];

@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['name',['name',['../class_tmx_1_1_layer.html#aff32d8581736d3c247110bbb8af02d5f',1,'Tmx::Layer::name()'],['../structgz__header__s.html#a60ae5eee2882d1c25b3bb328972f0149',1,'gz_header_s::name()']]],
+  ['name_5f',['name_',['../class_character.html#aca012a249f706cd301674fff9497b5de',1,'Character::name_()'],['../class_job.html#a86ce0a8a35f04f5ad600fb34caa82788',1,'Job::name_()'],['../class_race.html#ad8b0af12451ea2d55e2f3902f0f960c9',1,'Race::name_()'],['../class_item.html#a5ea323338976e43c1b0e6030f641c9d2',1,'Item::name_()'],['../class_spell.html#a16c0c450bbf474b389f207a6ca982b84',1,'Spell::name_()']]],
+  ['name_5fbox',['name_box',['../class_new_game.html#a88ceb1db2b982a15a7dc3dffa00cda8a',1,'NewGame']]],
+  ['name_5fmax',['name_max',['../structgz__header__s.html#af503d267de15a461b81dcbbfb0d628e5',1,'gz_header_s']]],
+  ['next',['next',['../structgz_file__s.html#a8c1f4682372cc228f4e37bf7f95870a8',1,'gzFile_s']]],
+  ['next_5fin',['next_in',['../structmz__stream__s.html#aa75ed42cc83b0f74d7fcce6299439307',1,'mz_stream_s::next_in()'],['../structz__stream__s.html#a71613678076af3a9a4bb28d51a146150',1,'z_stream_s::next_in()']]],
+  ['next_5flevel_5fxp_5f',['next_level_xp_',['../class_character.html#a9574fb61d0c1762aee79f37f8df42fd6',1,'Character']]],
+  ['next_5fout',['next_out',['../structmz__stream__s.html#a2c569383efce3b9d9e7c02e3e03941bc',1,'mz_stream_s::next_out()'],['../structz__stream__s.html#aed4a02cfe93e975314fed50b04427bf3',1,'z_stream_s::next_out()']]],
+  ['nextparseorder',['nextParseOrder',['../class_tmx_1_1_layer.html#a3a3fce211c6979484e3108236e510d94',1,'Tmx::Layer']]],
+  ['npcs_5f',['npcs_',['../class_map.html#a77ffe34f5e95570ca1be5d002773c486',1,'Map']]],
+  ['num_5fbuttons_5f',['num_buttons_',['../class_screen.html#a4817a4792d6edb8879e410c73d9384c2',1,'Screen']]],
+  ['num_5fframes_5f',['num_frames_',['../class_animation.html#a88915ab516a761ca744ad883bdd7eadb',1,'Animation']]],
+  ['num_5fhealing_5fpotions_5f',['num_healing_potions_',['../class_ally.html#a3f1e17aae662b6e28a95549e6476452d',1,'Ally']]],
+  ['num_5fjobs_5f',['num_jobs_',['../class_job.html#a87dadaad0d632a8676291da6276c2a26',1,'Job']]],
+  ['num_5fspells_5f',['num_spells_',['../class_ally.html#a3829d12bef06f106dc1861a5fc7a6712',1,'Ally']]],
+  ['num_5ftiles_5f',['num_tiles_',['../class_map.html#a112be8f7475cc45b4f1d688612d499ec',1,'Map']]]
+];
