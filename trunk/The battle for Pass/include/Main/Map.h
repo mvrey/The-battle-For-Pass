@@ -12,6 +12,7 @@
 #define MAP_H 1
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <ESAT/sprite.h>
 #include <ESAT/window.h>
@@ -48,6 +49,7 @@ class Map {
       ESAT::SpriteHandle sprite;
       ESAT::Mat3 transform;
       ~TileImage() {
+//        printf("Releasing sprite\n");
         ESAT::SpriteRelease(sprite);
       };
     };
