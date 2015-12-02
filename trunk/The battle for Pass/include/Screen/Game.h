@@ -3,7 +3,7 @@
  * Author: Marcos Vazquez <vazquezre@esat-alumni.es>  
  * Created on November 9, 2015, 8:15 PM
  *
- * File:   Map.h                                              
+ * File:   Game.h                                              
  * A class that represents an the overwiev game
  *
  */
