@@ -35,6 +35,8 @@ Manager::~Manager() {
     delete maps_[i];
     maps_[i] = nullptr;
   }
+  
+  free(*maps_);
 }
 
 /// @brief Retrieves the singleton instance

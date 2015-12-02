@@ -21,12 +21,14 @@ Race::Race(const Race& orig) {
 }
 
 Race::~Race() {
-  for (int i=0; i<4; i++) {
+  for (int i=1; i<4; i++) {
     ESAT::SpriteRelease(face_imgs_[i]);
     ESAT::SpriteRelease(bust_imgs_[i]);
     face_imgs_[i] = nullptr;
     bust_imgs_[i] = nullptr;
   }
+  free(*face_imgs_);
+  free(*bust_imgs_);
 }
 
 /// @brief Loads job images for the current race

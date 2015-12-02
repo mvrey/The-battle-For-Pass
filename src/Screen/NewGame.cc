@@ -75,7 +75,7 @@ void NewGame::Update() {
           for (int i=0; i<kNumMaps; i++) {
             Manager::getInstance()->maps_[i] = new Map();
           }
-          for (int i=0; i<kNumMaps; i++) {
+          for (int i=kStartingMap; i<kNumMaps; i++) {
             Manager::getInstance()->maps_[i]->LoadFromFile(maps_names[i], Manager::getInstance()->maps_);
           }
           Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];

@@ -38,6 +38,7 @@ Map::~Map() {
   npcs_ = nullptr;
 
   ESAT::SpriteRelease(battle_background_);
+  
   for (int i=1; i<num_tiles_; i++) {
     delete tiles_[i];
     tiles_[i] = nullptr;
@@ -135,9 +136,6 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
     // Get a tileset.
     const Tmx::Tileset *tileset = map->GetTileset(i);
 
-    //Load the tileset image as a whole
-    tileset_img = ESAT::SpriteFromFile((path+tileset->GetImage()->GetSource()).c_str());
-
     //Tileset dimensions
     width = tileset->GetImage()->GetWidth();
     height = tileset->GetImage()->GetHeight();
@@ -156,6 +154,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
 
   //Reset tileset image and index
   int current_tileSet = 0;      
+  
   tileset_img = ESAT::SpriteFromFile((path+tileSets[current_tileSet]->GetImage()->GetSource()).c_str());
   //Calculate current tileset last global id
   int horizontal = width / tile_width;
@@ -201,6 +200,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
             else
               current_tileSet++;
             
+            ESAT::SpriteRelease(tileset_img);
             tileset_img = ESAT::SpriteFromFile((path+tileSets[current_tileSet]->GetImage()->GetSource()).c_str());
             
             // Recalculate new tileset variables
@@ -316,7 +316,7 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
     }
   }
   
-//  delete map;
+  delete map;
   return 0;
 }
 
