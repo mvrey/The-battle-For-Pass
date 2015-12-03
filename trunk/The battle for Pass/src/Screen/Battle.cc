@@ -28,6 +28,7 @@ Battle::Battle(const Battle& orig) {
 
 Battle::~Battle() {
   delete enemy_;
+  ESAT::SpriteRelease(spells_img_);
 }
 
 /** @brief Initializes battle sprites
