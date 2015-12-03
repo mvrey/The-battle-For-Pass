@@ -14,6 +14,8 @@ Ally::Ally() {
   xp_ = 0;
   level_ = 1;
   Init();
+  race_ = nullptr;
+  job_ = nullptr;
 }
 
 void Ally::Init() {
