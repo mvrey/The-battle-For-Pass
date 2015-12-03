@@ -59,7 +59,7 @@ class Map {
     Map(const Map& orig);
     ~Map();
     static Foe* GetEnemy(int n);
-    int LoadFromFile(std::string filename, Map* maps[10]);
+    int LoadFromFile(std::string filename, Map* maps[10], bool hard);
     virtual Foe* SelectRandomEnemy();
     void DrawLoadingScreen(int map_id, int stage);
     

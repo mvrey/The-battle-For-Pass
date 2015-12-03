@@ -76,7 +76,8 @@ void NewGame::Update() {
             Manager::getInstance()->maps_[i] = new Map();
           }
           for (int i=kStartingMap; i<kNumMaps; i++) {
-            Manager::getInstance()->maps_[i]->LoadFromFile(maps_names[i], Manager::getInstance()->maps_);
+            bool hard = Manager::getInstance()->hard_mode_;
+            Manager::getInstance()->maps_[i]->LoadFromFile(maps_names[i], Manager::getInstance()->maps_, hard);
           }
           Manager::getInstance()->map_ = Manager::getInstance()->maps_[0];
                   
@@ -116,6 +117,14 @@ void NewGame::Update() {
       case 9:
         selectJob(clicked_button - 6);
         Manager::getInstance()->player_->LoadImages();
+        break;
+      case 10:
+        if (Manager::getInstance()->hard_mode_) {
+          option_buttons_[10].text = "Normal";
+        } else {
+          option_buttons_[10].text = "Hard";
+        }
+        Manager::getInstance()->hard_mode_ = !Manager::getInstance()->hard_mode_;
         break;
       default:
         break;
@@ -311,6 +320,8 @@ void NewGame::CreateButtons() {
   CreateButton(start_right+(box_side*2), 150.0f, box_side, box_side, 0, nullptr, "", true);
   CreateButton(start_right+(box_side*3), 150.0f, box_side, box_side, 0, nullptr, "", true);
   
+  //Difficulty selector
+  CreateButton(530.0f, 50.0f, box_side, box_side*2.5, 0, button_background_, "Normal", false);
 }
 
 /// @brief Draws player stats as coloured rectangles

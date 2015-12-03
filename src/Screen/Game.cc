@@ -140,7 +140,10 @@ void Game::Update() {
   
   if (resting_) {
     int num = Misc::random(100);
-    if (num < 50) {
+    //In hard mode there's a bigger chance to be attacked
+    int threshold = (Manager::getInstance()->hard_mode_) ? 70 : 40;
+    
+    if (num < threshold) {
       Foe* enemy = Manager::getInstance()->map_->SelectRandomEnemy();
       enemies->setElement(player->tile_x, player->tile_y, enemy);
     } else {
@@ -153,7 +156,14 @@ void Game::Update() {
   //If there's an enemy at player's position, a battle begins
   if (enemies->getElement(player->tile_x, player->tile_y)) {
     delete Manager::getInstance()->screen_;
-    Manager::getInstance()->screen_ = new Battle((Foe*)enemies->getElement(player->tile_x, player->tile_y));
+    Foe* rival = (Foe*)enemies->getElement(player->tile_x, player->tile_y);
+    
+    //make the enemy thougher in hard mode right before the battle
+    if (Manager::getInstance()->hard_mode_) {
+      rival->Harden();
+    }
+    
+    Manager::getInstance()->screen_ = new Battle(rival);
     Manager::getInstance()->screen_->Init();
     
     //The enemy is removed from the enemies Grid beforehand

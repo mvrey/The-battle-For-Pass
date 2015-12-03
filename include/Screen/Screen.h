@@ -70,7 +70,7 @@ protected:
   int CheckButtonsClick();
   int CheckButtonsHover();
   
-  Button option_buttons_[10];
+  Button option_buttons_[15];
   short int num_buttons_ = 0;
 
 };
