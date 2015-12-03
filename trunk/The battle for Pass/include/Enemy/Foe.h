@@ -17,6 +17,7 @@ public:
     virtual ~Foe();
     
     void LoadImages();
+    void Harden();
     
 private:
 

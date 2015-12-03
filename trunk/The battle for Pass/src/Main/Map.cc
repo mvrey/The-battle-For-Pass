@@ -72,7 +72,7 @@ Map::~Map() {
  *  @param  maps The array of currently defined maps. Any other map the current map
             leads to (has a portal linking it) must be already defined here.
  */
-int Map::LoadFromFile(std::string filename, Map* maps[10]) {
+int Map::LoadFromFile(std::string filename, Map* maps[10], bool hard_mode) {
   //Tileset dimensions
   int width, height;
   //Tile dimensions
@@ -307,6 +307,15 @@ int Map::LoadFromFile(std::string filename, Map* maps[10]) {
         
         enemy->LoadImages();
         enemies_->setElement(tile_x, tile_y, enemy);
+        
+        //Create an additional adjacent enemy in hard mode
+        if (hard_mode) {
+          printf("CREATING ADDITIONAL ENEMY\n");
+          Foe* another_enemy = Map::GetEnemy(enemy_id);
+          another_enemy->LoadImages();
+          enemies_->setElement(tile_x+1, tile_y, another_enemy);
+        }
+        
       } else if (objectGroup->GetName() == "NPCs") {
         //Create a new npc and put it in the grid
         Friend* npc = new Friend(atoi(object->GetType().c_str()));

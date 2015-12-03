@@ -29,3 +29,13 @@ void Foe::LoadImages() {
   printf("Loading Battler from %s\n", path.c_str());
   battler_img_ = ESAT::SpriteFromFile(path.c_str());
 }
+
+/// @brief Makes enemies harder and tougher by multiplying his stats in hard mode
+void Foe::Harden() {
+  this->HP_ *= 1.5;
+  this->max_HP_ *= 1.5;
+  this->MP_ *= 1.5;
+  this->max_MP_ *= 1.5;
+  this->attack_ *= 1.5;
+  this->defense_ *= 1.5;
+}

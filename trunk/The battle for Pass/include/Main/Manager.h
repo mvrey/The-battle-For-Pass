@@ -39,7 +39,7 @@ public:
     Ally* player_;
     int quit_game_;
     Map* maps_[10];
-
+    bool hard_mode_ = false;
   
 
 private:
